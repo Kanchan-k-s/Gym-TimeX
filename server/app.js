@@ -1,11 +1,19 @@
 require("dotenv").config();
 const { client } = require("./config/dbConfig")
 const express = require("express")
+const cors = require("cors");
+
+const User = require("./routes/user")
 
 const app = express();
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: false }));
+app.use(cors())
+
+// const router = express.Router();
+// router.get('/',User);
+app.use("/user",User)
 
 app.get('/hi',async(req,res)=>{
     const n = await client.query("Select * from test;")
