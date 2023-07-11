@@ -1,5 +1,5 @@
 require("dotenv").config();
-const { client } = require("./config/dbConfig")
+const { client } = require("./models/dbConfig")
 const express = require("express")
 const cors = require("cors");
 
@@ -21,7 +21,7 @@ app.get('/hi',async(req,res)=>{
     res.send(r[0].name)
 })
 
-const { connectDB } = require("./config/dbConfig");
+const { connectDB } = require("./models/dbConfig");
 const port = process.env.PORT || 3000;
 
 const startServer = async function () {

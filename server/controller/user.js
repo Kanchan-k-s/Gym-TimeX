@@ -1,7 +1,11 @@
-const { client } = require("../config/dbConfig");
+const Gyms=require("../models/Gyms")
 
-exports.demo=async(req,res)=>{
-    const result = (await client.query("Select * from users;")).rows;
+const demo=async(req,res)=>{
+    const result =  await Gyms.findAll();
     res.send(result);
+}
+
+module.exports={
+    demo
 }
 
