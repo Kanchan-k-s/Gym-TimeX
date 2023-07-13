@@ -243,6 +243,18 @@ main section.section-login .section-main .section-login-2 .section-login-2-main 
     }
 }
 
+#email:focus~label[for="Emaill"] {
+    margin: -76px 70px;
+}
+
+#Full_Name:focus~label[for="Full Name"] {
+    margin: -76px 70px;
+}
+
+#Password:focus~label[for="Password"] {
+    margin: -76px 70px;
+}
+
 @media only screen and (max-width: 600px) {
     main section.section-login .section-main {
         width: 100%;
