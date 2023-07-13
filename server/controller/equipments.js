@@ -3,7 +3,7 @@ const { db } = require("../models/dbConfig")
 const add = async (req, res) => {
     try {
         const Equipment = db.Models.equipments
-        console.log(db.Models)
+        // console.log(db.Models)
         const query = req.body
         const result = await Equipment.create(query)
         res.send(result)
@@ -17,6 +17,7 @@ const show = async (req, res) => {
     const Equipment = db.Models.equipments
     try {
         const result = await Equipment.findAll();
+        console.log(result)
         res.send(result)
     } catch (e) {
         console.log(e)

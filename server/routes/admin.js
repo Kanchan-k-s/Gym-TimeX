@@ -15,6 +15,7 @@ router.put('/slot/update/:id',slot.update)
 router.post('/equipment/add',equipment.add)
 router.get('/equipment/all',equipment.show)
 router.get('/equipment/:id',equipment.showOne)
+router.delete('/equipment/:id',equipment.showOne)
 router.put('/equipment/update/:id',equipment.update)
 
 module.exports = router;

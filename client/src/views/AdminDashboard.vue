@@ -1,7 +1,7 @@
 <template>
     <div>
-   
-    <AdminNavbar></AdminNavbar>
+
+        <AdminNavbar></AdminNavbar>
         <div class="container" style="padding-top:7%">
 
 
@@ -53,9 +53,9 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Id</th>
-                                            <th scope="col"></th>
-                                            <th scope="col">SlotOut</th>
-                                            <th scope="col">PeopleBooked</th>
+                                            <th scope="col">Slot In</th>
+                                            <th scope="col">Slot Out</th>
+                                            <th scope="col">People Booked</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -92,9 +92,9 @@
                                     </thead>
                                     <tbody>
                                         <tr v-for="equipment in equipments">
-                                            <th scope="row">{{ equipment.Id }}</th>
-                                            <td>{{ equipment.Name }}</td>
-                                            <td>{{ equipment.Quantity }}</td>
+                                            <th scope="row">{{ equipment.id }}</th>
+                                            <td>{{ equipment.name }}</td>
+                                            <td>{{ equipment.qty }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -109,6 +109,9 @@
 
 <script>
 import AdminNavbar from "../components/AdminNavbar.vue"
+
+import AdminApi from "../services/admin"
+
 export default {
 
     data() {
@@ -120,12 +123,19 @@ export default {
                 { Id: '01', SlotIn: '09:00:00', SlotOut: '10:00:00', PeopleBooked: '30' }
             ],
             equipments: [
-                { Id: '01', Name: 'Dumbbell', Quantity: '7' }
             ]
         }
     },
     components: {
         AdminNavbar
+    },
+    methods: {
+
+    },
+    beforeCreate() {
+        AdminApi.allEquipments().then((res) => {
+            this.equipments = res.data
+        });
     }
 }
 </script>
