@@ -4,6 +4,7 @@ const express = require("express")
 const cors = require("cors");
 
 const User = require("./routes/user")
+const Admin = require("./routes/admin")
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors())
 // const router = express.Router();
 // router.get('/',User);
 app.use("/user",User)
+app.use("/admin",Admin)
 
 app.get('/hi',async(req,res)=>{
     const n = await client.query("Select * from test;")

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-
-    const Gyms = sequelize.define('gym', {
+    const Models ={}
+    Models.gyms = sequelize.define('gym', {
 
         opening_time: {
             type: DataTypes.TIME,
@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
         // Other model options go here
     });
     
-    const Equipments = sequelize.define('equipment', {
+    Models.equipments = sequelize.define('equipment', {
 
         name: {
             type: DataTypes.STRING,
@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         // Other model options go here
     });
-    const Slots = sequelize.define('slot', {
+    Models.slots = sequelize.define('slot', {
 
         slot_in: {
             type: DataTypes.TIME,
@@ -48,9 +48,13 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         // Other model options go here
     });
-    const User = sequelize.define('users', {
+    Models.user = sequelize.define('users', {
 
         type: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        password:{
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -58,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: true,
             references: {
-                model:Slots,
+                model:Models.slots,
                 key: 'id'
             }
         },
@@ -76,4 +80,5 @@ module.exports = (sequelize, DataTypes) => {
 
     });
     // Slots.hasMany(User)
+    return Models
 }
