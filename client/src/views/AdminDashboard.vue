@@ -1,8 +1,7 @@
 <template>
     <div>
-
         <AdminNavbar></AdminNavbar>
-        <div class="container" style="padding-top:7%">
+        <div class="container" style="padding-top:8%">
 
 
             <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -23,6 +22,7 @@
                                             <th scope="col">Id</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Email</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,6 +57,7 @@
                                             <th scope="col">Slot Out</th>
                                             <th scope="col">People Booked</th>
                                             <th scope="col">Action</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -65,7 +66,12 @@
                                             <td>{{ slot.slot_in }}</td>
                                             <td>{{ slot.slot_out }}</td>
                                             <td>{{ slot.nop }}</td>
-                                            <td v-on:click="delEquip(slot.id)">Delete</td>
+                                            <td>
+                                                <button class="btn btn-warning" @click="updateItem(slot.id)">Update</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger" @click="delEquip(slot.id)">Delete</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
