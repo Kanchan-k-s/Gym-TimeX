@@ -93,6 +93,8 @@
                                             <th scope="col">Slot In</th>
                                             <th scope="col">Slot Out</th>
                                             <th scope="col">People Booked</th>
+                                            <th scope="col">Action</th>
+                                            <th scope="col"></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -101,6 +103,12 @@
                                             <td>{{ slot.slot_in }}</td>
                                             <td>{{ slot.slot_out }}</td>
                                             <td>{{ slot.nop }}</td>
+                                            <td>
+                                                <button class="btn btn-warning" @click="updateItem(index)">Update</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger" @click="delSlot(slot.id)">Delete</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -145,32 +153,27 @@
 </template>
 
 <script>
+import { BIconHandThumbsDown } from "bootstrap-vue";
 import AdminNavbar from "../components/AdminNavbar.vue"
 
 import AdminApi from "../services/admin"
 
-export default {
+export default{
 
-    data() {
-        return {
-            users: [
-                { Id: '01', Name: 'Mark', Email: 'Mark@argusoft.com' }
-            ],
-            bookedslots: [
-                { id: '01', fullname: 'James', slotin: '12:00:00', slotout: '13:00:00' }
-            ],
-            slots: [
-
-            ],
-            equipments: [
-            ]
-        }
-    },
-    components: {
-        AdminNavbar
-    },
-    methods: {
-        addRow() {
+data() {
+    return {
+        users: [
+            { Id: '01', Name: 'Mark', Email: 'Mark@argusoft.com' }
+        ],
+        slots: [],
+        equipments: []
+    }
+},
+components: {
+    AdminNavbar
+},
+methods: {
+    addRow() {
             const newRow = {
                 id: this.tableData.length + 1,
                 slot_in: "",
@@ -178,17 +181,31 @@ export default {
                 nop: ""
             };
             this.tableData.push(newRow);
-        }
-
-    },
-    beforeCreate() {
+        },
+    allEquipments:function(){
+        console.log("hi")
         AdminApi.allEquipments().then((res) => {
-            this.equipments = res.data
-        });
+        this.equipments = res.data
+    });
+    },
+    allSlots:function(){
         AdminApi.allSlots().then((res) => {
-            this.slots = res.data
-        });
-    }
+        this.slots = res.data
+    });
+    },
+    delSlot:function(id){
+        AdminApi.deleteSlot(id).then((res) => {
+        console.log(res)
+        this.allSlots()
+    });
+    },
+
+
+},
+created() {
+    this.allEquipments();
+    this.allSlots();
+}
 }
 </script>
 <style>

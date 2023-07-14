@@ -1,6 +1,11 @@
 <template>
      <nav class="navbar">
-        <div class="navbar-container container">
+        
+            <img src="../assets/TimeX.png" alt="" width="80" height="80">
+        <h1 class="text-start">Admin Dashboard</h1>
+        
+        
+        <div class="navbar-container ">
             <input type="checkbox" name="" id="">
             <div class="hamburger-lines">
                 <span class="line line1"></span>
@@ -13,10 +18,8 @@
         
               <li>  <button class="btn btn-outline-success" type="submit" >Log Out</button></li>
             </ul>
-            <h1 class="logo">Admin Dashboard</h1>
-            <img src="../assets/TimeX.png" alt="" width="70" height="70">
-            
-        </div>
+        
+    </div>
     </nav>
 </template>
 
@@ -66,6 +69,7 @@
 .logo{
     order: 1;
     font-size: 2.3rem;
+    margin-left:100px
 }
 
 .menu-items li{

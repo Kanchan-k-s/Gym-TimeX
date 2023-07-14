@@ -4,7 +4,6 @@ const { db } = require("../models/dbConfig")
 const add = async (req, res) => {
     try {
         const Gyms= db.Models.gyms
-        console.log(db.Models)
         const query = req.body
         const result = await Gyms.create(query)
         res.send(result)
