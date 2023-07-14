@@ -56,6 +56,7 @@
                                             <th scope="col">Slot In</th>
                                             <th scope="col">Slot Out</th>
                                             <th scope="col">People Booked</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,6 +65,7 @@
                                             <td>{{ slot.slot_in }}</td>
                                             <td>{{ slot.slot_out }}</td>
                                             <td>{{ slot.nop }}</td>
+                                            <td v-on:click="delEquip(slot.id)">Delete</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -108,6 +110,7 @@
 </template>
 
 <script>
+import { BIconHandThumbsDown } from "bootstrap-vue";
 import AdminNavbar from "../components/AdminNavbar.vue"
 
 import AdminApi from "../services/admin"
@@ -119,26 +122,38 @@ data() {
         users: [
             { Id: '01', Name: 'Mark', Email: 'Mark@argusoft.com' }
         ],
-        slots: [
-            
-        ],
-        equipments: [
-        ]
+        slots: [],
+        equipments: []
     }
 },
 components: {
     AdminNavbar
 },
 methods: {
-
-},
-beforeCreate() {
-    AdminApi.allEquipments().then((res) => {
+    
+    allEquipments:function(){
+        console.log("hi")
+        AdminApi.allEquipments().then((res) => {
         this.equipments = res.data
     });
-    AdminApi.allSlots().then((res) => {
+    },
+    allSlots:function(){
+        AdminApi.allSlots().then((res) => {
         this.slots = res.data
     });
+    },
+    delEquip:function(id){
+        AdminApi.deleteSlot(id).then((res) => {
+        console.log(res)
+        this.allSlots()
+    });
+    },
+
+
+},
+created() {
+    this.allEquipments();
+    this.allSlots();
 }
 }
 </script>

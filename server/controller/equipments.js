@@ -17,7 +17,6 @@ const show = async (req, res) => {
     const Equipment = db.Models.equipments
     try {
         const result = await Equipment.findAll();
-        console.log(result)
         res.send(result)
     } catch (e) {
         console.log(e)

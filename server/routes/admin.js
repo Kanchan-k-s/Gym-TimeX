@@ -10,6 +10,7 @@ const router = express.Router();
 router.post('/slot/add',slot.add)
 router.get('/slot/all',slot.show)
 router.get('/slot/:id',slot.showOne)
+router.delete('/slot/:id',slot.delSlot)
 router.put('/slot/update/:id',slot.update)
 
 router.post('/equipment/add',equipment.add)

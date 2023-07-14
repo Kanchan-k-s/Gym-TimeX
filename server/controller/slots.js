@@ -16,7 +16,9 @@ const add = async (req, res) => {
 const show = async (req, res) => {
     const Slots = db.Models.slots
     try {
-        const result = await Slots.findAll();
+        const result = await Slots.findAll({
+            order : [['id','ASC']]
+        });
         res.send(result)
     } catch (e) {
         console.log(e)
@@ -47,9 +49,21 @@ const update = async(req,res)=>{
     }
 }
 
+const delSlot = async(req,res)=>{
+    const Slots = db.Models.slots
+    try{
+        const result= await Slots.destroy({ where: { id: req.params.id } });
+        res.json(result)
+    }
+    catch(e){
+        console.log(e)
+    }
+}
+
 module.exports = {
     add,
     show,
     update,
-    showOne
+    showOne,
+    delSlot
 }
