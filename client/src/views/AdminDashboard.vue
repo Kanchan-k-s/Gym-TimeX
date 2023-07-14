@@ -1,8 +1,7 @@
 <template>
     <div>
-
         <AdminNavbar></AdminNavbar>
-        <div class="container" style="padding-top:7%">
+        <div class="container" style="padding-top:8%">
 
 
             <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -23,6 +22,7 @@
                                             <th scope="col">Id</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Email</th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -64,6 +64,12 @@
                                             <td>{{ slot.slot_in }}</td>
                                             <td>{{ slot.slot_out }}</td>
                                             <td>{{ slot.nop }}</td>
+                                            <td>
+                                                <button class="btn btn-warning" @click="updateItem(index)">Update</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger" @click="deleteItem(index)">Delete</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -112,33 +118,39 @@ import AdminNavbar from "../components/AdminNavbar.vue"
 
 import AdminApi from "../services/admin"
 
-export default{
+export default {
+    data() {
+        return {
+            users: [
+                { Id: '01', Name: 'Mark', Email: 'Mark@argusoft.com' }
+            ],
+            slots: [
 
-data() {
-    return {
-        users: [
-            { Id: '01', Name: 'Mark', Email: 'Mark@argusoft.com' }
-        ],
-        slots: [
-            
-        ],
-        equipments: [
-        ]
+            ],
+            equipments: [
+            ]
+        }
+    },
+    components: {
+        AdminNavbar
+    },
+    methods: {
+        updateItem(index) {
+            // Perform update logic for the item at the given index
+            // For example, you can navigate to an update page or show a modal
+            console.log('Update item at index:', index);
+        },
+        deleteItem(index) {
+            this.items.splice(index, 1);
+        }
+    },
+    beforeCreate() {
+        AdminApi.allEquipments().then((res) => {
+            this.equipments = res.data
+        });
+        AdminApi.allSlots().then((res) => {
+            this.slots = res.data
+        });
     }
-},
-components: {
-    AdminNavbar
-},
-methods: {
-
-},
-beforeCreate() {
-    AdminApi.allEquipments().then((res) => {
-        this.equipments = res.data
-    });
-    AdminApi.allSlots().then((res) => {
-        this.slots = res.data
-    });
-}
 }
 </script>

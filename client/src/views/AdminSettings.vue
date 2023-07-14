@@ -1,103 +1,71 @@
 <template>
     <div>
-   
-    <AdminNavbar></AdminNavbar>
-        <div class="container" style="padding-top:7%">
 
-
-            <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Slot Updation
-                        </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <div>
-                                <table border="1px" class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Email</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="user in users">
-                                            <th scope="row">{{ user.Id }}</th>
-                                            <td>{{ user.Name }}</td>
-                                            <td>{{ user.Email }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+        <AdminNavbar></AdminNavbar>
+        <div class="container" style="padding-top:8%">
+            <div>
+                <h1>Admin Panel - Contact Settings</h1>
+                <form @submit.prevent="updateContactDetails">
+                    <div>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" v-model="contactDetails.name" />
                     </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Number of Slots Booked
-                        </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <div>
-                                <table border="1px" class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col"></th>
-                                            <th scope="col">SlotOut</th>
-                                            <th scope="col">PeopleBooked</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="slot in slots">
-                                            <th scope="row">{{ slot.Id }}</th>
-                                            <td>{{ slot.SlotIn }}</td>
-                                            <td>{{ slot.SlotOut }}</td>
-                                            <td>{{ slot.PeopleBooked }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" v-model="contactDetails.email" />
                     </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            Equipments
-                        </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
-                        data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <div>
-                                
-                            </div>
-                        </div>
+                    <div>
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" v-model="contactDetails.phone" />
                     </div>
-                </div>
+                    <button type="submit">Update</button>
+                </form>
             </div>
         </div>
     </div>
 </template>
-
 
 <script>
 import AdminNavbar from "../components/AdminNavbar.vue"
 export default {
     components: {
         AdminNavbar
+    },
+    data() {
+        return {
+            contactDetails: {
+                name: 'Admin Name',
+                email: 'admin@example.com',
+                phone: '1234567890'
+            }
+        };
+    },
+    methods: {
+        updateContactDetails() {
+            // Perform update logic here, e.g., send an API request to update the contact details
+            console.log('Updated contact details:', this.contactDetails);
+            // You can customize this method based on your specific requirements
+        }
     }
-}
+};
 </script>
+
+<style scoped>
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+    width: 200px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+</style>
