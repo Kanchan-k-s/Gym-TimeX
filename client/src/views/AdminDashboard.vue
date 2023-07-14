@@ -1,7 +1,8 @@
 <template>
     <div>
+
         <AdminNavbar></AdminNavbar>
-        <div class="container" style="padding-top:8%">
+        <div class="container" style="padding-top:7%">
 
 
             <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -22,7 +23,6 @@
                                             <th scope="col">Id</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Email</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -37,17 +37,54 @@
                         </div>
                     </div>
                 </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                            Number of People Booked
+                        </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <div>
+                                <table border="1px" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Full name</th>
+                                            <th scope="col">Slot In</th>
+                                            <th scope="col">Slot Out</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="Bookedslot in bookedslots">
+                                            <th scope="row">{{ Bookedslot.id }}</th>
+                                            <td>{{ Bookedslot.fullname }}</td>
+                                            <td>{{ Bookedslot.slotin }}</td>
+                                            <td>{{ Bookedslot.slotout }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Number of Slots Booked
+                            Number of Slots
                         </button>
                     </h2>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
+                            <div class="add-row-container">
+                                <button class="add-row-button" @click="addRow">Add Row</button>
+                            </div>
                             <div>
                                 <table border="1px" class="table">
                                     <thead>
@@ -64,12 +101,6 @@
                                             <td>{{ slot.slot_in }}</td>
                                             <td>{{ slot.slot_out }}</td>
                                             <td>{{ slot.nop }}</td>
-                                            <td>
-                                                <button class="btn btn-warning" @click="updateItem(index)">Update</button>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-danger" @click="deleteItem(index)">Delete</button>
-                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -119,10 +150,14 @@ import AdminNavbar from "../components/AdminNavbar.vue"
 import AdminApi from "../services/admin"
 
 export default {
+
     data() {
         return {
             users: [
                 { Id: '01', Name: 'Mark', Email: 'Mark@argusoft.com' }
+            ],
+            bookedslots: [
+                { id: '01', fullname: 'James', slotin: '12:00:00', slotout: '13:00:00' }
             ],
             slots: [
 
@@ -135,14 +170,16 @@ export default {
         AdminNavbar
     },
     methods: {
-        updateItem(index) {
-            // Perform update logic for the item at the given index
-            // For example, you can navigate to an update page or show a modal
-            console.log('Update item at index:', index);
-        },
-        deleteItem(index) {
-            this.items.splice(index, 1);
+        addRow() {
+            const newRow = {
+                id: this.tableData.length + 1,
+                slot_in: "",
+                slot_out: "",
+                nop: ""
+            };
+            this.tableData.push(newRow);
         }
+
     },
     beforeCreate() {
         AdminApi.allEquipments().then((res) => {
@@ -154,3 +191,27 @@ export default {
     }
 }
 </script>
+<style>
+.add-row-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  align-items: center;
+  height: 50px;
+}
+
+.add-row-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-row-button:hover {
+  background-color: #0056b3;
+}
+</style>

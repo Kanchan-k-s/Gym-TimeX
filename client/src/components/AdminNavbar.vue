@@ -8,10 +8,10 @@
                 <span class="line line3"></span>
             </div>
             <ul class="menu-items">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="/admin/panel">Home</a></li>
+                <li><a href="/admin/settings">Settings</a></li>
         
-              <li>  <button class="btn btn-outline-success" type="submit">Log Out</button></li>
+              <li>  <button class="btn btn-outline-success" type="submit" >Log Out</button></li>
             </ul>
             <h1 class="logo">Admin Dashboard</h1>
             <img src="../assets/TimeX.png" alt="" width="70" height="70">
@@ -20,6 +20,15 @@
     </nav>
 </template>
 
+<scipt>
+    export default(){
+        methods:{
+            logout () =>{
+
+            }
+        }
+    }
+</scipt>
 
 <style scoped>
 .navbar input[type="checkbox"],
