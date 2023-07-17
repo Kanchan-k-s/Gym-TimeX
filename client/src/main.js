@@ -9,6 +9,7 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import 'mdb-vue-ui-kit/css/mdb.min.css';
 
 import ToastPlugin from 'vue-toast-notification';
 import "vue-toast-notification/dist/theme-bootstrap.css";
