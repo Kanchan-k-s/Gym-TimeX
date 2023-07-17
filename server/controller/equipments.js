@@ -3,7 +3,7 @@ const { db } = require("../models/dbConfig")
 const add = async (req, res) => {
     try {
         const Equipment = db.Models.equipments
-        // console.log(db.Models)
+        console.log(db.Models)
         const query = req.body
         const result = await Equipment.create(query)
         res.send(result)
