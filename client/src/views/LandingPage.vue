@@ -18,21 +18,21 @@
                         <div class="section-login-2-main" v-if="register">
 
                             <h1 class="section-login-2-title">Register</h1>
-                            <form class="section-login-2-form">
+                            <form @submit.prevent class="section-login-2-form">
                                 <div class="login-form-1">
                                     <label for="input-email">Email</label>
-                                    <input type="text" id="input-email" placeholder="john@example.com" required>
+                                    <input v-model="new_user.email" type="text" id="input-email" placeholder="john@example.com" required>
                                 </div>
                                 <div class="login-form-2">
                                     <label for="input-name">Full Name</label>
-                                    <input type="text" id="input-name" placeholder="John Doe" required>
+                                    <input v-model="new_user.name" type="text" id="input-name" placeholder="John Doe" required>
                                 </div>
                                 <div class="login-form-3">
                                     <label for="input-password">Password</label>
-                                    <input type="password" id="input-password" placeholder="At least 8 characters" required>
+                                    <input v-model="new_user.password" type="password" id="input-password" placeholder="At least 8 characters" required>
                                 </div>
                                 <div class="login-form-submit-btn">
-                                    <button>Create an Account</button>
+                                    <button v-on:click="reg_user()">Create an Account</button>
                                 </div>
                                 <div class="login-form-5" v-on:click="register=false">
                                     <p>Already have an account? <a >Sign In</a></p>
@@ -43,17 +43,17 @@
                         <div class="section-login-2-main" v-if="!register">
 
                             <h1 class="section-login-2-title">Login</h1>
-                            <form class="section-login-2-form">
+                            <form @submit.prevent class="section-login-2-form">
                                 <div class="login-form-1">
                                     <label for="input-email">Email</label>
-                                    <input type="text" id="input-email" placeholder="john@example.com" required>
+                                    <input v-model="user.email" type="text" id="input-email" placeholder="Email" required>
                                 </div>
                                 <div class="login-form-3">
                                     <label for="input-password">Password</label>
-                                    <input type="password" id="input-password" placeholder="At least 8 characters" required>
+                                    <input v-model="user.password" type="password" id="input-password" placeholder="Password" required>
                                 </div>
                                 <div class="login-form-submit-btn">
-                                    <button>Login</button>
+                                    <button v-on:click="login()">Login</button>
                                 </div>
                                 <div class="login-form-5" v-on:click="register=true">
                                     <p>Want to create an account? <a >Sign Up</a></p>
@@ -74,9 +74,34 @@ export default {
     data() {
         return {
             register: true,
+            new_user:{
+                email:'',
+                name:'',
+                password:'',
+            },
+            user:{
+                email:'',
+                password:'',
+            },
         }
     },
     components: {
+    
+    },
+    methods:{
+        reg_user: function(){
+            console.log(this.new_user)
+            User.register(this.new_user).then((res)=>{
+                this.$router.push('/admin/panel')
+            })
+            
+        },
+        login:function(){
+            console.log(this.user)
+            User.login(this.user).then((res)=>{
+                this.$router.push('/admin/panel')
+            })
+        }  
     },
     beforeCreate() {
 
@@ -91,23 +116,13 @@ export default {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    font-family: 'Lugrasimo', cursive;
+    /* font-family: 'Lugrasimo', cursive; */
 }
 
 body {
     width: 100%;
     height: auto;
 }
-
-/* #input-email:focus~label[for="input-email"] {
-    margin: -76px 70px;
-}
-
-#input-password:focus~label[for="input-password"] {
-    margin: -76px 70px;
-} */
-
-
 
 main section.section-login {
     width: 100%;

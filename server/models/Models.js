@@ -49,7 +49,11 @@ module.exports = (sequelize, DataTypes) => {
         // Other model options go here
     });
     Models.user = sequelize.define('users', {
-
+        email:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
         type: {
             type: DataTypes.STRING,
             allowNull: false

@@ -1,4 +1,6 @@
 const {db}=require("../models/dbConfig")
+const bcrypt = require("bcryptjs");
+
 
 const demo=async(req,res)=>{
     try{
@@ -13,10 +15,18 @@ const demo=async(req,res)=>{
     
 }
 
+const setpassword = async (req, res) => {
+    try{
+        const salt = await bcrypt.genSalt(10);
+    }catch(e){
+
+    }
+}
+
 const login = async(req,res)=>{
     const User = db.Models.user
     try{
-        const result= await User.findAll();
+        const result= await User.findOne({where:req.body});
         res.send(result)
     }catch(e){
         console.log(e)
@@ -26,6 +36,7 @@ const login = async(req,res)=>{
 const register = async(req,res)=>{
     
     const query = req.body
+    query["type"]="Employee"
     const User = db.Models.user
     try{
         const result= await User.create(query);
