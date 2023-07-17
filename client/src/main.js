@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import Vuelidate from 'vuelidate';
 import VueRouter from "vue-router";
 import routes from "./routes";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
@@ -8,6 +9,11 @@ import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+
+import ToastPlugin from 'vue-toast-notification';
+import "vue-toast-notification/dist/theme-bootstrap.css";
+Vue.use(ToastPlugin);
+Vue.use(Vuelidate)
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);

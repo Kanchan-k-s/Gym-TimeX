@@ -9,7 +9,12 @@ export default {
     },
     deleteSlot(id){
         return api.delete("http://localhost:3000/admin/slot/"+id);
+    },
+    createSlot(newRow){
+        return api.post("http://localhost:3000/admin/slot/add",newRow);
+    },
+    updateSlot(newRow){
+        return api.post("http://localhost:3000/admin/slot/add",newRow);
     }
-    
 
 }
