@@ -21,21 +21,24 @@
                             <form @submit.prevent class="section-login-2-form">
                                 <div class="login-form-1">
                                     <label for="input-email">Email</label>
-                                    <input v-model="new_user.email" type="text" id="input-email" placeholder="john@example.com" required>
+                                    <input v-model="new_user.email" type="text" id="input-email"
+                                        placeholder="john@example.com" required>
                                 </div>
                                 <div class="login-form-2">
                                     <label for="input-name">Full Name</label>
-                                    <input v-model="new_user.name" type="text" id="input-name" placeholder="John Doe" required>
+                                    <input v-model="new_user.name" type="text" id="input-name" placeholder="John Doe"
+                                        required>
                                 </div>
                                 <div class="login-form-3">
                                     <label for="input-password">Password</label>
-                                    <input v-model="new_user.password" type="password" id="input-password" placeholder="At least 8 characters" required>
+                                    <input v-model="new_user.password" type="password" id="input-password"
+                                        placeholder="At least 8 characters" required>
                                 </div>
                                 <div class="login-form-submit-btn">
                                     <button v-on:click="reg_user()">Create an Account</button>
                                 </div>
-                                <div class="login-form-5" v-on:click="register=false">
-                                    <p>Already have an account? <a >Sign In</a></p>
+                                <div class="login-form-5" v-on:click="register = false">
+                                    <p>Already have an account? <a>Sign In</a></p>
                                 </div>
                             </form>
 
@@ -50,13 +53,14 @@
                                 </div>
                                 <div class="login-form-3">
                                     <label for="input-password">Password</label>
-                                    <input v-model="user.password" type="password" id="input-password" placeholder="Password" required>
+                                    <input v-model="user.password" type="password" id="input-password"
+                                        placeholder="Password" required>
                                 </div>
                                 <div class="login-form-submit-btn">
                                     <button v-on:click="login()">Login</button>
                                 </div>
-                                <div class="login-form-5" v-on:click="register=true">
-                                    <p>Want to create an account? <a >Sign Up</a></p>
+                                <div class="login-form-5" v-on:click="register = true">
+                                    <p>Want to create an account? <a>Sign Up</a></p>
                                 </div>
                             </form>
 
@@ -69,39 +73,53 @@
 </template>
 <script>
 import User from "../services/user.js"
-
+import Cookies from "js-cookie";
 export default {
     data() {
         return {
             register: true,
-            new_user:{
-                email:'',
-                name:'',
-                password:'',
+            new_user: {
+                email: '',
+                name: '',
+                password: '',
             },
-            user:{
-                email:'',
-                password:'',
+            user: {
+                email: '',
+                password: '',
             },
         }
     },
     components: {
-    
+
     },
-    methods:{
-        reg_user: function(){
+    methods: {
+        reg_user: function () {
             console.log(this.new_user)
-            User.register(this.new_user).then((res)=>{
+            User.register(this.new_user).then((res) => {
                 this.$router.push('/admin/panel')
             })
-            
+
         },
-        login:function(){
-            console.log(this.user)
-            User.login(this.user).then((res)=>{
-                this.$router.push('/admin/panel')
+        login: function () {
+
+            User.login(this.user).then(async(res) => {
+                if (res.data.success) {
+                    console.log(res.data)
+                    await Cookies.set("token", res.data.token);
+                    localStorage.setItem("name1", res.data.user.name);
+                    localStorage.setItem("user1", res.data.user.type);
+                    if (Cookies.get("token")) {
+                        if (res.data.user.type !== "admin") {
+                            this.$router.push('/admin/panel');
+                        } else {
+                            this.$router.push("/dashboard");
+                        }
+                    }
+                }                
+            }).error((e)=>{
+                console.log(e)
             })
-        }  
+        }
     },
     beforeCreate() {
 
@@ -355,5 +373,4 @@ main section.section-login .section-main .section-login-2 .section-login-2-main 
     main section.section-login .section-main .section-login-2 .section-login-2-main {
         padding: 35px 25px;
     }
-}
-</style>
+}</style>

@@ -39,7 +39,7 @@ const client = {
 const connectDB = async function () {
   try {
     // await pool.connect();
-    await sequelize.authenticate();
+    const connect=await sequelize.authenticate();
     console.log("Successfully connected to the Database.");
     
     db.Sequelize = Sequelize;
