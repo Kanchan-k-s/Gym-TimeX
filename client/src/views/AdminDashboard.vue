@@ -100,9 +100,12 @@
                                     <tbody>
                                         <tr>
 
-                                            <td><input class="form-control" type="time" v-model="newRow.slot_in" v-show="showCreateRow" /></td>
-                                            <td><input class="form-control" type="time" v-model="newRow.slot_out" v-show="showCreateRow" /></td>
-                                            <td><input class="form-control" type="number" v-model="newRow.nop" v-show="showCreateRow" /></td>
+                                            <td><input class="form-control" type="time" v-model="newRow.slot_in"
+                                                    v-show="showCreateRow" /></td>
+                                            <td><input class="form-control" type="time" v-model="newRow.slot_out"
+                                                    v-show="showCreateRow" /></td>
+                                            <td><input class="form-control" type="number" v-model="newRow.nop"
+                                                    v-show="showCreateRow" /></td>
                                             <td>
                                                 <button class="btn btn-success" @click="createSlot()"
                                                     v-if="showCreateRow">Create
@@ -113,16 +116,17 @@
                                             <th scope="row">
                                                 {{ slot.id }}
                                             </th>
-                                            <td><span v-if="onUpdate===false">
+                                            <td><span v-if="onUpdate === false">
                                                     {{ slot.slot_in }}
                                                 </span>
                                                 <span v-else>
                                                     <input type="time" :placeholder="slot.slot_in" />
-                                                </span></td>
+                                                </span>
+                                            </td>
                                             <td>{{ slot.slot_out }}</td>
                                             <td>{{ slot.nop }}</td>
                                             <td>
-                                                <button class="btn btn-warning" @click="onUpdate=true">Update</button>
+                                                <button class="btn btn-warning" @click="onUpdate = true">Update</button>
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger" @click="delSlot(slot.id)">Delete</button>
@@ -155,6 +159,9 @@
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
                         data-bs-parent="#accordionFlushExample">
+                        <div class="add-row-container" v-show="!showEquipCreateRow">
+                            <button class="btn btn-info" @click="toggleEquipCreateRow">Add Row</button>
+                        </div>
                         <div class="accordion-body">
                             <div>
                                 <table border="1px" class="table">
@@ -166,11 +173,20 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+
                                         <tr v-for="equipment in equipments">
                                             <th scope="row">{{ equipment.id }}</th>
                                             <td>{{ equipment.name }}</td>
                                             <td>{{ equipment.qty }}</td>
+                                            <td>
+                                                <button class="btn btn-warning" @click="onUpdate = true">Update</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger"
+                                                    @click="delEuip(equipment.id)">Delete</button>
+                                            </td>
                                         </tr>
+
                                     </tbody>
                                 </table>
                             </div>
@@ -235,12 +251,26 @@ export default {
                 this.allSlots()
             });
         },
+        delEuip: function (id) {
+            AdminApi.deleteEuip(id).then((res) => {
+                console.log(res)
+                this.allEquipments()
+            });
+        },
         createSlot: function () {
             console.log("In create")
             AdminApi.createSlot(this.newRow).then((res) => {
                 console.log(res)
                 this.allSlots()
                 this.resetNewRow();
+            });
+        },
+        createEquip: function () {
+            console.log("In create")
+            AdminApi.createEuip(this.newRow).then((res) => {
+                console.log(res)
+                this.allEquipments()
+                this.resetEuipRow();
             });
         },
         upateSlot: function () {
@@ -262,24 +292,33 @@ export default {
             this.showCreateRow = !this.showCreateRow;
             // this.resetNewRow();
         },
-        resetNewRow() {
-            this.newRow = {
+        toggleEquipCreateRow() {
+            this.showCreateEquipRow = !this.showCreateEquipRow;
+             this.resetEquipRow();
+        },
+        resetEuipRow() {
+            this.EquipRow = {
                 slot_in: '',
                 slot_out: '',
                 nop: ''
             };
         },
-
-    },
-    created() {
-        this.allEquipments();
-        this.allSlots();
+        resetNewRow() {
+            this.newRow = {
+                name: '',
+                qty: ''
+            };
+        },
+        created() {
+            this.allEquipments();
+            this.allSlots();
+        }
+    
     }
 }
 
-
 </script>
-<style>
+<style scoped>
 .add-row-container {
     display: flex;
     justify-content: center;
