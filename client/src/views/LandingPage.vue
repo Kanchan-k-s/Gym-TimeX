@@ -74,7 +74,10 @@
 <script>
 import User from "../services/user.js"
 import Cookies from "js-cookie";
+import errorToast from "@/mixins/errorToast";
+
 export default {
+    mixins: [errorToast],
     data() {
         return {
             register: true,
@@ -93,32 +96,63 @@ export default {
 
     },
     methods: {
-        reg_user: function () {
-            console.log(this.new_user)
-            User.register(this.new_user).then((res) => {
-                this.$router.push('/admin/panel')
-            })
-
-        },
-        login: function () {
-
-            User.login(this.user).then(async(res) => {
+        reg_user: async function () {
+            try {
+                const res = await User.register(this.new_user)
+                console.log(res.data)
                 if (res.data.success) {
-                    console.log(res.data)
                     await Cookies.set("token", res.data.token);
                     localStorage.setItem("name1", res.data.user.name);
                     localStorage.setItem("user1", res.data.user.type);
+                    
                     if (Cookies.get("token")) {
-                        if (res.data.user.type !== "admin") {
+                        if (res.data.user.type === "Admin") {
                             this.$router.push('/admin/panel');
                         } else {
                             this.$router.push("/dashboard");
                         }
                     }
-                }                
-            }).error((e)=>{
-                console.log(e)
-            })
+                } 
+            }
+            catch (error) {
+
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+
+        },
+        login: async function () {
+            try {
+                this.isLoading = true;
+                const res = await User.login(this.user)
+                if (res.data.success) {
+                    await Cookies.set("token", res.data.token);
+                    localStorage.setItem("name1", res.data.user.name);
+                    localStorage.setItem("user1", res.data.user.type);
+                    if (Cookies.get("token")) {
+
+                        if (res.data.user.type === "Admin") {
+                            this.$router.push('/admin/panel');
+                        } else {
+                            this.$router.push("/dashboard");
+                        }
+                    }
+                }
+            }
+            catch (error) {
+                // this.isLoading = false;
+                // this.error = true;
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+
+
         }
     },
     beforeCreate() {
@@ -373,4 +407,5 @@ main section.section-login .section-main .section-login-2 .section-login-2-main 
     main section.section-login .section-main .section-login-2 .section-login-2-main {
         padding: 35px 25px;
     }
-}</style>
+}
+</style>

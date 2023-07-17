@@ -109,28 +109,76 @@ const login =
     };
 
 const register = async (req, res) => {
-
-    const query = req.body
-    query["type"] = "Employee"
-    const User = db.Models.user
-    console.log(query)
     try {
-        const hashedPassword = await bcrypt.hash(query.password, 10);
-        query.password = hashedPassword;
-        console.log(query.password)
-        const result = await User.create(query);
-        console.log(req.body)
-        res.send(result)
+        const User = db.Models.user
+        const query = req.body
+
+        const check = await User.findAndCountAll({ where: { email: query.email } });
+        console.log(check)
+        if (check.count !== 0) {
+            res.status(400).json({
+                success: false,
+                errors: [{ msg: "Email Already Exists" }]
+            })
+        } else {
+
+            query["type"] = "Employee"
+            const hashedPassword = await bcrypt.hash(query.password, 10);
+            query.password = hashedPassword;
+            const result = await User.create(query);
+            console.log(result)
+            res.status(201).json({
+                success: true,
+                user: [{
+                    name: result.name,
+                    email: result.email,
+                    type: result.type
+                }]
+            })
+
+        }
     } catch (e) {
-        console.log(e)
+        res.status(500).json({
+            success: false,
+            errors: [{ msg: "Server error" }]
+        })
     }
 }
 
+const registerAdmin = async (req, res) => {
+    try {
+        const User = db.Models.user
+        const query = req.body
+
+        const check = await User.findAndCountAll({ where: { email: query.email } });
+        console.log(check)
+        if (check.count !== 0) {
+            res.status(400).json({
+                success: false,
+                errors: [{ msg: "Email Already Exists" }]
+            })
+        } else {
+
+            query["type"] = "Admin"
+
+            const hashedPassword = await bcrypt.hash(query.password, 10);
+            query.password = hashedPassword;
+            const result = await User.create(query);
+            res.send(result)
+        }
+    } catch (e) {
+        res.status(500).json({
+            success: false,
+            errors: [{ msg: "Server error" }]
+        })
+    }
+}
 
 
 module.exports = {
     demo,
     login,
-    register
+    register,
+    registerAdmin
 }
 

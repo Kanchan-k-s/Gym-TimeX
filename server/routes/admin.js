@@ -9,6 +9,7 @@ const verifytoken = require("../middlewares/verifytoken");
 const router = express.Router();
 
 function checkRole(req, res, next) {
+    console.log(req.type)
     if (req.type !== "Admin") {
         return res.status(401).json({
             success: false,
@@ -20,8 +21,6 @@ function checkRole(req, res, next) {
 router.use(verifytoken);
 
 router.use(checkRole);
-
-
 
 // router.get('/',slot.login)
 router.post('/slot/add', slot.add)

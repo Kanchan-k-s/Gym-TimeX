@@ -221,6 +221,7 @@ export default {
                 nop: ''
             },
             showCreateRow: false,
+            showEquipCreateRow:false,
             onUpdate: false,
         }
     },
@@ -309,12 +310,11 @@ export default {
                 qty: ''
             };
         },
-        created() {
+    },
+    created() {
             this.allEquipments();
             this.allSlots();
         }
-    
-    }
 }
 
 </script>

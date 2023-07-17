@@ -1,5 +1,5 @@
 <template>
-    <MDBCard class="w-75">
+    <!-- <MDBCard class="w-75">
       <MDBCardBody>
         <MDBCardTitle>Card title</MDBCardTitle>
         <MDBCardText>
@@ -19,5 +19,5 @@
         </MDBCardText>
         <MDBBtn tag="a" href="#!" color="primary">Button</MDBBtn>
       </MDBCardBody>
-    </MDBCard>
+    </MDBCard> -->
   </template>

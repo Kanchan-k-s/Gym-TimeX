@@ -16,7 +16,7 @@ const verifytoken = (req, res, next) => {
 
     const data = jwt.verify(token, secret);
     req.userId = data.userId;
-    req.role = data.role;
+    req.type = data.type;
     next();
   } catch (error) {
     return res.status(401).send({
