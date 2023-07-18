@@ -14,7 +14,7 @@ export default {
         return api.post("http://localhost:3000/admin/slot/add",newRow);
     },
     updateSlot(newRow){
-        return api.post("http://localhost:3000/admin/slot/add",newRow);
+        return api.put("http://localhost:3000/admin/slot/update/"+newRow.id,newRow);
     }
 
 }

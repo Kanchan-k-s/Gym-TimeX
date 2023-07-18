@@ -126,7 +126,7 @@ const register = async (req, res) => {
             const hashedPassword = await bcrypt.hash(query.password, 10);
             query.password = hashedPassword;
             const result = await User.create(query);
-            console.log(result)
+            
             res.status(201).json({
                 success: true,
                 user: [{
@@ -160,11 +160,20 @@ const registerAdmin = async (req, res) => {
         } else {
 
             query["type"] = "Admin"
-
+            
             const hashedPassword = await bcrypt.hash(query.password, 10);
             query.password = hashedPassword;
+            
             const result = await User.create(query);
-            res.send(result)
+            console.log(result)
+            res.status(201).json({
+                success: true,
+                user: [{
+                    name: result.name,
+                    email: result.email,
+                    type: result.type
+                }]
+            })
         }
     } catch (e) {
         res.status(500).json({

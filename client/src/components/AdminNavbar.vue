@@ -1,26 +1,40 @@
 <template>
-    <nav class="navbar">
-
-        <img src="../assets/TimeX.png" alt="" width="80" height="80">
-        <h1 class="text-start">Admin Dashboard</h1>
-
-
-        <div class="navbar-container ">
-            <input type="checkbox" name="" id="">
-            <div class="hamburger-lines">
-                <span class="line line1"></span>
-                <span class="line line2"></span>
-                <span class="line line3"></span>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
+        <div class="container-xl">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/admin/panel">
+                <img src="../assets/picture2.svg" width="60" height="60" class="h-8" alt="...">
+            </a>
+            <h1 class="text-start" style="color:white">Admin Dashboard</h1>
+            <!-- Navbar toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <!-- Nav -->
+                <div class="navbar-nav mx-lg-auto">
+                    <a class="nav-item nav-link active" href="/admin/panel" >Home</a>
+                    <a class="nav-item nav-link active" href="/admin/settings">Setting</a>
+                    
+                </div>
+                
+                <!-- Action -->
+                <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
+                    <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto">
+                        Logout
+                    </a>
+                </div>
             </div>
-            <ul class="menu-items">
-                <li><a href="/admin/panel">Home</a></li>
-                <li><a href="/admin/settings">Settings</a></li>
-
-                <li> <button class="btn btn-outline-success" v-on:click="logout" type="submit">Log Out</button></li>
-            </ul>
-
         </div>
     </nav>
+
+    
+    </div>
+    
+    
 </template>
 
 <script>

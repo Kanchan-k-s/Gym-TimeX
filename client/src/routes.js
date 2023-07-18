@@ -1,7 +1,8 @@
-import landingPage from './views/LandingPage'
+import landingPage from './views/Register'
 import AdminDashboard from './views/AdminDashboard'
 import AdminSettings from './views/AdminSettings'
 // import Raw from './views/AdminSettings'
+
 import employeebooking from './views/employeebooking'
 
 export default[{
@@ -24,4 +25,5 @@ export default[{
     component: employeebooking,
     name: "employeebooking",
 }
+
 ]

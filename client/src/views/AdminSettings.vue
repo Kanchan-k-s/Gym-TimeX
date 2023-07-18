@@ -2,19 +2,12 @@
     <div>
 
         <AdminNavbar></AdminNavbar>
-        <div  style="padding-top:8%">
-           
+        <div style="padding-top:15vh">
                     <div style="overflow: hidden">
                         <div id="profile" class="row">
                             <div class="col-12 title d-flex align-items-center ps-3 pt-3 pb-3">
-                                <router-link class="btn btn-warning fw-bold text-center" v-if="admin_type !== 'Super Admin'"
-                                    to="/dashboard">
-                                    <i class="ri-arrow-left-line"></i>
-                                </router-link>
-                                <router-link class="btn btn-warning fw-bold text-center" v-if="admin_type === 'Super Admin'"
-                                    to="/superadmin">
-                                    <i class="ri-arrow-left-line"></i>
-                                </router-link>
+                                
+                                
                                 <div class="d-flex ms-4">
                                     <h2>My Profile</h2>
                                 </div>
@@ -26,13 +19,7 @@
                                 <div class="icon-wrapper" :class="{ active: form_index === 1 }" @click="form_index = 1">
                                     <i class="ri-shield-keyhole-fill"></i> <span> Change Password</span>
                                 </div>
-                                <!-- <div
-          class="icon-wrapper"
-          :class="{ active: form_index === 2 }"
-          @click="form_index = 2"
-        >
-          <i class="ri-notification-4-fill"></i> <span>Notifications</span>
-        </div> -->
+                             
                             </div>
                             <div class="form-view p-3 col-8">
                                 <div v-if="isLoading" class="text-center m-2">
@@ -309,7 +296,7 @@ h1 {
 .frmField {
   background-color: white;
   color: #495057;
-  line-height: 1.25;
+  line-height: 1.2;
   font-size: 16px;
   font-family: "Roboto", sans-serif;
   border: 0;
@@ -344,14 +331,14 @@ h1 {
 #profile {
   display: flex;
   /* align-items: center; */
-  margin-left: 250px;
+  margin-left: 125px;
   width: calc(100vw - 250px);
   height: 100%;
   height: calc(100vh - 56px);
 }
 
 .title {
-  height: 75px;
+  height: 70px;
 }
 
 .navigation-links {
@@ -360,14 +347,14 @@ h1 {
 
 @media (max-width: 1199.98px) {
   #profile {
-    margin-left: 170px;
+    margin-left: 120px;
     width: calc(100vw - 170px);
   }
 }
 
 @media (max-width: 850px) {
   #profile {
-    margin-left: 65px;
+    margin-left: 10px;
     width: calc(100vw - 65px);
   }
 }

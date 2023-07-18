@@ -17,7 +17,7 @@ const show = async (req, res) => {
     const Slots = db.Models.slots
     try {
         const result = await Slots.findAll({
-            order : [['id','ASC']]
+            order : [['slot_in','ASC']]
         });
         res.send(result)
     } catch (e) {
@@ -36,6 +36,7 @@ const showOne = async(req,res)=>{
 }
 
 const update = async(req,res)=>{
+    console.log(req.body)
     const Slots = db.Models.slots
     try{
         const data = await Slots.findOne({ where: { id: req.params.id } });
