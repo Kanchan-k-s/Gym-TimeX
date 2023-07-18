@@ -1,31 +1,55 @@
 <template>
-  <div>
-
-    <div>
-
-      <EmployeeNavbar></EmployeeNavbar>
+  <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    <EmployeeNavbar></EmployeeNavbar>
+    <div class="carousel-inner">
       <!-- <div class="container" style="padding-top:7%"> -->
-        <ul class="slideshow">
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+      <div class="carousel-item active" data-bs-interval="2000">
+        <img
+          src="https://png.pngtree.com/thumb_back/fw800/background/20230609/pngtree-gym-treadmills-are-lined-in-an-empty-gym-image_2884906.png"
+          class=" d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block " style="background:rgba(0, 0, 0, 0.562)">
+            <h1> GYM TimeX </h1>
+            <p>"Strength does not come from physical capacity. It comes from an indomitable will."</p>
+            <button type="button" class="btn btn-light btn-lg"> Get Started! </button>
+            <!-- <button type="button" class="btn btn-dark btn-lg"> Get Started! </button> -->
+         
+        </div>
 
-        <nav class="navbar navbar-inverse">
-          <div class="container">
-            <!-- Navbar code -->
-          </div>
-        </nav>
-
-        <div id="content">
-          <h1>The Workout Gym</h1>
-          <h3>The best place to get buff in the UK</h3>
-          <hr>
-          <button class="btn btn-default btn-lg">Get Pumped! <div id="barbell-icon"></div></button>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="../assets/colousel1.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block " style="background:rgba(0, 0, 0, 0.562)">
+          <h1> GYM TimeX </h1>
+          <p>"Strength does not come from physical capacity. It comes from an indomitable will."</p>
+          <!-- <button type="button" class="btn btn-light"> Get Started! </button> -->
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="../assets/carousel3.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block " style="background:rgba(0, 0, 0, 0.562)">
+          <h1> GYM TimeX </h1>
+          <p>"Strength does not come from physical capacity. It comes from an indomitable will."</p>
+          <!-- <button type="button" class="btn btn-light"> Get Started! </button> -->
         </div>
       </div>
     </div>
-  <!-- </div> -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+    <div id='#about_us'>
+      <h1>The Workout Gym</h1>
+      <h3>The best place to get buff in the UK</h3>
+      <hr>
+      <button class='btn btn-default btn-lg'>Get Pumped! <div id="barbell-icon"></div></button>
+    </div>
+    <!-- </div> -->
+  </div>
 </template>
 
 <script>
@@ -33,162 +57,82 @@ import { BIconHandThumbsDown } from "bootstrap-vue";
 import EmployeeNavbar from "@/components/EmployeeNavbar.vue";
 export default {
   components: { EmployeeNavbar },
-    mounted() {
-        this.startBackgroundAnimation();
-    },
-    methods: {
-        startBackgroundAnimation() {
-            const slideshow = document.querySelector(".slideshow");
-            const slides = Array.from(slideshow.getElementsByTagName("li"));
-            const animationDuration = getComputedStyle(document.documentElement).getPropertyValue("--animationDuration");
-            slides.forEach((slide, index) => {
-                slide.style.animationDelay = `calc((${animationDuration} / 3) * ${index})`;
-            });
-            slideshow.classList.add("cssanimations");
-        }
-    },
-    
+  mounted() {
+    this.startBackgroundAnimation();
+  },
+  methods: {
+    startBackgroundAnimation() {
+      const slideshow = document.querySelector(".slideshow");
+      const slides = Array.from(slideshow.getElementsByTagName("li"));
+      const animationDuration = getComputedStyle(document.documentElement).getPropertyValue("--animationDuration");
+      slides.forEach((slide, index) => {
+        slide.style.animationDelay = `calc((${animationDuration} / 3) * ${index})`;
+      });
+      slideshow.classList.add("cssanimations");
+    }
+  },
+
 };
 </script>
 
+<style scoped>
+.carousel-item {
+  height: 100vh;
+}
+</style>
+
+<!-- 
 
 
 <style scoped>
 /* GOOGLE FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Allerta+Stencil&display=swap');
+/* medium - display 2  */
+@media (min-width: 768px) {
 
-/* VARIABLES */
-:root {
-  --animationDuration: 30s;
-  --white: #F2F2F2;
-  --bg1: url(https://images.askmen.com/1080x540/2016/08/26-095737-how_fitness_pros_stay_lean_all_year.jpg);
-  --bg2: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/996046/barbell-1839086_960_720.jpg);
-  --bg3: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/996046/man-461195_960_720.jpg);
+.carousel-inner .carousel-item-right.active,
+.carousel-inner .carousel-item-next {
+    transform: translateX(50%);
 }
 
-/* STYLES */
-html {
-  min-height: 100%;
+.carousel-inner .carousel-item-left.active,
+.carousel-inner .carousel-item-prev {
+    transform: translateX(-50%);
+}
 }
 
-body {
-  background: black;
-  font-family: 'Special Elite', cursive;
-  color: var(--white);
-  height: 100%;
+/* large - display 3 */
+@media (min-width: 992px) {
+
+.carousel-inner .carousel-item-right.active,
+.carousel-inner .carousel-item-next {
+    transform: translateX(33%);
 }
 
-h1 {
-  font-weight: 700;
-  font-size: 4.5em;
-  font-family: 'Allerta Stencil', sans-serif;
-  text-transform: uppercase;
+.carousel-inner .carousel-item-left.active,
+.carousel-inner .carousel-item-prev {
+    transform: translateX(-33%);
+}
 }
 
-h3 {
-  text-transform: capitalize;
+@media (max-width: 768px) {
+.carousel-inner .carousel-item>div {
+    display: none;
 }
 
-hr {
-  width: 400px;
-  border-top: 1px solid #F8F8F8;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+.carousel-inner .carousel-item>div:first-child {
+    display: block;
+}
 }
 
-.btn-default {
-  background-color: var(--white);
-
-  &:hover {
-    background-color: white;
-  }
+.carousel-inner .carousel-item.active,
+.carousel-inner .carousel-item-next,
+.carousel-inner .carousel-item-prev {
+display: flex;
 }
 
-#barbell-icon {
-  background: url(https://cdn2.iconfinder.com/data/icons/free-mobile-icon-kit/64/Barbell.png) 0px -10px;
-  background-size: 40px;
-  position: relative;
-  top: 3px;
-  height: 20px;
-  width: 40px;
-  outline: none;
-  display: inline-block;
+.carousel-inner .carousel-item-right,
+.carousel-inner .carousel-item-left {
+transform: translateX(0);
 }
 
-#content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  text-shadow: 0px 4px 3px rgba(50, 50, 50, 0.4), 0px 8px 13px rgba(50, 50, 50, 0.1), 0px 18px 23px rgba(50, 50, 50, 0.1);
-}
-
-.slideshow {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  z-index: 0;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.slideshow li {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  z-index: 0;
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-}
-
-.cssanimations .slideshow li {
-  animation: backgroundFade var(--animationDuration) linear infinite;
-}
-
-.cssanimations .slideshow li:nth-child(1) {
-  background-image: var(--bg1);
-}
-
-.cssanimations .slideshow li:nth-child(2) {
-  background-image: var(--bg2);
-  animation-delay: calc(var(--animationDuration) / 3);
-}
-
-.cssanimations .slideshow li:nth-child(3) {
-  background-image: var(--bg3);
-  animation-delay: calc((var(--animationDuration) / 3) * 2);
-}
-
-.no-cssanimations .slideshow li:nth-child(1) {
-  background-image: var(--bg1);
-  opacity: 1;
-}
-
-/* ANIMATIONS */
-@keyframes backgroundFade {
-  0% {
-    opacity: 0;
-    animation-timing-function: ease-in;
-  }
-
-  15% {
-    opacity: 1;
-    animation-timing-function: ease-out;
-  }
-
-  35% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-}
-</style>
+</style> -->
