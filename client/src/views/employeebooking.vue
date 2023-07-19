@@ -7,9 +7,9 @@
         <img
           src="https://png.pngtree.com/thumb_back/fw800/background/20230609/pngtree-gym-treadmills-are-lined-in-an-empty-gym-image_2884906.png"
           class=" d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block " style="background:rgba(0, 0, 0, 0.562)">
+        <div class="carousel-caption d-none d-md-block centered" style="background:rgba(0, 0, 0, 0.562)">
             <h1> GYM TimeX </h1>
-            <p>"Strength does not come from physical capacity. It comes from an indomitable will."</p>
+            <p class="quote">"Strength does not come from physical capacity.<br> It comes from an indomitable will."</p>
             <button type="button" class="btn btn-light btn-lg"> Get Started! </button>
             <!-- <button type="button" class="btn btn-dark btn-lg"> Get Started! </button> -->
          
@@ -20,7 +20,7 @@
         <img src="../assets/colousel1.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block " style="background:rgba(0, 0, 0, 0.562)">
           <h1> GYM TimeX </h1>
-          <p>"Strength does not come from physical capacity. It comes from an indomitable will."</p>
+          <p class="quote">"Discipline is the bridge between goals and accomplishment."</p>
           <!-- <button type="button" class="btn btn-light"> Get Started! </button> -->
         </div>
       </div>
@@ -28,7 +28,7 @@
         <img src="../assets/carousel3.jpg" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block " style="background:rgba(0, 0, 0, 0.562)">
           <h1> GYM TimeX </h1>
-          <p>"Strength does not come from physical capacity. It comes from an indomitable will."</p>
+          <p class="quote">"Don't watch the clock; do what it does. Keep going."</p>
           <!-- <button type="button" class="btn btn-light"> Get Started! </button> -->
         </div>
       </div>
@@ -42,12 +42,12 @@
       <span class="visually-hidden">Next</span>
     </button>
 
-    <div id='#about_us'>
+    <!-- <div id='#about_us'>
       <h1>The Workout Gym</h1>
       <h3>The best place to get buff in the UK</h3>
       <hr>
       <button class='btn btn-default btn-lg'>Get Pumped! <div id="barbell-icon"></div></button>
-    </div>
+    </div> -->
     <!-- </div> -->
   </div>
 </template>
@@ -76,8 +76,18 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
 .carousel-item {
   height: 100vh;
+}
+.centered {
+ position: absolute;
+ top: 72%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+.quote{
+  font-family: 'Lugrasimo', cursive;
 }
 </style>
 

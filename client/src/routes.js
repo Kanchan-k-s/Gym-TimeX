@@ -2,6 +2,7 @@ import landingPage from './views/Register'
 import AdminDashboard from './views/AdminDashboard'
 import AdminSettings from './views/AdminSettings'
 import AboutUs from './views/AboutUs'
+import ContactUs from './views/ContactUs'
 import employeebooking from './views/employeebooking'
 
 export default[{
@@ -28,6 +29,11 @@ export default[{
     path: "/employee/AboutUs",
     component: AboutUs,
     name: "AboutUs",
+},
+{
+    path: "/employee/ContactUs",
+    component: ContactUs,
+    name: "ContactUs",
 }
 
 ]

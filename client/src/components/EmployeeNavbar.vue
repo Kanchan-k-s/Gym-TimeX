@@ -17,7 +17,7 @@
                 <!-- Nav -->
                 <div class="navbar-nav mx-lg-auto">
                     <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Home</a>
-                    <a class="nav-itSettingem nav-link active" href="/employee/booking/#about_us">About</a>
+                    <a class="nav-item nav-link active" href="/employee/booking/about_us">About</a>
                     <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Contact us</a>
                 </div>
                 <!-- Action -->
@@ -41,6 +41,7 @@ export default {
 }
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 .navbar input[type="checkbox"],
 .navbar .hamburger-lines {
     display: none;
@@ -64,6 +65,9 @@ export default {
     justify-content: space-between;
     height: 64px;
     align-items: center;
+}
+.navbar-item{
+    font-family: 'Rubik Dirt', cursive;
 }
 .menu-items {
     order: 2;
