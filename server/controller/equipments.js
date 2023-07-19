@@ -47,9 +47,22 @@ const update = async(req,res)=>{
     }
 }
 
+
+const delEquip = async(req,res)=>{
+    const Equipment = db.Models.equipments
+    try{
+        const result= await Equipment.destroy({ where: { id: req.params.id } });
+        res.json(result)
+    }
+    catch(e){
+        console.log(e)
+    }
+}
+
 module.exports = {
     add,
     show,
     update,
-    showOne
+    showOne,
+    delEquip
 }

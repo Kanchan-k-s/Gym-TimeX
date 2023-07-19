@@ -41,7 +41,6 @@
                                     <p>Already have an account? <a>Sign In</a></p>
                                 </div>
                             </form>
-
                         </div>
                         <div class="section-login-2-main" v-if="!register">
 
@@ -155,8 +154,11 @@ export default {
 
         }
     },
-    beforeCreate() {
-
+    created() {
+        if(this.$route.params.id==="in")
+        {
+            this.register=false
+        }
     }
 }
 </script>

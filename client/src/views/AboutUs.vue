@@ -1,4 +1,7 @@
 <template>
+    <div>
+        <EmployeeNavbar></EmployeeNavbar>
+    
     <section class="pt-5 pb-5">
         <div class="container">
             <div class="row">
@@ -160,5 +163,14 @@
                 </div>
             </div>
         </div>
-</section></template>
+</section>
+</div></template>
+
+<script>
+import EmployeeNavbar from "@/components/EmployeeNavbar.vue";
+
+export default {
+  components: { EmployeeNavbar },
+}
+</script>
 
