@@ -98,39 +98,34 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr v-show="showCreateRow" >
+                                        <tr v-show="showCreateRow">
                                             <td></td>
-                                            <td><input class="form-control" type="time" v-model="newRow.slot_in"
-                                                     /></td>
-                                            <td><input class="form-control" type="time" v-model="newRow.slot_out"
-                                                     /></td>
-                                            <td><input class="form-control" type="number" v-model="newRow.nop"
-                                                     /></td>
+                                            <td><input class="form-control" type="time" v-model="newRow.slot_in" /></td>
+                                            <td><input class="form-control" type="time" v-model="newRow.slot_out" /></td>
+                                            <td><input class="form-control" type="number" v-model="newRow.nop" /></td>
                                             <td>
-                                                <button class="btn btn-success" @click="createSlot()"
-                                                    >Create
+                                                <button class="btn btn-success" @click="createSlot()">Create
                                                     Slot</button>
                                             </td>
-                                            <td><button class="btn btn-info" @click="showCreateRow=!showCreateRow"
-                                                    >Back</button></td>
+                                            <td><button class="btn btn-info"
+                                                    @click="showCreateRow = !showCreateRow">Back</button></td>
                                         </tr>
-                                        <tr v-if="onUpdate" >
-                                            <th scope="row"> {{newObject.id}} </th>
+                                        <tr v-if="onUpdate">
+                                            <th scope="row"> {{ newObject.id }} </th>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_in" /></td>
-                                            <td><input class="form-control" type="time" v-model="newObject.slot_out"  /></td>
-                                            <td><input class="form-control" type="number" v-model="newObject.nop"  /></td>
+                                            <td><input class="form-control" type="time" v-model="newObject.slot_out" /></td>
+                                            <td><input class="form-control" type="number" v-model="newObject.nop" /></td>
                                             <td>
                                                 <button class="btn btn-success" @click="updateSlot()">Update</button>
                                             </td>
-                                            <td><button class="btn btn-info" @click="backUpdate()"
-                                                    >Back</button></td>
+                                            <td><button class="btn btn-info" @click="backUpdate()">Back</button></td>
                                         </tr>
                                         <tr v-for="slot in slots">
                                             <th scope="row">
                                                 {{ slot.id }}
                                             </th>
                                             <td>
-                                                    {{ slot.slot_in }}
+                                                {{ slot.slot_in }}
                                             </td>
                                             <td>{{ slot.slot_out }}</td>
                                             <td>{{ slot.nop }}</td>
@@ -168,11 +163,11 @@
                     </h2>
                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
                         data-bs-parent="#accordionFlushExample">
-                        
+
                         <div class="accordion-body">
-                            <div class="add-row-container" v-show="!showEquipCreateRow">
-                            <button class="btn btn-info" @click="toggleEquipCreateRow">Add Equipment</button>
-                        </div>
+                            <div class="add-row-container" v-if="!showEquipCreateRow">
+                                <button class="btn btn-info" @click="toggleEquipCreateRow">Add Equipment</button>
+                            </div>
                             <div>
                                 <table border="1px" class="table">
                                     <thead>
@@ -180,19 +175,40 @@
                                             <th scope="col">Id</th>
                                             <th scope="col">Name of Equipment</th>
                                             <th scope="col">Quantity</th>
+                                            <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <tr v-if="showEquipCreateRow">
+                                            <td></td>
+                                            <td><input class="form-control" type="text" v-model="newEquipRow.name" /></td>
+                                            <td><input class="form-control" type="number" v-model="newEquipRow.qty" /></td>
+                                            <td>
+                                                <button class="btn btn-success" @click="createEquip()">Add Equipment</button>
+                                            </td>
+                                            <td><button class="btn btn-info"
+                                                    @click="showEquipCreateRow = !showEquipCreateRow">Back</button></td>
+                                        </tr>
+                                        <tr v-if="onEquipUpdate">
+                                            <th scope="row"> {{ newEquipObject.id }} </th>
+                                            <td><input class="form-control" type="text" v-model="newEquipObject.name" /></td>
+                                            <td><input class="form-control" type="number" v-model="newEquipObject.qty" /></td>
+                                            <td>
+                                                <button class="btn btn-success" @click="updateEquipment()">Update</button>
+                                            </td>
+                                            <td><button class="btn btn-info" @click="backEquipUpdate()">Back</button></td>
+                                        </tr>
                                         <tr v-for="equipment in equipments">
                                             <th scope="row">{{ equipment.id }}</th>
                                             <td>{{ equipment.name }}</td>
                                             <td>{{ equipment.qty }}</td>
                                             <td>
-                                                <button class="btn btn-warning" @click="onUpdate = true">Update</button>
+                                                <button class="btn btn-warning" @click="clickEquiUpdate(equipment)">Update</button>
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger"
-                                                    @click="delEuip(equipment.id)">Delete</button>
+                                                    @click="delEquip(equipment.id)">Delete</button>
                                             </td>
                                         </tr>
 
@@ -229,10 +245,16 @@ export default {
                 slot_out: '',
                 nop: ''
             },
-            newObject:{},
+            newEquipRow:{
+                name:'',
+                qty:''
+            },
+            newObject: {},
+            newEquipObject:{},
             showCreateRow: false,
-            showEquipCreateRow:false,
+            showEquipCreateRow: false,
             onUpdate: false,
+            onEquipUpdate:false,
         }
     },
     computed: {
@@ -261,9 +283,9 @@ export default {
                 this.allSlots()
             });
         },
-        delEuip: function (id) {
-            AdminApi.deleteEuip(id).then((res) => {
-                console.log(res)
+        delEquip: function (id) {
+            AdminApi.deleteEquip(id).then((res) => {
+                this.$toast.success("Equipment Deleted");
                 this.allEquipments()
             });
         },
@@ -276,10 +298,10 @@ export default {
             });
         },
         createEquip: function () {
-            AdminApi.createEuip(this.newRow).then((res) => {
+            AdminApi.createEquip(this.newEquipRow).then((res) => {
                 this.$toast.success("Equipment Added");
                 this.allEquipments()
-                this.resetEuipRow();
+                this.toggleEquipCreateRow()
             });
         },
         updateSlot: function () {
@@ -291,21 +313,25 @@ export default {
                 this.$toast.success("Slot Updated");
             });
         },
-       
+        updateEquipment: function () {
+            AdminApi.updateEquip(this.newEquipObject).then((res) => {
+                this.onEquipUpdate = false;
+                this.allEquipments()
+                this.newEquipObject = {}
+                this.$toast.success("Equipment Updated");
+            });
+        },
+
         toggleCreateRow() {
             this.showCreateRow = !this.showCreateRow;
             // this.resetNewRow();
         },
         toggleEquipCreateRow() {
-            this.showCreateEquipRow = !this.showCreateEquipRow;
-             this.resetEquipRow();
+            this.showEquipCreateRow= !this.showEquipCreateRow;
+            this.resetEquipRow();
         },
-        resetEuipRow() {
-            this.EquipRow = {
-                slot_in: '',
-                slot_out: '',
-                nop: ''
-            };
+        resetEquipRow() {
+            this.newEquipRow = {};
         },
         resetNewRow() {
             this.newRow = {
@@ -313,23 +339,35 @@ export default {
                 qty: ''
             };
         },
-        clickUpdate(slot){
+        clickUpdate(slot) {
             this.onUpdate = true;
-            this.newObject =slot;
-            this.slots=this.slots.filter((item)=>{
-                return item.id!==slot.id
+            this.newObject = slot;
+            this.slots = this.slots.filter((item) => {
+                return item.id !== slot.id
             })
         },
-        backUpdate(){
+        clickEquiUpdate(equip) {
+            this.onEquipUpdate = true;
+            this.newEquipObject = equip;
+            this.equipments = this.equipments.filter((item) => {
+                return item.id !== equip.id
+            })
+        },
+        backUpdate() {
             this.onUpdate = false;
             this.allSlots();
             this.newObject = {}
+        },
+        backEquipUpdate(){
+            this.onEquipUpdate = false;
+            this.allEquipments();
+            this.newEquipObject = {}
         }
     },
     created() {
-            this.allEquipments();
-            this.allSlots();
-        }
+        this.allEquipments();
+        this.allSlots();
+    }
 }
 
 </script>
@@ -356,5 +394,4 @@ export default {
 .add-row-button:hover {
     background-color: #0056b3;
 }
-
 </style>

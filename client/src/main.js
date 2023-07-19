@@ -22,6 +22,13 @@ Vue.use(BootstrapVue);
 const router = new VueRouter({
   routes,
   mode: "history",
+  scrollBehavior: function (to) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    }
+  },
 });
 
 new Vue({

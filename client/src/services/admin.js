@@ -4,6 +4,15 @@ export default {
     allEquipments(){
         return api.get("http://localhost:3000/admin/equipment/all");
     },
+    createEquip(newRow){
+        return api.post("http://localhost:3000/admin/equipment/add",newRow);
+    },
+    deleteEquip(id){
+        return api.delete("http://localhost:3000/admin/equipment/"+id);
+    },
+    updateEquip(newRow){
+        return api.put("http://localhost:3000/admin/equipment/update/"+newRow.id,newRow);
+    },
     allSlots(){
         return api.get("http://localhost:3000/admin/slot/all");
     },
