@@ -108,7 +108,7 @@ export default {
                         if (res.data.user.type === "Admin") {
                             this.$router.push('/admin/panel');
                         } else {
-                            this.$router.push("/dashboard");
+                            this.$router.push("/");
                         }
                     }
                 } 
@@ -128,6 +128,7 @@ export default {
                 this.isLoading = true;
                 const res = await User.login(this.user)
                 if (res.data.success) {
+                    console.log(res.data.token)
                     await Cookies.set("token", res.data.token);
                     localStorage.setItem("name1", res.data.user.name);
                     localStorage.setItem("user1", res.data.user.type);
@@ -136,7 +137,7 @@ export default {
                         if (res.data.user.type === "Admin") {
                             this.$router.push('/admin/panel');
                         } else {
-                            this.$router.push("/dashboard");
+                            this.$router.push("/");
                         }
                     }
                 }
