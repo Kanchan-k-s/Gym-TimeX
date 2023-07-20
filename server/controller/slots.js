@@ -1,10 +1,11 @@
 const { db } = require("../models/dbConfig")
-
+const {Op} =require("sequelize")
 const add = async (req, res) => {
     try {
         const Slots = db.Models.slots
         // console.log(db.Models)
         const query = req.body
+        
         const result = await Slots.create(query)
         res.send(result)
 
@@ -17,8 +18,28 @@ const show = async (req, res) => {
     const Slots = db.Models.slots
     try {
         const result = await Slots.findAll({
-            order : [['slot_in','ASC']]
+            order : [['date','DESC'],['slot_in','ASC']]
         });
+        res.send(result)
+    } catch (e) {
+        console.log(e)
+    }
+}
+
+const showDate = async (req, res) => {
+    // let curr_date = new Date();
+    const {curr_date}=req.body
+    const Slots = db.Models.slots
+    try {
+        let result = await Slots.findAll({
+            where:{
+                date:{
+                    [Op.gte]:curr_date
+                }
+            },
+            order : [['date','DESC'],['slot_in','ASC']]
+        });
+        
         res.send(result)
     } catch (e) {
         console.log(e)
@@ -66,5 +87,6 @@ module.exports = {
     show,
     update,
     showOne,
-    delSlot
+    delSlot,
+    showDate
 }

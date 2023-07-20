@@ -4,7 +4,7 @@ export default {
     logout() {
       localStorage.clear();
       Cookies.remove("token");
-      this.$router.push("/");
+      this.$router.push("/sign/in");
     }
   }
 }

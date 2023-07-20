@@ -17,17 +17,23 @@
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <!-- Nav -->
             <div class="navbar-nav mx-lg-auto">
-              <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
-              <a class="nav-itSettingem nav-link active" href="/#about">About</a>
-              <a class="nav-item nav-link active" href="/" aria-current="page">Contact us</a>
+              <a class="nav-item nav-link active" href="/#start" aria-current="page">Home</a>
+              <a v-if="!show" class="nav-itSettingem nav-link active" href="/#about">About</a>
+              <a v-if="!show" class="nav-item nav-link active" href="/" aria-current="page">Contact us</a>
+              <a v-if="show" class="nav-item nav-link active" href="/employee/booking" aria-current="page">Booking</a>
+              <a v-if="show" class="nav-item nav-link active" href="/" aria-current="page">Equipments</a>
+              <a v-if="show" class="nav-item nav-link active" href="/" aria-current="page">Settings</a>
             </div>
             <!-- Action -->
             <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
-              <a href="/sign/in" class="btn btn-sm btn-light w-full w-lg-auto">
+              <a v-if="!show" href="/sign/in" class="btn btn-sm btn-light w-full w-lg-auto">
                 SIGN IN
               </a>
-              <a href="/sign/up" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
+              <a v-if="!show" href="/sign/up" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
                 SIGN UP
+              </a>
+              <a v-if="show" v-on:click="logout()" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
+                Logout
               </a>
             </div>
           </div>
@@ -35,7 +41,7 @@
       </nav>
     </div>
 
-    <div class="carousel-inner">
+    <div id="start" class="carousel-inner">
       <!-- <div class="container" style="padding-top:7%"> -->
       <div class="carousel-item active" data-bs-interval="2000">
         <img
@@ -243,26 +249,40 @@
 
 <script>
 import { BIconHandThumbsDown } from "bootstrap-vue";
-import EmployeeNavbar from "@/components/EmployeeNavbar.vue";
+
+import mixin from "../mixins/authmixin";
+import Cookies from "js-cookie";
 export default {
-  components: { EmployeeNavbar },
+  mixins: [mixin],
+  data (){
+    return{
+      show:false
+  }
+},
   mounted() {
     this.startBackgroundAnimation();
   },
   methods: {
     startBackgroundAnimation() {
-      const slideshow = document.querySelector(".slideshow");
-      const slides = Array.from(slideshow.getElementsByTagName("li"));
-      const animationDuration = getComputedStyle(document.documentElement).getPropertyValue("--animationDuration");
-      slides.forEach((slide, index) => {
-        slide.style.animationDelay = `calc((${animationDuration} / 3) * ${index})`;
-      });
-      slideshow.classList.add("cssanimations");
+      // const slideshow = document.querySelector(".slideshow");
+      // const slides = Array.from(slideshow.getElementsByTagName("li"));
+      // const animationDuration = getComputedStyle(document.documentElement).getPropertyValue("--animationDuration");
+      // slides.forEach((slide, index) => {
+      //   slide.style.animationDelay = `calc((${animationDuration} / 3) * ${index})`;
+      // });
+      // slideshow.classList.add("cssanimations");
     },
     start() {
       this.$router.push('/sign/up')
     }
   },
+  beforeMount(){
+    const token = Cookies.get("token");
+    console.log(token===undefined)
+    if(token!==undefined){
+      this.show=true;
+    }
+  }
 
 };
 </script>

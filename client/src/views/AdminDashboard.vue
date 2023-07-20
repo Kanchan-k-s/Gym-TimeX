@@ -90,6 +90,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">Id</th>
+                                            <th scope="col">Date</th>
                                             <th scope="col">Slot In</th>
                                             <th scope="col">Slot Out</th>
                                             <th scope="col">People Booked</th>
@@ -100,6 +101,7 @@
                                     <tbody>
                                         <tr v-show="showCreateRow">
                                             <td></td>
+                                            <td><input class="form-control" type="date" v-model="newRow.date" /></td>
                                             <td><input class="form-control" type="time" v-model="newRow.slot_in" /></td>
                                             <td><input class="form-control" type="time" v-model="newRow.slot_out" /></td>
                                             <td><input class="form-control" type="number" v-model="newRow.nop" /></td>
@@ -112,6 +114,7 @@
                                         </tr>
                                         <tr v-if="onUpdate">
                                             <th scope="row"> {{ newObject.id }} </th>
+                                            <td><input class="form-control" type="date" :placeholder="newObject.date" v-model="newObject.date" /></td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_in" /></td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_out" /></td>
                                             <td><input class="form-control" type="number" v-model="newObject.nop" /></td>
@@ -124,6 +127,9 @@
                                             <th scope="row">
                                                 {{ slot.id }}
                                             </th>
+                                            <td>
+                                                {{ slot.date.split("T")[0] }}
+                                            </td>
                                             <td>
                                                 {{ slot.slot_in }}
                                             </td>

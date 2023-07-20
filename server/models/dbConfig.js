@@ -1,6 +1,10 @@
 // const { Pool } = require("pg");
 const { Sequelize, DataTypes } = require("sequelize")
-const sequelize = new Sequelize(process.env.URI)
+const sequelize = new Sequelize(process.env.URI,{
+  dialect: 'postgres',
+  logging: false, // Set to true if you want to see SQL logs in the console
+  timezone: '+05:30', // Set Indian Standard Time (IST) UTC offset (+05:30)
+})
 // const pool = new Pool({
 //   connectionString: process.env.URI,
 //   ssl: true,

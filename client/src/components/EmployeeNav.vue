@@ -16,17 +16,20 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <!-- Nav -->
                 <div class="navbar-nav mx-lg-auto">
-                    <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Home</a>
-                    <a class="nav-itSettingem nav-link active" href="/employee/booking/#about_us">About</a>
-                    <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Contact us</a>
+                    <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
+                    <a class="nav-item nav-link active" href="/employee/booking">Booking</a>
+                    <a class="nav-item nav-link active" href="/" aria-current="page">Setting</a>
                 </div>
                 <!-- Action -->
                 <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
-                    <a href="/sign/in" class="btn btn-sm btn-light w-full w-lg-auto">
+                    <!-- <a href="/sign/in" class="btn btn-sm btn-light w-full w-lg-auto">
                         SIGN IN
                     </a>
                     <a href="/sign/up" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
                         SIGN UP
+                    </a> -->
+                    <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
+                        Logout
                     </a>
                 </div>
             </div>
@@ -38,6 +41,7 @@
 import mixin from "../mixins/authmixin";
 export default {
     mixins: [mixin],
+    
 }
 </script>
 <style scoped>
