@@ -1,5 +1,39 @@
 <template>
     
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
+        <div class="container-xl">
+            <!-- Logo -->
+            <a class="navbar-brand" href="/admin/panel">
+                <img src="../assets/picture2.svg" width="60" height="60" class="h-8" alt="...">
+            </a>
+            <h1 class="text-start" style="color:white"> GYM TimeX </h1>
+            <!-- Navbar toggle -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <!-- Nav -->
+                <div class="navbar-nav mx-lg-auto">
+                    <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Home</a>
+                    <a class="nav-item nav-link active" href="/employee/booking/about_us">About</a>
+                    <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Contact us</a>
+                </div>
+                <!-- Action -->
+                <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
+                    <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto">
+                        SIGN IN
+                    </a>
+                    <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
+                        SIGN UP
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    </div>
 </template>
 <script>
 import mixin from "../mixins/authmixin";
@@ -8,6 +42,7 @@ export default {
 }
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 .navbar input[type="checkbox"],
 .navbar .hamburger-lines {
     display: none;
@@ -31,6 +66,9 @@ export default {
     justify-content: space-between;
     height: 64px;
     align-items: center;
+}
+.navbar-item{
+    font-family: 'Rubik Dirt', cursive;
 }
 .menu-items {
     order: 2;
