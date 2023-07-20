@@ -5,6 +5,7 @@ import AboutUs from './views/AboutUs'
 import Home from './views/employeebooking'
 import EHome from './views/EHome.vue'
 import ContactUs from './views/ContactUs'
+import Equipments from './views/Equipments'
 
 export default [
     {
@@ -36,12 +37,16 @@ export default [
     {
         path:"/employee/home",
         component:EHome,
-        name:'Employeen Home'
+        name:'Employeen Home',
     },
     {
         path: "/employee/ContactUs",
         component: ContactUs,
         name: "ContactUs",
+    },
+    {
+        path: "/equipments",
+        component: Equipments,
+        name: "equipments",
     }
-
 ]

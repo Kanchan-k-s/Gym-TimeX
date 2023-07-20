@@ -1,12 +1,92 @@
 <template>
   <div class = "cont">
     <div class="image-wrapper">
-      <img src="https://img.freepik.com/premium-photo/group-weights-are-arranged-row-one-which-says-dozer_886336-786.jpg?w=360" alt="Image" class="image"/>
+      <img src="https://img.freepik.com/premium-photo/contemporary-spotless-fitness-gym-center-interiorgenerative-ai_391052-10889.jpg" alt="Image" class="image"/>
     </div>
-    <!-- <div class="text-wrapper">
+    <div class="text-wrapper text-center" style="padding-top: 7%; background:rgba(233, 227, 227, 0.562)">
+      <div style="background:rgba(0, 0, 0, 0.562); width:60%;margin-left:20%; ">
       <h1> Contact Us</h1>
-      <p>Your text goes here.</p>
-    </div> -->
+      <br> <br>
+      <p>"Join our gym and experience a supportive community dedicated to helping you reach your fitness goals."</p>
+      
+    </div>
+    <div style="margin-top:4%; background:rgba(117, 111, 111, 0.562); width:50%;margin-left:25%;">
+      <h4> Contact Details</h4>
+      <h6> <br> GYM TimeX </h6>
+      <p> A 66, GIDC Sector - 25<br>Gandhinagar - 382016<br>Gujarat, India</p>
+    </div>
+  </div>
+  </div>
+</template>
+
+<style scoped>
+.cont {
+  display: flex;
+}
+
+.image-wrapper {
+  flex: 1;
+  max-width: 50%;
+}
+
+.text-wrapper {
+  flex: 1;
+  max-width: 50%;
+}
+
+.image {
+  height: 100vh;
+  width: 100%;
+}
+</style>
+<!-- <style scoped>
+.cont {
+  display: flex;
+  align-items: center;
+}
+img{
+  height: 100vh;
+  width: 60%;
+
+}
+.image-wrapper {
+  /* margin-right: 30px; Adjust the margin as needed */
+  /* size: 10px; */
+  /* width: 60%; */
+}
+
+.text-wrapper {
+  margin-left: 0;
+  flex: 1;
+}
+</style> -->
+
+<!-- <template>
+  <div>
+    <EmployeeNav></EmployeeNav>
+    <div class="cont">
+      <div class="image-wrapper">
+        <div class="container">
+          <div class="container" style="align-content: flex-start;">
+            <div class="">
+              <img src="../assets/undraw_diet_ghvw.svg" alt="Image" class="image" />
+            </div>
+            <div class="">
+              <img src="../assets/undraw_diet_ghvw.svg" alt="Image" class="image" />
+            </div>
+            <div class="">
+              <img src="../assets/undraw_diet_ghvw.svg" alt="Image" class="image" />
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="text-wrapper">
+        <h1> Contact Us</h1>
+        <p>Your text goes here.</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -15,21 +95,25 @@
   display: flex;
   align-items: center;
 }
-img{
+
+img {
   height: 100vh
-
 }
-.image-wrapper {
-  margin-right: 30px; /* Adjust the margin as needed */
-  size: 10px
 
+.image {
+  width: 50%;
+}
+
+.image-wrapper {
+  margin-right: 30px;
+  /* Adjust the margin as needed */
+  size: 10px
 }
 
 .text-wrapper {
   flex: 1;
 }
-</style>
-
+</style> -->
 
 <!-- <template>
   <div> -->
