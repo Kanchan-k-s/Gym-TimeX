@@ -28,6 +28,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: true
         },
+        desc:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        img: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
     }, {
         // Other model options go here
     });
