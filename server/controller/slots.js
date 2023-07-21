@@ -37,7 +37,7 @@ const showDate = async (req, res) => {
                     [Op.gte]:curr_date
                 }
             },
-            order : [['date','DESC'],['slot_in','ASC']]
+            order : [['date','ASC'],['slot_in','ASC']]
         });
         
         res.send(result)
