@@ -114,7 +114,8 @@
                                         </tr>
                                         <tr v-if="onUpdate">
                                             <th scope="row"> {{ newObject.id }} </th>
-                                            <td><input class="form-control" type="date" :placeholder="newObject.date" v-model="newObject.date" /></td>
+                                            <td><input class="form-control" type="date" :placeholder="newObject.date"
+                                                    v-model="newObject.date" /></td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_in" /></td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_out" /></td>
                                             <td><input class="form-control" type="number" v-model="newObject.nop" /></td>
@@ -181,6 +182,8 @@
                                             <th scope="col">Id</th>
                                             <th scope="col">Name of Equipment</th>
                                             <th scope="col">Quantity</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Image link</th>
                                             <th scope="col">Action</th>
                                             <th></th>
                                         </tr>
@@ -190,16 +193,42 @@
                                             <td></td>
                                             <td><input class="form-control" type="text" v-model="newEquipRow.name" /></td>
                                             <td><input class="form-control" type="number" v-model="newEquipRow.qty" /></td>
+                                            <td><input class="form-control" type="text" v-model="newEquipRow.desc" /></td>
+                                            <td><input class="form-control" type="text" v-model="newEquipRow.img" /></td>
                                             <td>
-                                                <button class="btn btn-success" @click="createEquip()">Add Equipment</button>
+                                                <button class="btn btn-success" @click="createEquip()">Add
+                                                    Equipment</button>
                                             </td>
                                             <td><button class="btn btn-info"
                                                     @click="showEquipCreateRow = !showEquipCreateRow">Back</button></td>
                                         </tr>
                                         <tr v-if="onEquipUpdate">
                                             <th scope="row"> {{ newEquipObject.id }} </th>
-                                            <td><input class="form-control" type="text" v-model="newEquipObject.name" /></td>
-                                            <td><input class="form-control" type="number" v-model="newEquipObject.qty" /></td>
+
+                                            <td> <input class="form-control" type="text" v-model="newEquipObject.name"></td>
+                                            <td><input class="form-control" type="number" v-model="newEquipObject.qty"></td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"></span>
+                                                    <textarea class="form-control" aria-label="With textarea"
+                                                        v-model="newEquipObject.desc"></textarea>
+                                                </div>
+
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"></span>
+                                                    <textarea class="form-control" aria-label="With textarea"
+                                                        v-model="newEquipObject.img"></textarea>
+                                                </div>
+                                                <!-- <input class="form-control" type="text" v-model="newEquipObject.name" /> -->
+                                            </td>
+                                            <!-- <td><input class="form-control" type="number" v-model="newEquipObject.qty" />
+                                            </td>
+                                            <td><input class="form-control" type="text-area"
+                                                    v-model="newEquipObject.desc" /></td>
+                                            <td><input class="form-control" type="text-area" v-model="newEquipObject.img" />
+                                            </td> -->
                                             <td>
                                                 <button class="btn btn-success" @click="updateEquipment()">Update</button>
                                             </td>
@@ -209,8 +238,11 @@
                                             <th scope="row">{{ equipment.id }}</th>
                                             <td>{{ equipment.name }}</td>
                                             <td>{{ equipment.qty }}</td>
+                                            <td>{{ equipment.desc }}</td>
+                                            <td>{{ equipment.img }}</td>
                                             <td>
-                                                <button class="btn btn-warning" @click="clickEquiUpdate(equipment)">Update</button>
+                                                <button class="btn btn-warning"
+                                                    @click="clickEquiUpdate(equipment)">Update</button>
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger"
@@ -251,16 +283,18 @@ export default {
                 slot_out: '',
                 nop: ''
             },
-            newEquipRow:{
-                name:'',
-                qty:''
+            newEquipRow: {
+                name: '',
+                qty: '',
+                desc: '',
+                img: ''
             },
             newObject: {},
-            newEquipObject:{},
+            newEquipObject: {},
             showCreateRow: false,
             showEquipCreateRow: false,
             onUpdate: false,
-            onEquipUpdate:false,
+            onEquipUpdate: false,
         }
     },
     computed: {
@@ -333,7 +367,7 @@ export default {
             // this.resetNewRow();
         },
         toggleEquipCreateRow() {
-            this.showEquipCreateRow= !this.showEquipCreateRow;
+            this.showEquipCreateRow = !this.showEquipCreateRow;
             this.resetEquipRow();
         },
         resetEquipRow() {
@@ -364,7 +398,7 @@ export default {
             this.allSlots();
             this.newObject = {}
         },
-        backEquipUpdate(){
+        backEquipUpdate() {
             this.onEquipUpdate = false;
             this.allEquipments();
             this.newEquipObject = {}
@@ -399,5 +433,4 @@ export default {
 
 .add-row-button:hover {
     background-color: #0056b3;
-}
-</style>
+}</style>

@@ -23,4 +23,6 @@ router.use(checkRole);
 
 router.post('/slot/date', slot.showDate)
 
+router.get('/equipments',equipment.show)
+
 module.exports = router;
