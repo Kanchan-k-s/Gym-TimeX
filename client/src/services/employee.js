@@ -10,4 +10,8 @@ export default {
     showEquipmentsCategory(){
         return api.get("http://localhost:3000/employee/equipments/category")
     }
+    ,
+    updateSlot(id){
+        return api.get("http://localhost:3000/employee/slot/"+id)
+    }
 }

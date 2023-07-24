@@ -7,6 +7,51 @@
 
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingGym">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseGym" aria-expanded="false" aria-controls="flush-collapseGym">
+                            Gym Info
+                        </button>
+                    </h2>
+                    <div id="flush-collapseGym" class="accordion-collapse collapse" aria-labelledby="flush-headingGym"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <div>
+                                <table border="1px" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Opening Time</th>
+                                            <th scope="col">Closing Time</th>
+                                            <th scope="col">Capacity</th>
+                                            <th scope="col">Action</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-if="!clickUpdateGym">
+                                            <td>{{gym.opening_time }}</td>
+                                            <td>{{gym.closing_time }}</td>
+                                            <td>{{ gym.capacity }}</td>
+                                            <td><button class="btn btn-warning" @click="clickUpdateGym=!clickUpdateGym">Update</button></td>
+                                        </tr>
+                                        <tr v-else>
+                                            <td><input class="form-control" type="time" v-model="gym.opening_time " /></td>
+                                            <td><input class="form-control" type="time" v-model="gym.closing_time" /></td>
+                                            <td><input class="form-control" type="number" v-model="gym.capacity" /></td>
+                                            <td>
+                                                <button class="btn btn-success" @click="UpdateGym()">Create
+                                                    Slot</button>
+                                            </td>
+                                            <td><button class="btn btn-info"
+                                                    @click="clickUpdateGym=!clickUpdateGym">Back</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -104,7 +149,7 @@
                                             <td><input class="form-control" type="date" v-model="newRow.date" /></td>
                                             <td><input class="form-control" type="time" v-model="newRow.slot_in" /></td>
                                             <td><input class="form-control" type="time" v-model="newRow.slot_out" /></td>
-                                            <td><input class="form-control" type="number" v-model="newRow.nop" /></td>
+                                            <td>{{ newRow.nop }}</td>
                                             <td>
                                                 <button class="btn btn-success" @click="createSlot()">Create
                                                     Slot</button>
@@ -114,11 +159,11 @@
                                         </tr>
                                         <tr v-if="onUpdate">
                                             <th scope="row"> {{ newObject.id }} </th>
-                                            <td><input class="form-control" type="date" :placeholder="newObject.date"
+                                            <td><input class="form-control" type="date"
                                                     v-model="newObject.date" /></td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_in" /></td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_out" /></td>
-                                            <td><input class="form-control" type="number" v-model="newObject.nop" /></td>
+                                            <td>{{ newObject.nop }}</td>
                                             <td>
                                                 <button class="btn btn-success" @click="updateSlot()">Update</button>
                                             </td>
@@ -285,7 +330,7 @@ export default {
             newRow: {
                 slot_in: '',
                 slot_out: '',
-                nop: ''
+                nop: 0
             },
             newEquipRow: {
                 name: '',
@@ -293,12 +338,18 @@ export default {
                 desc: '',
                 img: ''
             },
+            gym:{
+                opening_time:'',
+                closing_time:'',
+                capacity:''
+            },
             newObject: {},
             newEquipObject: {},
             showCreateRow: false,
             showEquipCreateRow: false,
             onUpdate: false,
             onEquipUpdate: false,
+            clickUpdateGym:false,
         }
     },
     computed: {
@@ -319,6 +370,12 @@ export default {
         allSlots: function () {
             AdminApi.allSlots().then((res) => {
                 this.slots = res.data
+            });
+        },
+        getGym:function(){
+            AdminApi.showGym().then((res) => {
+                this.gym = res.data[0]
+                // console.log(res.data[0])
             });
         },
         delSlot: function (id) {
@@ -365,7 +422,13 @@ export default {
                 this.$toast.success("Equipment Updated");
             });
         },
-
+        UpdateGym:function(){
+            AdminApi.updateGym(this.gym).then((res)=>{
+                this.getGym();
+                this.clickUpdateGym=!this.clickUpdateGym
+                this.$toast.success("Gym Updated");
+            })
+        },
         toggleCreateRow() {
             this.showCreateRow = !this.showCreateRow;
             // this.resetNewRow();
@@ -386,6 +449,7 @@ export default {
         clickUpdate(slot) {
             this.onUpdate = true;
             this.newObject = slot;
+            this.newObject['date']=this.newObject['date'].split('T')[0]
             this.slots = this.slots.filter((item) => {
                 return item.id !== slot.id
             })
@@ -411,6 +475,7 @@ export default {
     created() {
         this.allEquipments();
         this.allSlots();
+        this.getGym();
     }
 }
 

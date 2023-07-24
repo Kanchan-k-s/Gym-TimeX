@@ -30,7 +30,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         qty: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            defaultValue: 0,
         },
         desc:{
             type: DataTypes.STRING,
@@ -59,7 +60,8 @@ module.exports = (sequelize, DataTypes) => {
         },
         nop: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            defaultValue: 0,
         },
     }, {
         // Other model options go here
@@ -85,10 +87,11 @@ module.exports = (sequelize, DataTypes) => {
         slot_id: {
             type: DataTypes.INTEGER,
             allowNull: true,
-            references: {
-                model:Models.slots,
-                key: 'id'
-            }
+            // references: {
+            //     model:Models.slots,
+            //     key: 'id'
+            // },
+            defaultValue:-1
         },
         check_in: {
             type: DataTypes.TIME,

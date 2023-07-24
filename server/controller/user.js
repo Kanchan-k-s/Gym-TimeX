@@ -97,7 +97,7 @@ const register = async (req, res) => {
     const User = db.Models.user;
     const query = req.body;
     const check = await User.findAndCountAll({ where: { email: query.email } });
-    console.log(check);
+    // console.log(check);
     if (check.count !== 0) {
       res.status(400).json({
         success: false,
@@ -131,7 +131,7 @@ const registerAdmin = async (req, res) => {
     const User = db.Models.user;
     const query = req.body;
     const check = await User.findAndCountAll({ where: { email: query.email } });
-    console.log(check);
+    // console.log(check);
     if (check.count !== 0) {
       res.status(400).json({
         success: false,
