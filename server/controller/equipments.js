@@ -42,11 +42,12 @@ const showEmployee = async (req, res) => {
   }
 };
 const category = async (req, res) => {
+  const cat = req.params.cat
   const Equipment = db.Models.equipments;
   try {
     const result = await Equipment.findAll({
       where: {
-        category: "Cardio equipments",
+        category: cat,
       },
     });
     // console.log(result);

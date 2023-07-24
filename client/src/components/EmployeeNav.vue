@@ -18,6 +18,7 @@
                 <div class="navbar-nav mx-lg-auto">
                     <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
                     <a class="nav-item nav-link active" href="/employee/booking">Booking</a>
+                    <a class="nav-item nav-link active" href="/employee/equipments">Equipments</a>
                     <a class="nav-item nav-link active" href="/" aria-current="page">Setting</a>
                 </div>
                 <!-- Action -->
