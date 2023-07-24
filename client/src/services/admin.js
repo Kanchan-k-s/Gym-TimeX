@@ -24,6 +24,13 @@ export default {
     },
     updateSlot(newRow){
         return api.put("http://localhost:3000/admin/slot/update/"+newRow.id,newRow);
+    },
+    showGym(){
+        return api.get("http://localhost:3000/admin/gyms/all")
+    },
+
+    updateGym(gym){
+        return api.put("http://localhost:3000/admin/gyms/update/"+gym.id,gym)
     }
 
 }

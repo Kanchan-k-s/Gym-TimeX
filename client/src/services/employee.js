@@ -7,4 +7,8 @@ export default {
     showEquipments(){
         return api.get("http://localhost:3000/employee/equipments")
     }
+    ,
+    updateSlot(id){
+        return api.get("http://localhost:3000/employee/slot/"+id)
+    }
 }

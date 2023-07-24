@@ -25,4 +25,6 @@ router.post('/slot/date', slot.showDate)
 
 router.get('/equipments',equipment.show)
 
+router.get('/slot/:id',slot.updateNop)
+
 module.exports = router;
