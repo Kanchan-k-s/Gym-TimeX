@@ -5,6 +5,7 @@ import AboutUs from './views/AboutUs'
 import Home from './views/employeeHome'
 import Booking from './views/employeeBooking.vue'
 import Equipments from './views/Equipments'
+import Raw from './views/Raw'
 
 export default [
     {
@@ -42,5 +43,10 @@ export default [
         path: "/equipments",
         component: Equipments,
         name: "equipments",
+    },
+    {
+        path: "/Raw",
+        component: Raw,
+        name: "Raw",
     }
 ]

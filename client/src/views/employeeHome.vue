@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+    
       <nav class="navbar scrolled-down navbar-expand-lg navbar-dark bg-dark px-0 py-3">
         <div class="container-xl">
           <!-- Logo -->
@@ -39,16 +39,17 @@
           </div>
         </div>
       </nav>
-    </div>
+    
 
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
     <div id="start" class="carousel-inner">
       <!-- <div class="container" style="padding-top:7%"> -->
       <div class="carousel-item active" data-bs-interval="2000">
         <img
           src="https://png.pngtree.com/thumb_back/fw800/background/20230609/pngtree-gym-treadmills-are-lined-in-an-empty-gym-image_2884906.png"
           class=" d-block w-100" alt="...">
-        
-         
+
+
         <div class="carousel-caption d-none d-md-block " style="background:rgba(0, 0, 0, 0.562)">
           <h1> GYM TimeX </h1>
           <p>"Strength does not come from physical capacity. It comes from an indomitable will."</p>
@@ -83,212 +84,225 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
+  </div>
+  <section id="about" class="pt-5 pb-5">
+    <div class="container" style="margin-top:4.5%">
+      <div class="row">
+        <div class="col-12 text-center">
+          <!-- Modified: Added "text-center" class -->
+          <h1 class="mb-3">About Us</h1>
+          <!-- Removed "center" class -->
+          <p>Welcome to our empowering fitness community, where we believe that strength, dedication, and determination
+            lead to transformative results. At our gym, we strive to create an environment where you can challenge
+            yourself, exceed your limits, and unlock your full potential.</p>
+        </div>
+        <div class="col-6 text-right">
+          
+        </div>
+        <div class="col-12">
+          
+          <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
 
-    <section id="about" class="pt-5 pb-5">
-      <div class="container" style="margin-top:4.5%">
-        <div class="row">
-          <div class="col-12 text-center"> <!-- Modified: Added "text-center" class -->
-            <h1 class="mb-3">About Us</h1> <!-- Removed "center" class -->
-            <p>Welcome to our empowering fitness community, where we believe that strength, dedication, and determination
-              lead to transformative results. At our gym, we strive to create an environment where you can challenge
-              yourself, exceed your limits, and unlock your full potential.</p>
-          </div>
-          <div class="col-6 text-right">
-            <a class="btn " href="#carouselExampleIndicators2" role="button" data-slide="prev">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
-                <path
-                  d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
-              </svg>
-            </a>
-            <a class="btn" href="#carouselExampleIndicators2" role="button" data-slide="next">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
-                <path
-                  d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
-              </svg>
-            </a>
-          </div>
-          <div class="col-12">
-            <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <a class="btn " href="#carouselExampleIndicators2" role="button" data-slide="prev">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-arrow-left-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" />
+            </svg>
+          </a>
+          <a class="btn" href="#carouselExampleIndicators2" role="button" data-slide="next">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+              <path
+                d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" />
+            </svg>
+          </a>
+              <div class="carousel-item active">
+                <div class="row">
 
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="row">
-
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid" alt="100%x280"
-                          src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
-                        <div class="card-body">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
-
-                        </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="card" style="height: 450px;">
+                      <img class="img-fluid" alt="100%x280"
+                        src="https://media.istockphoto.com/id/918931148/photo/fit-people-working-out-at-exercising-class-in-the-gym.jpg?s=612x612&w=0&k=20&c=-2fPHUiGAjZJXeSqZTw8ipfeUOkI_w8H0wEGcbD7oPc=">
+                      <div class="card-body">
+                        <h4 class="card-title">Indoor Cycling Studios</h4>
+                        <p class="card-text">Specialized areas equipped with stationary bikes and immersive lighting and
+                          sound systems for intense cycling workouts.</p>
 
                       </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid" alt="100%x280"
-                          src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
-                        <div class="card-body">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
 
-                        </div>
-                      </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid" alt="100%x280"
-                          src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
-                        <div class="card-body">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
-
-                        </div>
-                      </div>
-                    </div>
-
                   </div>
-                </div>
-                <div class="carousel-item">
-                  <div class="row">
-
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid" alt="100%x280"
-                          src="https://images.unsplash.com/photo-1532771098148-525cefe10c23?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3f317c1f7a16116dec454fbc267dd8e4">
-                        <div class="card-body">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
-
-                        </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="card" style="height: 450px;">
+                      <img class="img-fluid" alt="100%x280"
+                        src="https://web-back.perfectgym.com/sites/default/files/styles/900x/public/Marketing-klubu-fitness-czyli-jak-wypromowac-Twoja-si%C5%82ownie.jpeg?itok=ULMaVKX3">
+                      <div class="card-body">
+                        <h4 class="card-title">Functional Training Zones</h4>
+                        <p class="card-text">Dedicated spaces with equipment like battle ropes, kettlebells, medicine
+                          balls, and suspension trainers for functional fitness training.</p>
 
                       </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid" alt="100%x280"
-                          src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
-                        <div class="card-body">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
-
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid" alt="100%x280"
-                          src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=0754ab085804ae8a3b562548e6b4aa2e">
-                        <div class="card-body">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
-
-                        </div>
-                      </div>
-                    </div>
-
                   </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="card" style="height: 450px;">
+                      <img class="img-fluid" alt="100%x280"
+                        src="https://media.istockphoto.com/id/1089939832/photo/happy-athletic-people-jogging-on-treadmills-in-a-health-club.jpg?s=612x612&w=0&k=20&c=SXA16QEZhLIYcDR0gHkVTY0MNSBIROmU7sTi3Tp8Bz0=">
+                      <div class="card-body">
+                        <h4 class="card-title">Cardiovascular Equipment</h4>
+                        <p class="card-text">Gyms typically provide a range of cardio machines, such as treadmills,
+                          stationary bikes, elliptical trainers, and rowing machines, to help members improve
+                          cardiovascular fitness.</p>
+
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
-                <div class="carousel-item">
-                  <div class="row">
+              </div>
+              <div class="carousel-item">
+                <div class="row">
 
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid" alt="100%x280"
-                          src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ee8417f0ea2a50d53a12665820b54e23">
-                        <div class="card-body">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
+                  <div class="col-md-4 mb-3">
+                    <div class="card" style="height: 450px;">
+                      <img class="img-fluid" alt="100%x280"
+                        src="https://images.unsplash.com/photo-1532771098148-525cefe10c23?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3f317c1f7a16116dec454fbc267dd8e4">
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to
+                          additional content.</p>
 
-                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="card">
+                      <img class="img-fluid" alt="100%x280"
+                        src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to
+                          additional content.</p>
 
                       </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid" alt="100%x280"
-                          src="https://images.unsplash.com/photo-1532777946373-b6783242f211?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=8ac55cf3a68785643998730839663129">
-                        <div class="card-body">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="card">
+                      <img class="img-fluid" alt="100%x280"
+                        src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=0754ab085804ae8a3b562548e6b4aa2e">
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to
+                          additional content.</p>
 
-                        </div>
                       </div>
                     </div>
-                    <div class="col-md-4 mb-3">
-                      <div class="card">
-                        <img class="img-fluid" alt="100%x280"
-                          src="https://images.unsplash.com/photo-1532763303805-529d595877c5?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=5ee4fd5d19b40f93eadb21871757eda6">
-                        <div class="card-body">
-                          <h4 class="card-title">Special title treatment</h4>
-                          <p class="card-text">With supporting text below as a natural lead-in to
-                            additional content.</p>
-                        </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row">
+
+                  <div class="col-md-4 mb-3">
+                    <div class="card">
+                      <img class="img-fluid" alt="100%x280"
+                        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ee8417f0ea2a50d53a12665820b54e23">
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to
+                          additional content.</p>
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="card">
+                      <img class="img-fluid" alt="100%x280"
+                        src="https://images.unsplash.com/photo-1532777946373-b6783242f211?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=8ac55cf3a68785643998730839663129">
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to
+                          additional content.</p>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="card">
+                      <img class="img-fluid" alt="100%x280"
+                        src="https://images.unsplash.com/photo-1532763303805-529d595877c5?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=5ee4fd5d19b40f93eadb21871757eda6">
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">With supporting text below as a natural lead-in to
+                          additional content.</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              
             </div>
+            
           </div>
         </div>
       </div>
-    </section>
-    <section id="contact" class="pt-5 pb-5">
+    </div>
+  </section>
+  <section id="contact" class="pt-5 pb-5">
 
-      <div class="cont">
-        <div class="image-wrapper">
-          <img
-            src="https://img.freepik.com/premium-photo/contemporary-spotless-fitness-gym-center-interiorgenerative-ai_391052-10889.jpg"
-            alt="Image" class="image" />
+    <div class="cont">
+      <div class="image-wrapper">
+        <img
+          src="https://img.freepik.com/premium-photo/contemporary-spotless-fitness-gym-center-interiorgenerative-ai_391052-10889.jpg"
+          alt="Image" class="image" />
+      </div>
+      <div class="text-wrapper text-center" style="padding-top: 6%; background-color:rgba(0, 0, 0, 0.884) ">
+        <div style="background; width:35%;margin-left:30%;margin-bottom: 5%; ">
+          <h1 style="color: rgba(252, 252, 252, 0.808);"> Contact Us</h1>
         </div>
-        <div class="text-wrapper text-center" style="padding-top: 6%; background-color:rgba(0, 0, 0, 0.884) ">
-          <div style="background; width:35%;margin-left:30%;margin-bottom: 5%; ">
-            <h1 style="color: rgba(252, 252, 252, 0.808);"> Contact Us</h1>
-          </div>
-          <div style=" color: rgba(252, 252, 252, 0.808);width:85%;margin-left:8%;margin-top: 10%;">
-            "At GYM TimeX, we are driven by the belief that every journey to greatness starts with the first step. We're
-            here to inspire and motivate you on your path to better health and vitality. Together, we'll celebrate
-            milestones, conquer challenges, and redefine what's possible."
-          </div>
+        <div style=" color: rgba(252, 252, 252, 0.808);width:85%;margin-left:8%;margin-top: 10%;">
+          "At GYM TimeX, we are driven by the belief that every journey to greatness starts with the first step. We're
+          here to inspire and motivate you on your path to better health and vitality. Together, we'll celebrate
+          milestones, conquer challenges, and redefine what's possible."
+        </div>
 
-          <div style="margin-top:15%;color: rgba(252, 252, 252, 0.808); width:30%;margin-left:35%;">
-            <h4> Contact Details</h4>
-            <h6> GYM TimeX </h6>
-            <p> A 66, GIDC Sector - 25<br>Gandhinagar - 382016<br>Gujarat, India</p>
-          </div>
+        <div style="margin-top:15%;color: rgba(252, 252, 252, 0.808); width:30%;margin-left:35%;">
+          <h4> Contact Details</h4>
+          <h6> GYM TimeX </h6>
+          <p> A 66, GIDC Sector - 25<br>Gandhinagar - 382016<br>Gujarat, India</p>
         </div>
       </div>
-    </section>
-    <footer>
-        <div class="text-center">
-          AKsoft
-        </div>
-        <div class="footer-links" style="margin-left: 80%;">
-          <a href="/about"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/>
-</svg></a>
-          <a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-          <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-</svg></a>        
-          <a href="/contact"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
-</svg></a>
-          <!-- Add more links as needed -->
-        </div>
-        <!-- <div class="social-icons">
+    </div>
+  </section>
+  <footer>
+    <div class="text-center">
+      AKsoft
+    </div>
+    <div class="footer-links" style="margin-left: 80%;">
+      <a href="/about"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-envelope" viewBox="0 0 16 16">
+          <path
+            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+        </svg></a>
+      <a href="/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-facebook" viewBox="0 0 16 16">
+          <path
+            d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+        </svg></a>
+      <a href="/contact"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-linkedin" viewBox="0 0 16 16">
+          <path
+            d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+        </svg></a>
+      <!-- Add more links as needed -->
+    </div>
+    <!-- <div class="social-icons">
           <a href="https://cdn-icons-png.flaticon.com/512/20/20673.png" target="_blank" rel="noopener noreferrer">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
   <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
@@ -301,9 +315,8 @@
             <i class="fab fa-linkedin-in"></i>
           </a>
         </div> -->
-      </footer>
-  </div>
-</template>
+  </footer>
+</div></template>
 
 <script>
 import { BIconHandThumbsDown } from "bootstrap-vue";
@@ -312,11 +325,11 @@ import mixin from "../mixins/authmixin";
 import Cookies from "js-cookie";
 export default {
   mixins: [mixin],
-  data (){
-    return{
-      show:false
-  }
-},
+  data() {
+    return {
+      show: false
+    }
+  },
   mounted() {
     this.startBackgroundAnimation();
   },
@@ -334,11 +347,11 @@ export default {
       this.$router.push('/sign/up')
     }
   },
-  beforeMount(){
+  beforeMount() {
     const token = Cookies.get("token");
-    console.log(token===undefined)
-    if(token!==undefined){
-      this.show=true;
+    console.log(token === undefined)
+    if (token !== undefined) {
+      this.show = true;
     }
   }
 

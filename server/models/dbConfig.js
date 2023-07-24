@@ -2,7 +2,8 @@
 const { Sequelize, DataTypes } = require("sequelize")
 const sequelize = new Sequelize(process.env.URI,{
   dialect: 'postgres',
-  logging: false, // Set to true if you want to see SQL logs in the console
+  logging: false, 
+  // Set to true if you want to see SQL logs in the console
   timezone: '+05:30', // Set Indian Standard Time (IST) UTC offset (+05:30)
 })
 // const pool = new Pool({
@@ -51,7 +52,7 @@ const connectDB = async function () {
 
     db.Models = require("./Models")(sequelize, DataTypes)
     // db.Gyms= require("./Gyms.js")(sequelize, DataTypes)
-    sequelize.sync({ alter: true })
+    // sequelize.sync({ alter: true })
   } catch (error) {
     console.log("Error in connecting to the database .", error);
   }

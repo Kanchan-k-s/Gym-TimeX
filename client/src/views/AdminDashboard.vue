@@ -182,6 +182,7 @@
                                             <th scope="col">Id</th>
                                             <th scope="col">Name of Equipment</th>
                                             <th scope="col">Quantity</th>
+                                            <th scope="col">Category</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">Image link</th>
                                             <th scope="col">Action</th>
@@ -193,6 +194,7 @@
                                             <td></td>
                                             <td><input class="form-control" type="text" v-model="newEquipRow.name" /></td>
                                             <td><input class="form-control" type="number" v-model="newEquipRow.qty" /></td>
+                                            <td><input class="form-control" type="text" v-model="newEquipRow.category" /></td>
                                             <td><input class="form-control" type="text" v-model="newEquipRow.desc" /></td>
                                             <td><input class="form-control" type="text" v-model="newEquipRow.img" /></td>
                                             <td>
@@ -207,6 +209,7 @@
 
                                             <td> <input class="form-control" type="text" v-model="newEquipObject.name"></td>
                                             <td><input class="form-control" type="number" v-model="newEquipObject.qty"></td>
+                                            <td><input class="form-control" type="text" v-model="newEquipObject.category"></td>
                                             <td>
                                                 <div class="input-group">
                                                     <span class="input-group-text"></span>
@@ -238,6 +241,7 @@
                                             <th scope="row">{{ equipment.id }}</th>
                                             <td>{{ equipment.name }}</td>
                                             <td>{{ equipment.qty }}</td>
+                                            <td>{{ equipment.category }}</td>
                                             <td>{{ equipment.desc }}</td>
                                             <td>{{ equipment.img }}</td>
                                             <td>

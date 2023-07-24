@@ -21,8 +21,10 @@ router.use(verifytoken);
 
 router.use(checkRole);
 
+router.get('/equipments/category',equipment.category)
+
 router.post('/slot/date', slot.showDate)
 
-router.get('/equipments',equipment.show)
+router.get('/equipments',equipment.showEmployee)
 
 module.exports = router;
