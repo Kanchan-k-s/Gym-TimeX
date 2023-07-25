@@ -4,7 +4,8 @@
         <div class="container-xl">
             <!-- Logo -->
             <a class="navbar-brand" href="/admin/panel">
-                <img src="../assets/picture2.svg" width="60" height="60" class="h-8" alt="...">
+                <video style="height:60px; width:60px;"
+         src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
             </a>
             <h1 class="text-start" style="color:white"> GYM TimeX </h1>
             <!-- Navbar toggle -->
@@ -13,9 +14,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <!-- Collapse -->
-            <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="collapse  navbar-collapse " id="navbarCollapse">
                 <!-- Nav -->
-                <div class="navbar-nav mx-lg-auto">
+                <div class="navbar-nav mx-lg-auto ">
                     <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
                     <a class="nav-item nav-link active" href="/employee/booking">Booking</a>
                     <a class="nav-item nav-link active" href="/employee/equipments">Equipments</a>

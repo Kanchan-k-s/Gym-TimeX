@@ -5,7 +5,7 @@
         <div class="container-xl">
             <!-- Logo -->
             <a class="navbar-brand" href="/admin/panel">
-                <img src="../assets/picture2.svg" width="60" height="60" class="h-8" alt="...">
+                <img src="https://cdnl.iconscout.com/lottie/premium/thumb/exercise-8350566-6630483.mp4" width="60" height="60" class="h-8" alt="...">
             </a>
             <h1 class="text-start" style="color:white"> GYM TimeX </h1>
             <!-- Navbar toggle -->

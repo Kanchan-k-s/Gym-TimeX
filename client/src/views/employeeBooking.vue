@@ -12,8 +12,11 @@
 
             <div class="container" style="padding-top:20vh">
                 <h1>Slots for Current Date : </h1>
-                <div class="card w-100" v-for="slot in slots" :key="slot.id" style="margin-top:2%">
-                    <div class="card-body" :class="{ book: slot.Active }"
+                <div class="hover">
+
+                
+                <div class="card w-100 " v-for="slot in slots" :key="slot.id" style="margin-top:2%">
+                    <div class="card-body " :class="{ book: slot.Active }" 
                         v-on:click="slot.Active = !slot.Active; oneClick(slot.id)">
                         <!-- <p>{{ slot }}</p> -->
                         <h4 class="text-center"><span class="float-center">DATE: {{ slot.date.split("T")[0] }}</span></h4>
@@ -22,6 +25,7 @@
                         <p>Available : {{ slot.nop }}</p>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
 
@@ -78,11 +82,14 @@ export default {
 
 <style scoped>
 .slot {
-    background-color: #e4dfdf;
+    background-color: #ffffff;
 }
-
+.hover {
+    box-shadow: 0 0 3px black;
+  margin-top: -10px;
+}
 .book {
-    background-color: #4caf4f;
+    background-color: #c58620;
     color: white;
 }
 
