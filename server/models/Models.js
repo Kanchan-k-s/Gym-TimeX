@@ -107,5 +107,7 @@ module.exports = (sequelize, DataTypes) => {
 
     });
     // Slots.hasMany(User)
+    // Models.user.belongsTo(Models.slots, { foreignKey: 'slot_id', as: 'slot' });
+    // Models.slots.hasMany(Models.user, { foreignKey: 'slot_id' });
     return Models
 }

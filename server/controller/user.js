@@ -11,7 +11,10 @@ const allUser = async (req, res) => {
     const result = await Users.findAll();
     res.send(result);
   } catch (e) {
-    console.log(e);
+    res.status(500).json({
+      success: false,
+      errors: [{ msg: "Server error" }],
+    });
   }
 };
 const login = async (req, res) => {
@@ -126,6 +129,35 @@ const register = async (req, res) => {
     });
   }
 };
+
+const booking= async (req, res) => {
+try{
+  const User = db.Models.user;
+  const Slots = db.Models.slots;
+  console.log("hi 1")
+  const usersWithSlot = await User.findAll({
+    attributes: ['id', 'name'],
+    include: [
+      {
+        model: Slots,
+        as: 'slot',
+        attributes: ['slot_in', 'slot_out'],
+      },
+    ],
+    
+  });
+  console.log(usersWithSlot)
+  res.send('hi')
+}catch(e){
+  console.log(e)
+  res.status(500).json({
+    success: false,
+    errors: [{ msg: "Server error" }],
+  });
+}
+
+}
+
 const registerAdmin = async (req, res) => {
   try {
     const User = db.Models.user;
@@ -166,4 +198,5 @@ module.exports = {
   login,
   register,
   registerAdmin,
+  booking
 };

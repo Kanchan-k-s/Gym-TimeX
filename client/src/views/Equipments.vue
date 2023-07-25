@@ -13,9 +13,9 @@
 
         <div class="text-center"
           style="color:rgb(255, 255, 255);padding-top: 9%;width:50%;margin-left:25%;margin-bottom: 2%; text-decoration: underline;">
-          <h1> GYM TimeX Equipments</h1>
+          <h1> GYM TimeX {{ choice }} Equipments</h1>
         </div>
-        <div class="container mt-4">
+        <div class="container mt-3">
 
           <div class="d-flex justify-content-end">
             <!-- <h6> Choose Category :</h6> -->
@@ -31,7 +31,7 @@
         </div>
         <div class="row">
           <div class="col-sm-3" v-for="equipment in equipments" style="margin-top: 2%;">
-            <div class="card" style="height: 430px;">
+            <div class="card" style="height: 470px;">
               <!-- <p>Category:{{equipment.category}}</p> -->
               <div class="card-header">
                 {{ equipment.name }}
@@ -67,37 +67,38 @@ export default {
   methods: {
     ShowCategory: function () {
       Employee.showEquipments().then((res) => {
-        setTimeout(() => {
-          this.isLoading = false;
-        }, 1300);
-        this.equipments = res.data.result
-        res.data.categoryCounts.forEach(element => {
+          this.category=[]
+        // this.equipments = res.data.result
+        res.data.forEach(element => {
           this.category.push(element.category)
         });
 
       });
     },
     categorySelect: function () {
-      console.log(this.choice)
-
+      setTimeout(() => {
+          this.isLoading = false;
+        }, 1300);
+        this.ShowCategory();
       Employee.showEquipmentsCategory(this.choice).then((res) => {
-        this.equipments = res.data.result
-        this.category = res.data.result
+        this.equipments = res.data
       });
     }
   },
   created() {
     this.isLoading = true
-    this.ShowCategory()
+    this.categorySelect()
   }
 }
 </script>
 
 <style scoped>
+
 .bg{
+
+  background: url("https://img.freepik.com/free-photo/3d-grunge-room-interior-with-spotlight-smoky-atmosphere-background_1048-11333.jpg?w=740&t=st=1690287523~exp=1690288123~hmac=2ca2f6f78e5c244bef1ed7f7213c35636ad49ced398ba64b926b62b6c6b4fb7c") no-repeat center fixed;
   background-size: cover;
-  background-repeat: no-repeat;
-  background-image: url("https://media.istockphoto.com/id/1310435262/photo/young-athletic-man-fitness-instructor-training-in-gym-in-mixed-neon-light.jpg?s=612x612&w=0&k=20&c=4xoMNjanekU7CFoqiK5EtZQprXplHFoUU0ui2VdLA_E=");
+  
 }
 .body {
   background-color: black;
@@ -112,7 +113,7 @@ export default {
 }
 
 .img {
-  height: 180px;
+  height: 250px;
 }
 </style>
 <!-- 

@@ -26,7 +26,7 @@ const show = async (req, res) => {
 const showEmployee = async (req, res) => {
   const Equipment = db.Models.equipments;
   try {
-    const result = await Equipment.findAll();
+    // const result = await Equipment.findAll();
     const categoryCounts = await  Equipment.findAll({
         attributes: ['category', 
         // [sequelize.fn('COUNT', sequelize.col('category')), 'count']
@@ -35,23 +35,35 @@ const showEmployee = async (req, res) => {
       });
   
     //   res.json(categoryCounts);
-    const data ={result,categoryCounts}
-    res.send(data);
+    // const data ={result,categoryCounts}
+    res.send(categoryCounts);
   } catch (e) {
     console.log(e);
   }
 };
 const category = async (req, res) => {
+  try {
+    
   const cat = req.params.cat
   const Equipment = db.Models.equipments;
-  try {
+  if(cat==='All')
+  {
+    console.log("hi")
+    const result = await Equipment.findAll();
+    // console.log(result);
+    res.send(result);
+  }
+  else{
     const result = await Equipment.findAll({
       where: {
         category: cat,
       },
     });
-    // console.log(result);
     res.send(result);
+  }
+  
+  
+    
   } catch (e) {
     console.log(e);
   }
