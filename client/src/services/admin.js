@@ -1,6 +1,9 @@
 import api from "./api";
 
 export default {
+    allUsers(){
+        return api.get("http://localhost:3000/admin/user/all");
+    },
     allEquipments(){
         return api.get("http://localhost:3000/admin/equipment/all");
     },

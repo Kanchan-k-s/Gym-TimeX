@@ -73,11 +73,12 @@ export default {
                 console.log("after toggle fn with value : " + slot.Active)
             }
     },
-        created() {
-            console.log(this.currentDate)
-            this.showData(this.currentDate);
-        }
+    created() {
+        this.currentDate.setDate(this.currentDate.getDate()-1)
+        console.log(this.currentDate)
+        this.showData(this.currentDate);
     }
+}
 </script>
 
 <style scoped>

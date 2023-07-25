@@ -20,11 +20,72 @@
                             <h1 class="section-login-2-title">Register</h1>
                             <form @submit.prevent class="section-login-2-form">
                                 <div class="login-form-1">
+                                    <label for="newUserEmail" class="form-label">Email<span>*</span></label>
+                                    <input type="email" class="form-control" id="newUserEmail" placeholder="Email"
+                                        v-model.trim="$v.Register.new_user_email.$model"
+                                        :class="{ 'is-invalid': $v.Register.new_user_email.$error }" />
+                                    <div class="error text-danger" v-if="$v.Register.new_user_email.$dirty &&
+                                        !$v.Register.new_user_email.required
+                                        ">
+                                        Cannot be empty
+                                    </div>
+                                    <div class="error text-danger" v-if="$v.Register.new_user_email.$dirty && !$v.Register.new_user_email.email
+                                        ">
+                                        Invalid Email
+                                    </div>
+                                </div>
+                                <div class="login-form-2"
+                                    :class="{ 'form-group--error': $v.Register.new_user_name.$error }">
+                                    <label class="form__label">Username<span>*</span></label>
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-control " v-model="Register.new_user_name"
+                                            v-model.trim="$v.Register.new_user_name.$model"
+                                            :class="{ 'is-invalid': $v.Register.new_user_name.$error }"
+                                            v-bind:min="Register.new_user_name" placeholder="Password" />
+                                    </div>
+                                    <div class="error text-danger" v-if="$v.Register.new_user_name.$dirty && !$v.Register.new_user_name.required
+                                        ">
+                                        * Username is required.
+                                    </div>
+                                    <div class="error text-danger" v-if="!$v.Register.new_user_name.minLength">
+                                        * Username must have at least
+                                        {{ $v.Register.new_user_name.$params.minLength.min }} letters.
+                                    </div>
+
+                                </div>
+                                <div class="login-form-3"
+                                    :class="{ 'form-group--error': $v.Register.new_user_password.$error }">
+                                    <label class="form__label">Password<span>*</span></label>
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-control " v-model="Register.new_user_password"
+                                            v-model.trim="$v.Register.new_user_password.$model"
+                                            :class="{ 'is-invalid': $v.Register.new_user_password.$error }"
+                                            v-bind:min="Register.new_user_password" placeholder="Password"
+                                            :type="show[1]" />
+                                        <b-icon style="margin-left: -25px; cursor: pointer" :icon="eyeType[1]"
+                                            :class="{ 'ml-50': $v.Register.new_user_password.$error }"
+                                            @click="toggleShow(1)"></b-icon>
+                                    </div>
+                                    <div class="error text-danger" v-if="$v.Register.new_user_password.$dirty && !$v.Register.new_user_password.required
+                                        ">
+                                        * Password is required.
+                                    </div>
+                                    <div class="error text-danger" v-if="!$v.Register.new_user_password.minLength">
+                                        * Password must have at least
+                                        {{ $v.Register.new_user_password.$params.minLength.min }} letters.
+                                    </div>
+                                    <div class="error text-danger" v-if="$v.Register.new_user_password.$dirty && !$v.Register.new_user_password.valid
+                                        ">
+                                        * The password requires an uppercase, lowercase, number and
+                                        special character
+                                    </div>
+                                </div>
+                                <!-- <div class="login-form-1">
                                     <label for="input-email">Email</label>
                                     <input v-model="new_user.email" type="text" id="input-email"
                                         placeholder="john@example.com" required>
-                                </div>
-                                <div class="login-form-2">
+                                </div> -->
+                                <!-- <div class="login-form-2">
                                     <label for="input-name">Full Name</label>
                                     <input v-model="new_user.name" type="text" id="input-name" placeholder="John Doe"
                                         required>
@@ -33,7 +94,7 @@
                                     <label for="input-password">Password</label>
                                     <input v-model="new_user.password" type="password" id="input-password"
                                         placeholder="At least 8 characters" required>
-                                </div>
+                                </div> -->
                                 <div class="login-form-submit-btn">
                                     <button v-on:click="reg_user()">Create an Account</button>
                                 </div>
@@ -47,14 +108,48 @@
                             <h1 class="section-login-2-title">Login</h1>
                             <form @submit.prevent class="section-login-2-form">
                                 <div class="login-form-1">
-                                    <label for="input-email">Email</label>
-                                    <input v-model="user.email" type="text" id="input-email" placeholder="Email" required>
+                                    <label for="userEmail" class="form-label">Email<span>*</span></label>
+                                    <input type="email" class="form-control" id="userEmail" placeholder="Email"
+                                        v-model.trim="$v.Login.user_email.$model"
+                                        :class="{ 'is-invalid': $v.Login.user_email.$error }" />
+                                    <div class="error text-danger" v-if="$v.Login.user_email.$dirty &&
+                                        !$v.Login.user_email.required
+                                        ">
+                                        Cannot be empty
+                                    </div>
+                                    <div class="error text-danger" v-if="$v.Login.user_email.$dirty && !$v.Login.user_email.email
+                                        ">
+                                        Invalid Email
+                                    </div>
                                 </div>
-                                <div class="login-form-3">
-                                    <label for="input-password">Password</label>
-                                    <input v-model="user.password" type="password" id="input-password"
-                                        placeholder="Password" required>
+
+                                <div class="login-form-3"
+                                    :class="{ 'form-group--error': $v.Login.user_password.$error }">
+                                    <label class="form__label">Password</label>
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-control " v-model="Login.user_password"
+                                            v-model.trim="$v.Login.user_password.$model"
+                                            :class="{ 'is-invalid': $v.Login.user_password.$error }"
+                                            v-bind:min="Login.user_password" placeholder="Password" :type="show[1]" />
+                                        <b-icon style="margin-left: -25px; cursor: pointer" :icon="eyeType[1]"
+                                            :class="{ 'ml-50': $v.Login.user_password.$error }"
+                                            @click="toggleShow(1)"></b-icon>
+                                    </div>
+                                    <div class="error text-danger" v-if="$v.Login.user_password.$dirty && !$v.Login.user_password.required
+                                        ">
+                                        * Password is required.
+                                    </div>
+                                    <div class="error text-danger" v-if="!$v.Login.user_password.minLength">
+                                        * Password must have at least
+                                        {{ $v.Login.user_password.$params.minLength.min }} letters.
+                                    </div>
+                                    <div class="error text-danger" v-if="$v.Login.user_password.$dirty && !$v.Login.user_password.valid
+                                        ">
+                                        * The password requires an uppercase, lowercase, number and
+                                        special character
+                                    </div>
                                 </div>
+
                                 <div class="login-form-submit-btn">
                                     <button v-on:click="login()">Login</button>
                                 </div>
@@ -74,36 +169,61 @@
 import User from "../services/user.js"
 import Cookies from "js-cookie";
 import errorToast from "@/mixins/errorToast";
+import { required, email, minLength } from "vuelidate/lib/validators";
+
 
 export default {
     mixins: [errorToast],
     data() {
         return {
             register: true,
-            new_user: {
-                email: '',
-                name: '',
-                password: '',
+            show: { 0: "password", 1: "password", 2: "password" },
+            Register:{},
+            Login: {
+                user_email: '',
+                user_password: '',
+
             },
-            user: {
-                email: '',
-                password: '',
+            eyeType: {
+                0: "eye-slash-fill",
+                1: "eye-slash-fill",
+                2: "eye-slash-fill",
             },
+
         }
     },
     components: {
 
     },
     methods: {
+        toggleShow(ind) {
+            this.show[ind] = this.show[ind] === "text" ? "password" : "text";
+            this.eyeType[ind] =
+                this.eyeType[ind] === "eye-fill" ? "eye-slash-fill" : "eye-fill";
+        },
         reg_user: async function () {
+            
+            console.log("hi")
             try {
-                const res = await User.register(this.new_user)
+                
+                this.$v.$touch();
+                if (this.$v.Register.$invalid) {
+                    console.log(this.$v)
+                    return;
+                }
+                const new_user = {
+                    email: this.Register.new_user_email,
+                    name: this.Register.new_user_name,
+                    password: this.Register.new_user_password
+                }
+                
+                const res = await User.register(new_user)
                 console.log(res.data)
                 if (res.data.success) {
                     await Cookies.set("token", res.data.token);
                     localStorage.setItem("name1", res.data.user.name);
                     localStorage.setItem("user1", res.data.user.type);
-                    
+
                     if (Cookies.get("token")) {
                         if (res.data.user.type === "Admin") {
                             this.$router.push('/admin/panel');
@@ -111,7 +231,7 @@ export default {
                             this.$router.push("/");
                         }
                     }
-                } 
+                }
             }
             catch (error) {
 
@@ -125,10 +245,17 @@ export default {
         },
         login: async function () {
             try {
+                this.$v.$touch();
+                if (this.$v.Login.$invalid) {
+                    return;
+                }
+                const user = {
+                    email: this.Login.user_email,
+                    password: this.Login.user_password
+                }
                 this.isLoading = true;
-                const res = await User.login(this.user)
+                const res = await User.login(user)
                 if (res.data.success) {
-                    console.log(res.data.token)
                     await Cookies.set("token", res.data.token);
                     localStorage.setItem("name1", res.data.user.name);
                     localStorage.setItem("user1", res.data.user.type);
@@ -155,10 +282,60 @@ export default {
 
         }
     },
+    validations: {
+        Login:{
+            user_email: {
+                required,
+                email
+            },
+            user_password: {
+                required,
+                minLength: minLength(4),
+                valid: function (value) {
+                    const containsUppercase = /[A-Z]/.test(value);
+                    const containsLowercase = /[a-z]/.test(value);
+                    const containsNumber = /[0-9]/.test(value);
+                    const containsSpecial = /[#?!@$%^&*-]/.test(value);
+                    return (
+                        containsUppercase &&
+                        containsLowercase &&
+                        containsNumber &&
+                        containsSpecial
+                    );
+                },
+            },
+        },
+        Register: {
+            
+            new_user_email: {
+                required,
+                email
+            },
+            new_user_name: {
+                required,
+                minLength: minLength(4),
+            },
+            new_user_password: {
+                required,
+                minLength: minLength(4),
+                valid: function (value) {
+                    const containsUppercase = /[A-Z]/.test(value);
+                    const containsLowercase = /[a-z]/.test(value);
+                    const containsNumber = /[0-9]/.test(value);
+                    const containsSpecial = /[#?!@$%^&*-]/.test(value);
+                    return (
+                        containsUppercase &&
+                        containsLowercase &&
+                        containsNumber &&
+                        containsSpecial
+                    );
+                },
+            }
+        }
+    },
     created() {
-        if(this.$route.params.id==="in")
-        {
-            this.register=false
+        if (this.$route.params.id === "in") {
+            this.register = false
         }
     }
 }

@@ -3,12 +3,12 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET;
 const tokenLife = process.env.TOKEN_LIFE;
-const demo = async (req, res) => {
+const allUser = async (req, res) => {
   try {
-    const Gyms = db.Models.gyms;
+    const Users = db.Models.user;
     // console.log(db.Models.gyms)
     // await db.Models.gyms.create({opening_time : '02:00:00',closing_time :'03:00:00',capacity:20});
-    const result = await Gyms.findAll();
+    const result = await Users.findAll();
     res.send(result);
   } catch (e) {
     console.log(e);
@@ -162,7 +162,7 @@ const registerAdmin = async (req, res) => {
   }
 };
 module.exports = {
-  demo,
+  allUser,
   login,
   register,
   registerAdmin,

@@ -19,6 +19,7 @@ Vue.use(Vuelidate)
 Vue.config.productionTip = false
 Vue.use(VueRouter);
 Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 const router = new VueRouter({
   routes,
   mode: "history",
