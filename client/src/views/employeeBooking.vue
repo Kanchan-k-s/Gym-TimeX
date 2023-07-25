@@ -57,6 +57,7 @@ export default {
     }
     },
     created() {
+        this.currentDate.setDate(this.currentDate.getDate()-1)
         console.log(this.currentDate)
         this.showData(this.currentDate);
     }
