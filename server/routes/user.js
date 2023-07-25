@@ -5,6 +5,7 @@ const express = require("express");
 
 const router = express.Router();
 
+router.get('/booking',user.booking)
 router.post('/login',user.login)
 router.post('/register',user.register)
 router.post('/register/admin',user.registerAdmin)

@@ -7,8 +7,10 @@
                         <div class="section-login-1-main">
                             <h1 class="section-login-1-title">Gym TimeX</h1>
                             <div class="section-login-1-img">
-                                <img src="https://img.freepik.com/premium-vector/run-running-people-human-man-sport-logo-vector-icon-illustration_7688-4400.jpg"
-                                    width="700" height="500" alt="">
+                                <!-- <img src="https://img.freepik.com/premium-vector/run-running-people-human-man-sport-logo-vector-icon-illustration_7688-4400.jpg"
+                                    width="700" height="500" alt=""> -->
+                                    <!-- <video loading="lazy" muted="muted" src="https://cdnl.iconscout.com/lottie/premium/thumb/woman-on-gym-training-plan-7258437-5907632.mp4"  type="video/mp4" autoplay="autoplay" loop="loop"></video> -->
+                                    <video loading="lazy" muted="muted" src="https://cdnl.iconscout.com/lottie/premium/thumb/exercise-in-metaverse-5690348-4739261.mp4" type="video/mp4" autoplay="autoplay" loop="loop"></video>
                             </div>
 
                         </div>
@@ -359,8 +361,8 @@ body {
 main section.section-login {
     width: 100%;
     height: 100vh;
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(112, 216, 244, 1) 52%, rgba(255, 255, 255, 1) 100%);
+    background: rgba(2, 0, 36, 1);
+    /* background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(112, 216, 244, 1) 52%, rgba(255, 255, 255, 1) 100%); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -486,11 +488,11 @@ main section.section-login .section-main .section-login-2 .section-login-2-main 
 main section.section-login .section-main .section-login-2 .section-login-2-main .section-login-2-form .login-form-4 p a,
 main section.section-login .section-main .section-login-2 .section-login-2-main .section-login-2-form .login-form-5 p a {
     font-weight: bold;
-    color: #407a9a;
+    color: rgb(2, 0, 36,0.705);
 }
 
 main section.section-login .section-main .section-login-2 .section-login-2-main .section-login-2-form .login-form-submit-btn button {
-    background: #407a9a;
+    background: rgba(2, 0, 36, 0.705);
     padding: 14px;
     width: 100%;
     color: #fff;
