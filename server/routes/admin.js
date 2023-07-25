@@ -2,6 +2,7 @@
 const slot = require("../controller/slots")
 const equipment = require("../controller/equipments")
 const gyms = require("../controller/gyms")
+const user = require("../controller/user")
 const express = require("express");
 const verifytoken = require("../middlewares/verifytoken");
 
@@ -39,5 +40,6 @@ router.get('/gyms/all', gyms.show)
 router.get('/gyms/:id', gyms.showOne)
 router.put('/gyms/update/:id', gyms.update)
 
+router.get('/user/all',user.allUser)
 
 module.exports = router;

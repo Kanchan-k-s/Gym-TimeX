@@ -3,7 +3,7 @@
 
         <AdminNavbar></AdminNavbar>
         <div class="container" style="padding-top:25vh">
-
+            <h1 class="text-center">Admin Dashboard</h1>
 
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
@@ -39,8 +39,7 @@
                                             <td><input class="form-control" type="time" v-model="gym.closing_time" /></td>
                                             <td><input class="form-control" type="number" v-model="gym.capacity" /></td>
                                             <td>
-                                                <button class="btn btn-success" @click="UpdateGym()">Create
-                                                    Slot</button>
+                                                <button class="btn btn-success" @click="UpdateGym()">Update Gym Info</button>
                                             </td>
                                             <td><button class="btn btn-info"
                                                     @click="clickUpdateGym=!clickUpdateGym">Back</button></td>
@@ -68,13 +67,20 @@
                                             <th scope="col">Id</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Email</th>
+                                            <th scope="col">Slot id</th>
+                                            <th scope="col">Check in</th>
+                                            <th scope="col">Check out</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr v-for="user in users">
-                                            <th scope="row">{{ user.Id }}</th>
-                                            <td>{{ user.Name }}</td>
-                                            <td>{{ user.Email }}</td>
+                                            <th scope="row">{{ user.id }}</th>
+                                            <td>{{ user.name }}</td>
+                                            <td>{{ user.email }}</td>
+                                            <td v-if="user.slot_id===-1">No Booking</td>
+                                            <td v-else>{{ user.slot_id }}</td>
+                                            <td>{{ user.check_in }}</td>
+                                            <td>{{ user.check_out }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -320,9 +326,7 @@ export default {
 
     data() {
         return {
-            users: [
-                { Id: '01', Name: 'Mark', Email: 'Mark@argusoft.com' }
-            ],
+            users: [],
             slots: [],
             bookedslots: []
             ,
@@ -371,6 +375,12 @@ export default {
             AdminApi.allSlots().then((res) => {
                 this.slots = res.data
             });
+        },
+        allUsers:function(){
+            AdminApi.allUsers().then((res)=>{
+                this.users = res.data
+                console.log(res.data)
+            })
         },
         getGym:function(){
             AdminApi.showGym().then((res) => {
@@ -476,6 +486,7 @@ export default {
         this.allEquipments();
         this.allSlots();
         this.getGym();
+        this.allUsers();
     }
 }
 
