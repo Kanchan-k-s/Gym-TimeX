@@ -40,7 +40,7 @@ export default [
         name:'Booking'
     },
     {
-        path: "/equipments",
+        path: "/employee/equipments",
         component: Equipments,
         name: "equipments",
     },

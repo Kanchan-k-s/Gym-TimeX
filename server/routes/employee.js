@@ -21,7 +21,7 @@ router.use(verifytoken);
 
 router.use(checkRole);
 
-router.get('/equipments/category',equipment.category)
+router.get('/equipments/category/:cat',equipment.category)
 
 router.post('/slot/date', slot.showDate)
 

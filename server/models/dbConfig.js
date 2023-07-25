@@ -52,7 +52,7 @@ const connectDB = async function () {
 
     db.Models = require("./Models")(sequelize, DataTypes)
     // db.Gyms= require("./Gyms.js")(sequelize, DataTypes)
-    // sequelize.sync({ alter: true })
+    sequelize.sync({ alter: true })
   } catch (error) {
     console.log("Error in connecting to the database .", error);
   }

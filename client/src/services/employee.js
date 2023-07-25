@@ -7,8 +7,8 @@ export default {
     showEquipments(){
         return api.get("http://localhost:3000/employee/equipments")
     },
-    showEquipmentsCategory(){
-        return api.get("http://localhost:3000/employee/equipments/category")
+    showEquipmentsCategory(cat){
+        return api.get("http://localhost:3000/employee/equipments/category/"+cat)
     }
     ,
     updateSlot(id){
