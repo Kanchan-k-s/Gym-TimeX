@@ -208,13 +208,40 @@
           <div style="font-style: italic; color: rgba(252, 252, 252, 0.808);width:85%;margin-left:8%;margin-top: 6%;">
             "We are here for you!!"
           </div>
-
-          <div class="boxshad"
-            style="padding: 2%; color: rgba(252, 252, 252, 0.808); width:40%;margin-left:30%;margin-top: 8%;">
-            <!-- <h4 style="text-decoration: underline;"> Contact Details</h4> -->
-            <h6> <br> GYM TimeX </h6>
-            <p> A 66, GIDC Sector - 25<br>Gandhinagar - 382016<br>Gujarat, India</p>
+          <div class="container">
+            <div class="contactInfo">
+              <div class="box">
+                <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+</div>
+                <div class="text">
+                  <h3>Address</h3>
+                  <p>A 66, GIDC Sector - 25<br>Gandhinagar - 382016<br>Gujarat, India</p>
+                </div>
+              </div>
+              <div class="box">
+                <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i>
+</div>
+                <div class="text">
+                  <h3>Phone</h3>
+                  <p>9328573110</p>
+                </div>
+              </div>
+              <div class="box">
+                <div class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+</div>
+                <div class="text">
+                  <h3>Mail Us</h3>
+                  <p>info@argusoft.com</p>
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- <div class="boxshad"
+            style="padding: 2%; color: rgba(252, 252, 252, 0.808); width:40%;margin-left:30%;margin-top: 8%;"> -->
+          <!-- <h4 style="text-decoration: underline;"> Contact Details</h4> -->
+          <!-- <h6> <br> GYM TimeX </h6>
+            <p> A 66, GIDC Sector - 25<br>Gandhinagar - 382016<br>Gujarat, India</p>
+          </div> -->
         </div>
       </div>
 
@@ -277,6 +304,51 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
+
+.container{
+  width: 300;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 30px;
+}
+
+.container .contactInfo{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.container .contactInfo .box{
+  position: relative;
+  padding: 20px 0;
+  display: flex;
+}
+
+.container .contactInfo .box .icon{
+  min-width: 60px;
+  height: 60px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 22px;
+}
+
+.container .contactInfo .box .text{
+  display: flex;
+  margin-left: 20px;
+  font-size: 16px;
+  color: #fff;
+  flex-direction: column;
+  font-weight: 300;
+}
+
+.container .contactInfo .box .text h3
+{
+  font-weight: 500;
+  color: 00bcd4;
+}
 
 .boxshad {
   box-shadow: 0 0 3px whitesmoke;
