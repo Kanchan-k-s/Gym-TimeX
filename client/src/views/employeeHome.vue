@@ -288,10 +288,7 @@
 </template>
 <script>
 import { BIconHandThumbsDown } from "bootstrap-vue";
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import '@fortawesome/fontawesome-free/css/all.css';
+
 import mixin from "../mixins/authmixin";
 import Cookies from "js-cookie";
 export default {
