@@ -84,7 +84,7 @@
       </button>
     </div>
     <section id="about" class="pt-5 ">
-      <div class="container" style="margin-top:4.5%">
+      <div class="container" style="margin-top:7%">
         <div class="row">
           <div class="col-12 text-center">
             <!-- Modified: Added "text-center" class -->
@@ -136,22 +136,7 @@
                     </div>
                   </div>
                 </div>
-
               </div>
-              <!-- <div class="row">
-                <div class="col-md-4 mb-3">
-                  <div class="card" style="height: 450px;">
-                    <img class="img-fluid" alt="100%x280"
-                      src="https://web-back.perfectgym.com/sites/default/files/styles/900x/public/Marketing-klubu-fitness-czyli-jak-wypromowac-Twoja-si%C5%82ownie.jpeg?itok=ULMaVKX3">
-                    <div class="card-body">
-                      <h4 class="card-title">Functional Training Zones</h4>
-                      <p class="card-text">Dedicated spaces with equipment like battle ropes, kettlebells, medicine
-                        balls, and suspension trainers for functional fitness training.</p>
-
-                    </div>
-                  </div>
-                </div>
-              </div> -->
               <div class="row">
                 <div class="col-md-4 mb-3">
                   <div class="card" style="height: 380px;">
@@ -193,26 +178,27 @@
         </div>
       </div>
     </section>
-    <section id="contact">
+    <section id="contact" class="pt-5 bg">
 
-      <div class="cont pt-5">
+      <!-- <div class="cont pt-5">
         <div class="image-wrapper">
           <img
             src="https://img.freepik.com/premium-photo/contemporary-spotless-fitness-gym-center-interiorgenerative-ai_391052-10889.jpg"
             alt="Image" class="image" />
         </div>
-        <div class="text-wrapper text-center" style="padding-top: 6%; background-color:rgba(0, 0, 0, 0.884) ">
+        <div class="text-wrapper text-center" style="padding-top: 6%; background-color:rgb(255, 255, 255) ">
           <div class="boxshad" style="background; width:35%;margin-left:33%;margin-bottom: 5%; ">
-            <h1 style="color: rgba(252, 252, 252, 0.808);"> Contact Us</h1>
+            <h1 style="color: rgba(0, 0, 0, 0.808);"> Contact Us</h1>
           </div>
-          <div style="font-style: italic; color: rgba(252, 252, 252, 0.808);width:85%;margin-left:8%;margin-top: 6%;">
+          <div style="font-style: italic; color: rgba(0, 0, 0, 0.808);width:85%;margin-left:8%;margin-top: 6%;">
             "We are here for you!!"
           </div>
           <div class="container">
             <div class="contactInfo">
               <div class="box">
-                <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
-</div>
+                <div class="icon">
+                  <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i>
+                </div>
                 <div class="text">
                   <h3>Address</h3>
                   <p>A 66, GIDC Sector - 25<br>Gandhinagar - 382016<br>Gujarat, India</p>
@@ -220,61 +206,92 @@
               </div>
               <div class="box">
                 <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i>
-</div>
+                </div>
                 <div class="text">
                   <h3>Phone</h3>
                   <p>9328573110</p>
                 </div>
               </div>
               <div class="box">
-                <div class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i>
-</div>
+                <div class="icon"><i class="fa fa-envelope" aria-hidden="true"></i>
+                </div>
                 <div class="text">
                   <h3>Mail Us</h3>
                   <p>info@argusoft.com</p>
                 </div>
               </div>
             </div>
-          </div>
-          <!-- <div class="boxshad"
+          </div> -->
+      <!-- <div class="boxshad"
             style="padding: 2%; color: rgba(252, 252, 252, 0.808); width:40%;margin-left:30%;margin-top: 8%;"> -->
-          <!-- <h4 style="text-decoration: underline;"> Contact Details</h4> -->
-          <!-- <h6> <br> GYM TimeX </h6>
+      <!-- <h4 style="text-decoration: underline;"> Contact Details</h4> -->
+      <!-- <h6> <br> GYM TimeX </h6>
             <p> A 66, GIDC Sector - 25<br>Gandhinagar - 382016<br>Gujarat, India</p>
           </div> -->
+      <!-- </div>
+      </div> -->
+      <div>
+        <div id="details" data-panel="business-details-panel" class="IJMoHc b0t70b" jslog="59796; track:impression">
+          <!-- <hr class="WUdCTb"> -->
+          <div class="text-center" style="color: rgb(255, 244, 244); margin-bottom: 2%; margin-top: 7% ">
+            <h1 style="color: rgba(255, 255, 255, 0.808);">Contact Us</h1>
+          </div>
+          <div class="text-center" jslog="56034; track:impression,click">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14664.148804565486!2d72.6273969!3d23.2417333!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2bf0022b4609%3A0x4ecd09a1a9d956eb!2sArgusoft!5e0!3m2!1sen!2sin!4v1690368229709!5m2!1sen!2sin"
+              width="800" height="500" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="container  w-50" style="color:white; margin-top:3%">
+            <div class="row">
+              <!-- First Column for Contact Information -->
+              <div class="col-sm-6">
+                <h3 style="text-decoration:underline;">Contact</h3>
+                <p> <br> Mail Us: info@argusoft.com</p>
+                <p>Call Us: 9328573110</p>
+              </div>
+              <!-- Second Column for Address -->
+              <div class="col-sm-6">
+                <h3 style="text-decoration:underline;">Address</h3>
+                <h6> <br> GYM TimeX </h6>
+                <p> A 66, GIDC Sector - 25<br>Gandhinagar - 382016<br>Gujarat, India</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <footer>
+        <div class="text-center">
+          AKsoft
+        </div>
+        <div class="footer-links" style="margin-left: 80%;">
+          <a href="mailto:info@argusoft.com"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+              <path
+                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
+            </svg></a>
+          <a href="https://www.facebook.com/argusoft"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+              fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+              <path
+                d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+            </svg></a>
+          <a href="https://www.linkedin.com/company/argusoft"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+              height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+              <path
+                d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
+            </svg></a>
 
+        </div>
+      </footer>
     </section>
-    <footer>
-      <div class="text-center">
-        AKsoft
-      </div>
-      <div class="footer-links" style="margin-left: 80%;">
-        <a href="mailto:info@argusoft.com"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-            fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
-            <path
-              d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
-          </svg></a>
-        <a href="https://www.facebook.com/argusoft"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-            fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
-            <path
-              d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
-          </svg></a>
-        <a href="https://www.linkedin.com/company/argusoft"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-            fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
-            <path
-              d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
-          </svg></a>
-
-      </div>
-    </footer>
   </div>
 </template>
-https://img.freepik.com/premium-photo/cropped-photo-strong-athlrtic-man-taking-dumbbells-from-floor-work-out-modern-gym-warm-orange-light_116317-20357.jpg
 <script>
 import { BIconHandThumbsDown } from "bootstrap-vue";
-
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import '@fortawesome/fontawesome-free/css/all.css';
 import mixin from "../mixins/authmixin";
 import Cookies from "js-cookie";
 export default {
@@ -305,49 +322,76 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
 
-.container{
-  width: 300;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  margin-top: 30px;
+.bg{
+background: url("https://t3.ftcdn.net/jpg/03/23/85/94/360_F_323859450_8uOTMisto96ip50G5kOVWuMgNJCNigDg.jpg") no-repeat center;
+background-size: cover;
+}
+.WUdCTb {
+  border: 1px solid black;
+  margin: 0 auto 16px;
+  width: 50px
 }
 
-.container .contactInfo{
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-}
-.container .contactInfo .box{
-  position: relative;
-  padding: 20px 0;
-  display: flex;
+.b0t70b {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+  max-width: 1080px;
 }
 
-.container .contactInfo .box .icon{
-  min-width: 60px;
-  height: 60px;
-  background: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  font-size: 22px;
+.Igsabe {
+  font-size: 1em;
+  margin: 0 0 48px;
+  text-align: center;
+  text-transform: uppercase
 }
 
-.container .contactInfo .box .text{
-  display: flex;
-  margin-left: 20px;
-  font-size: 16px;
-  color: #fff;
-  flex-direction: column;
-  font-weight: 300;
+.IQ1KEb {
+  margin-bottom: 48px
 }
 
-.container .contactInfo .box .text h3
-{
-  font-weight: 500;
-  color: 00bcd4;
+.QMbmRe {
+  background-position: center center;
+  background-repeat: no-repeat;
+  padding-top: 56%;
+}
+
+.fGZQDc {
+  display: -moz-box;
+  display: flex;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  flex-direction: column
+}
+
+.kCmrbf {
+  -moz-box-flex: 1;
+  flex: 1;
+  flex-basis: auto;
+  margin: 0 18px 42px
+}
+
+.q8cvFf,
+.Gou21b {
+  margin: 0 0 16px
+}
+
+.PDvGL {
+  cursor: pointer
+}
+
+.PDvGL:hover {
+  text-decoration: none
+}
+
+.R7Di0e {
+  list-style-type: none;
+  margin: 0;
+  padding: 0
+}
+
+.qhkvMe {
+  font-style: normal
 }
 
 .boxshad {
@@ -359,7 +403,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f2f2f2;
+  background-color: #ffffffcc;
   padding: 10px;
 }
 
@@ -374,7 +418,7 @@ footer {
 .footer-links a {
   margin-right: 15px;
   text-decoration: none;
-  color: #555;
+  color: #00000098;
 }
 
 .social-icons a {
@@ -406,7 +450,7 @@ footer {
   height: 70vh;
   width: 70vh;
   margin-left: 20%;
-  margin-top: 6%;
+  margin-top: 10%;
   margin-bottom: 6%;
 }
 
