@@ -83,7 +83,7 @@ const login = async (req, res) => {
                 success: true,
                 token: `${token}`,
                 user: {
-                  name: result.email,
+                  name: result.name,
                   type: result.type,
                 },
                 message: "Login Successful.",
@@ -158,7 +158,7 @@ const register = async (req, res) => {
             success: true,
             token: `${token}`,
             user: {
-              name: result.email,
+              name: result.name,
               type: result.type,
             },
             message: "Registration Successful.",
