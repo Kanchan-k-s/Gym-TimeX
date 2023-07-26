@@ -16,7 +16,7 @@
                         </div>
 
                     </div>
-                    <div class="section-login-2">
+                    <div class="section-login-2" >
                         <div class="section-login-2-main" v-if="register">
 
                             <h1 class="section-login-2-title">Register</h1>

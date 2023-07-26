@@ -4,8 +4,8 @@
       <div class="container-xl">
         <!-- Logo -->
         <a class="navbar-brand" href="/admin/panel">
-          <video src="https://cdnl.iconscout.com/lottie/premium/preview-watermark/exercise-8350566-6630483.mp4?h=700"
-            width="60" height="60" class="h-8" alt="..."></video>
+          <video style="height:60px; width:60px;"
+         src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
         </a>
         <h1 class="text-start" style="color:white"> GYM TimeX </h1>
         <!-- Navbar toggle -->
