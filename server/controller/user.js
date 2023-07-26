@@ -1,15 +1,43 @@
 const { db } = require("../models/dbConfig");
+const { Op, and } = require("sequelize")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET;
 const tokenLife = process.env.TOKEN_LIFE;
 const allUser = async (req, res) => {
   try {
-    const Users = db.Models.user;
-    // console.log(db.Models.gyms)
-    // await db.Models.gyms.create({opening_time : '02:00:00',closing_time :'03:00:00',capacity:20});
-    const result = await Users.findAll();
-    res.send(result);
+    const User = db.Models.user;
+    const Slots = db.Models.slots;
+
+    const users = await User.findAll({
+      attributes: ['id', 'name', 'email', 'check_in', 'check_out', 'slot_id'],
+    });
+
+    const slotIds = users.map((user) => user.slot_id);
+    const slots = await Slots.findAll({
+      attributes: ['id', 'date', 'slot_in', 'slot_out'],
+      where: {
+        id: slotIds,
+      },
+    });
+
+    const usersWithSlotInfo = users.map((user) => {
+      const userSlot = slots.find((slot) => slot.id === user.slot_id);
+      return {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        slot_id: user.slot_id,
+        date: userSlot ? userSlot.date : null,
+        slot_in: userSlot ? userSlot.slot_in : null,
+        slot_out: userSlot ? userSlot.slot_out : null,
+        check_in: user.check_in,
+        check_out: user.check_out
+      };
+    });
+
+    // console.log(usersWithSlotInfo);
+    res.send(usersWithSlotInfo);
   } catch (e) {
     res.status(500).json({
       success: false,
@@ -111,16 +139,33 @@ const register = async (req, res) => {
       const hashedPassword = await bcrypt.hash(query.password, 10);
       query.password = hashedPassword;
       const result = await User.create(query);
-      res.status(201).json({
-        success: true,
-        user: [
-          {
-            name: result.name,
-            email: result.email,
-            type: result.type,
-          },
-        ],
+      const data = {
+        userId: result.id,
+        type: result.type,
+      };
+      jwt.sign(data, secret, { expiresIn: tokenLife }, (err, token) => {
+        if (err) {
+          res.status(404).json({
+            success: false,
+            errors: [
+              {
+                msg: err.msg,
+              },
+            ],
+          });
+        } else {
+          res.status(200).json({
+            success: true,
+            token: `${token}`,
+            user: {
+              name: result.email,
+              type: result.type,
+            },
+            message: "Registration Successful.",
+          });
+        }
       });
+
     }
   } catch (e) {
     res.status(500).json({
@@ -130,31 +175,59 @@ const register = async (req, res) => {
   }
 };
 
-const booking= async (req, res) => {
-try{
-  const User = db.Models.user;
-  const Slots = db.Models.slots;
-  console.log("hi 1")
-  const usersWithSlot = await User.findAll({
-    attributes: ['id', 'name'],
-    include: [
-      {
-        model: Slots,
-        as: 'slot',
-        attributes: ['slot_in', 'slot_out'],
+const booking = async (req, res) => {
+  try {
+
+    let { curr_date } = req.body
+    curr_date = new Date(curr_date.split('T')[0] + 'T00:00:00.000Z')
+    const User = db.Models.user;
+    const Slots = db.Models.slots;
+
+    const users = await User.findAll({
+      attributes: ['id', 'name', 'email', 'check_in', 'check_out', 'slot_id'],
+    });
+
+    const slotIds = users.map((user) => user.slot_id);
+    const slots = await Slots.findAll({
+      attributes: ['id', 'date', 'slot_in', 'slot_out'],
+      where: {
+        id: slotIds,
+        date:{
+          [Op.eq]:curr_date
+        }
       },
-    ],
+    });
+    // const text = slots.find((slot) => (slot.id === user.slot_id && slot.date===curr_date));
+    let usersWithSlotInfo = users.map((user) => {
+      const userSlot = slots.find((slot) => slot.id === user.slot_id );
+      // console.log(userSlot)
+      return {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        slot_id: user.slot_id,
+        date: userSlot ? userSlot.date : null,
+        slot_in: userSlot ? userSlot.slot_in : null,
+        slot_out: userSlot ? userSlot.slot_out : null,
+        check_in: user.check_in,
+        check_out: user.check_out
+      };
+    });
+    usersWithSlotInfo = usersWithSlotInfo.filter(ele => {
+      // console.log(ele.date ==curr_date)
+      if(ele.date !=null)
+        return ele
+    });
     
-  });
-  console.log(usersWithSlot)
-  res.send('hi')
-}catch(e){
-  console.log(e)
-  res.status(500).json({
-    success: false,
-    errors: [{ msg: "Server error" }],
-  });
-}
+    res.send(usersWithSlotInfo)
+
+  } catch (e) {
+    console.log(e)
+    res.status(500).json({
+      success: false,
+      errors: [{ msg: "Server error" }],
+    });
+  }
 
 }
 

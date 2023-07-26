@@ -67,7 +67,9 @@
                                             <th scope="col">Id</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Email</th>
-                                            <th scope="col">Slot id</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Slot In</th>
+                                            <th scope="col">Slot Out</th>
                                             <th scope="col">Check in</th>
                                             <th scope="col">Check out</th>
                                         </tr>
@@ -77,8 +79,9 @@
                                             <th scope="row">{{ user.id }}</th>
                                             <td>{{ user.name }}</td>
                                             <td>{{ user.email }}</td>
-                                            <td v-if="user.slot_id===-1">No Booking</td>
-                                            <td v-else>{{ user.slot_id }}</td>
+                                            <td >{{ user.date===null?'': user.date.split('T')[0] }}</td>
+                                            <td >{{ user.slot_in }}</td>
+                                            <td>{{ user.slot_out }}</td>
                                             <td>{{ user.check_in }}</td>
                                             <td>{{ user.check_out }}</td>
                                         </tr>
@@ -98,8 +101,14 @@
                     <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
+                            <div class="text-center col-sm-4">
+                                <input class="form-control" type="date" @change="allUsersToday" v-model="currentDate" />
+                            </div>
+                            
+                            <br>
                             <div>
                                 <table border="1px" class="table">
+
                                     <thead>
                                         <tr>
                                             <th scope="col">Id</th>
@@ -109,12 +118,15 @@
 
                                         </tr>
                                     </thead>
+                                    
                                     <tbody>
-                                        <tr v-for="Bookedslot in bookedslots">
-                                            <th scope="row">{{ Bookedslot.id }}</th>
-                                            <td>{{ Bookedslot.fullname }}</td>
-                                            <td>{{ Bookedslot.slotin }}</td>
-                                            <td>{{ Bookedslot.slotout }}</td>
+                                        
+                                        <tr v-for="user in usertoday">
+                                            <!-- <td>{{ user }}</td> -->
+                                            <th scope="row">{{ user.id }}</th>
+                                            <td>{{ user.name }}</td>
+                                            <td>{{ user.slot_in }}</td>
+                                            <td>{{ user.slot_out }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -165,8 +177,7 @@
                                         </tr>
                                         <tr v-if="onUpdate">
                                             <th scope="row"> {{ newObject.id }} </th>
-                                            <td><input class="form-control" type="date"
-                                                    v-model="newObject.date" /></td>
+                                            <td>{{ newObject.date }}  </td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_in" /></td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_out" /></td>
                                             <td>{{ newObject.nop }}</td>
@@ -317,7 +328,7 @@
 </template>
 
 <script>
-import { BIconHandThumbsDown } from "bootstrap-vue";
+import { BIconHandThumbsDown, BIconThreeDotsVertical } from "bootstrap-vue";
 import AdminNavbar from "../components/AdminNavbar.vue"
 
 import AdminApi from "../services/admin"
@@ -330,6 +341,7 @@ export default {
             slots: [],
             bookedslots: []
             ,
+            usertoday:[],
             equipments: [],
             newRow: {
                 slot_in: '',
@@ -354,6 +366,7 @@ export default {
             onUpdate: false,
             onEquipUpdate: false,
             clickUpdateGym:false,
+            currentDate:new Date()
         }
     },
     computed: {
@@ -380,6 +393,14 @@ export default {
             AdminApi.allUsers().then((res)=>{
                 this.users = res.data
                 console.log(res.data)
+            })
+        },
+        allUsersToday:function(){
+            console.log(this.currentDate)
+            AdminApi.allUsersToday({ curr_date: this.currentDate }).then((res)=>{
+                this.usertoday= res.data
+                
+                // console.log(res.data)
             })
         },
         getGym:function(){
@@ -487,6 +508,9 @@ export default {
         this.allSlots();
         this.getGym();
         this.allUsers();
+        // this.currentDate.setDate(this.currentDate.getDate()-1)
+        console.log(this.currentDate)
+        this.allUsersToday();
     }
 }
 

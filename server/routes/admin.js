@@ -41,5 +41,6 @@ router.get('/gyms/:id', gyms.showOne)
 router.put('/gyms/update/:id', gyms.update)
 
 router.get('/user/all',user.allUser)
+router.post('/booking',user.booking)
 
 module.exports = router;

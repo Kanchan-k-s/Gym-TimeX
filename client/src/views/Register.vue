@@ -180,7 +180,11 @@ export default {
         return {
             register: true,
             show: { 0: "password", 1: "password", 2: "password" },
-            Register:{},
+            Register:{
+                new_user_email:'',
+                new_user_name:'',
+                new_user_password:''
+            },
             Login: {
                 user_email: '',
                 user_password: '',
@@ -209,8 +213,8 @@ export default {
             try {
                 
                 this.$v.$touch();
+                console.log(this.$v.Register)
                 if (this.$v.Register.$invalid) {
-                    console.log(this.$v)
                     return;
                 }
                 const new_user = {

@@ -4,6 +4,9 @@ export default {
     allUsers(){
         return api.get("http://localhost:3000/admin/user/all");
     },
+    allUsersToday(current_date){
+        return api.post("http://localhost:3000/admin/booking",current_date);
+    },
     allEquipments(){
         return api.get("http://localhost:3000/admin/equipment/all");
     },
