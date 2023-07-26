@@ -32,6 +32,7 @@
             <a v-if="!show" href="/sign/up" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
               SIGN UP
             </a>
+            <span v-if="show" style="padding-right:20%; color:white">{{ this.user }}</span>
             <a v-if="show" v-on:click="logout()" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
               Logout
             </a>
@@ -295,7 +296,8 @@ export default {
   mixins: [mixin],
   data() {
     return {
-      show: false
+      show: false,
+      user:'',
     }
   },
 
@@ -307,6 +309,7 @@ export default {
   },
   beforeMount() {
     const token = Cookies.get("token");
+    this.user=localStorage.getItem("name1")
     console.log(token === undefined)
     if (token !== undefined) {
       this.show = true;

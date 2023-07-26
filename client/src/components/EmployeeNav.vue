@@ -30,7 +30,9 @@
                     <a href="/sign/up" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
                         SIGN UP
                     </a> -->
+                    <span style="padding-right:20%; color:white">{{ this.user }}</span>
                     <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
+                        
                         Logout
                     </a>
                 </div>
@@ -43,7 +45,14 @@
 import mixin from "../mixins/authmixin";
 export default {
     mixins: [mixin],
-    
+    data (){
+        return{
+            user:''
+        }
+    },
+    beforeMount(){
+        this.user=localStorage.getItem("name1")
+    }
 }
 </script>
 <style scoped>

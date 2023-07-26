@@ -23,6 +23,8 @@
                 
                 <!-- Action -->
                 <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
+                    <!-- <p>{{ localStorage.getItem("user1") }}</p> -->
+                    <span style="padding-right:20%; color:white">{{ this.user }}</span>
                     <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto">
                         Logout
                     </a>
@@ -37,10 +39,20 @@
     
 </template>
 <script>
+import { onBeforeMount } from "vue";
 import mixin from "../mixins/authmixin";
 export default {
     mixins: [mixin],
+    data (){
+        return{
+            user:''
+        }
+    },
+    beforeMount(){
+        this.user=localStorage.getItem("name1")
+    }
 }
+
 </script>
 <style scoped>
 .navbar input[type="checkbox"],
