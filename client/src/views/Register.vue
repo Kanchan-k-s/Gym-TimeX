@@ -9,16 +9,17 @@
                             <div class="section-login-1-img">
                                 <!-- <img src="https://img.freepik.com/premium-vector/run-running-people-human-man-sport-logo-vector-icon-illustration_7688-4400.jpg"
                                     width="700" height="500" alt=""> -->
-                                    <!-- <video loading="lazy" muted="muted" src="https://cdnl.iconscout.com/lottie/premium/thumb/woman-on-gym-training-plan-7258437-5907632.mp4"  type="video/mp4" autoplay="autoplay" loop="loop"></video> -->
-                                    <video loading="lazy" muted="muted" src="https://cdnl.iconscout.com/lottie/premium/thumb/exercise-in-metaverse-5690348-4739261.mp4" type="video/mp4" autoplay="autoplay" loop="loop"></video>
+                                <!-- <video loading="lazy" muted="muted" src="https://cdnl.iconscout.com/lottie/premium/thumb/woman-on-gym-training-plan-7258437-5907632.mp4"  type="video/mp4" autoplay="autoplay" loop="loop"></video> -->
+                                <a href="/">
+                                    <video loading="lazy" muted="muted"
+                                        src="https://cdnl.iconscout.com/lottie/premium/thumb/exercise-in-metaverse-5690348-4739261.mp4"
+                                        type="video/mp4" autoplay="autoplay" loop="loop"></video>
+                                </a>
                             </div>
-
                         </div>
-
                     </div>
-                    <div class="section-login-2" >
+                    <div class="section-login-2">
                         <div class="section-login-2-main" v-if="register">
-
                             <h1 class="section-login-2-title">Register</h1>
                             <form @submit.prevent class="section-login-2-form">
                                 <div class="login-form-1">
@@ -103,6 +104,11 @@
                                 <div class="login-form-5" v-on:click="register = false">
                                     <p>Already have an account? <a>Sign In</a></p>
                                 </div>
+                                <a href="/" class="text-center"
+                                    style="padding: 0%; text-decoration: underline; color: rgba(0, 0, 0, 0.548); font-size: small;">
+                                    <p>
+                                        Back to home page</p>
+                                </a>
                             </form>
                         </div>
                         <div class="section-login-2-main" v-if="!register">
@@ -125,8 +131,7 @@
                                     </div>
                                 </div>
 
-                                <div class="login-form-3"
-                                    :class="{ 'form-group--error': $v.Login.user_password.$error }">
+                                <div class="login-form-3" :class="{ 'form-group--error': $v.Login.user_password.$error }">
                                     <label class="form__label">Password</label>
                                     <div class="d-flex align-items-center">
                                         <input class="form-control " v-model="Login.user_password"
@@ -158,6 +163,11 @@
                                 <div class="login-form-5" v-on:click="register = true">
                                     <p>Want to create an account? <a>Sign Up</a></p>
                                 </div>
+                                <a href="/" class="text-center"
+                                    style="padding: 0%; text-decoration: underline; color: rgba(0, 0, 0, 0.548); font-size: small;">
+                                    <p>
+                                        Back to home page</p>
+                                </a>
                             </form>
 
                         </div>
@@ -180,10 +190,10 @@ export default {
         return {
             register: true,
             show: { 0: "password", 1: "password", 2: "password" },
-            Register:{
-                new_user_email:'',
-                new_user_name:'',
-                new_user_password:''
+            Register: {
+                new_user_email: '',
+                new_user_name: '',
+                new_user_password: ''
             },
             Login: {
                 user_email: '',
@@ -208,10 +218,10 @@ export default {
                 this.eyeType[ind] === "eye-fill" ? "eye-slash-fill" : "eye-fill";
         },
         reg_user: async function () {
-            
+
             // console.log("hi")
             try {
-                
+
                 this.$v.$touch();
                 // console.log(this.$v.Register)
                 if (this.$v.Register.$invalid) {
@@ -222,7 +232,7 @@ export default {
                     name: this.Register.new_user_name,
                     password: this.Register.new_user_password
                 }
-                
+
                 const res = await User.register(new_user)
                 // console.log(res.data)
                 if (res.data.success) {
@@ -289,7 +299,7 @@ export default {
         }
     },
     validations: {
-        Login:{
+        Login: {
             user_email: {
                 required,
                 email
@@ -312,7 +322,7 @@ export default {
             },
         },
         Register: {
-            
+
             new_user_email: {
                 required,
                 email
@@ -492,7 +502,7 @@ main section.section-login .section-main .section-login-2 .section-login-2-main 
 main section.section-login .section-main .section-login-2 .section-login-2-main .section-login-2-form .login-form-4 p a,
 main section.section-login .section-main .section-login-2 .section-login-2-main .section-login-2-form .login-form-5 p a {
     font-weight: bold;
-    color: rgb(2, 0, 36,0.705);
+    color: rgb(2, 0, 36, 0.705);
 }
 
 main section.section-login .section-main .section-login-2 .section-login-2-main .section-login-2-form .login-form-submit-btn button {
