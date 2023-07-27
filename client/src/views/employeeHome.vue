@@ -179,6 +179,14 @@
         </div>
       </div>
     </section>
+    <div>
+    <h2>Content Section</h2>
+    <!-- Your content here -->
+    <Advertisement
+      :adClient="ca-pub-2534682453210662"
+      :adSlot="8111849457"
+    />
+  </div>
     <section id="contact" class="pt-5 bg">
 
       <!-- <div class="cont pt-5">
@@ -290,6 +298,7 @@
 <script>
 import { BIconHandThumbsDown } from "bootstrap-vue";
 
+import Advertisement from '../components/Advertisement.vue';
 import mixin from "../mixins/authmixin";
 import Cookies from "js-cookie";
 export default {
@@ -300,7 +309,12 @@ export default {
       user:'',
     }
   },
+  components: {
+    Advertisement,
+  },
+  created(){
 
+  },
   methods: {
 
     start() {
