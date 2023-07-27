@@ -24,7 +24,7 @@ export default [
         name: "AdminDashboard",
     },
     {
-        path: "/admin/settings",
+        path: "/settings",
         component: AdminSettings,
         name: "AdminSettings",
     },

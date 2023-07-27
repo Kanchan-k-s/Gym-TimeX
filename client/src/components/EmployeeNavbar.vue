@@ -18,7 +18,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <!-- Nav -->
                 <div class="navbar-nav mx-lg-auto">
-                    <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Home</a>
+                    <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
                     <a class="nav-item nav-link active" href="/employee/booking/about_us">About</a>
                     <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Contact us</a>
                 </div>

@@ -192,14 +192,14 @@ const booking = async (req, res) => {
       attributes: ['id', 'date', 'slot_in', 'slot_out'],
       where: {
         id: slotIds,
-        date:{
-          [Op.eq]:curr_date
+        date: {
+          [Op.eq]: curr_date
         }
       },
     });
     // const text = slots.find((slot) => (slot.id === user.slot_id && slot.date===curr_date));
     let usersWithSlotInfo = users.map((user) => {
-      const userSlot = slots.find((slot) => slot.id === user.slot_id );
+      const userSlot = slots.find((slot) => slot.id === user.slot_id);
       // console.log(userSlot)
       return {
         id: user.id,
@@ -215,10 +215,10 @@ const booking = async (req, res) => {
     });
     usersWithSlotInfo = usersWithSlotInfo.filter(ele => {
       // console.log(ele.date ==curr_date)
-      if(ele.date !=null)
+      if (ele.date != null)
         return ele
     });
-    
+
     res.send(usersWithSlotInfo)
 
   } catch (e) {
@@ -266,10 +266,147 @@ const registerAdmin = async (req, res) => {
     });
   }
 };
+
+const Info = async (req, res) => {
+  try {
+    // console.log("di")
+    const User = db.Models.user;
+    const userId = req.userId;
+    const users = await User.findByPk(userId);
+    // console.log(users.name)
+    res.send({ name: users.name })
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const InfoUpdate = async (req, res) => {
+  try {
+    // console.log("di")
+    const Users = db.Models.user;
+    // console.log(req.body)
+    const user_name = req.body.name;
+    // console.log(user_name)
+    const userId = req.userId;
+    const users = await Users.update({ 'name': user_name }, {
+      where: {
+        id: userId
+      }
+    });
+
+    res.send({
+      success: true,
+      msg: "Successfully Updated"
+
+    })
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+const changePassword = async (req, res) => {
+  try {
+    const user_id = req.userId;
+    const Users = db.Models.user;
+    const newpassword = req.body.password;
+    
+    const { oldpassword, confirmPassword } = req.body;
+    // Create Hashing of password
+    
+    const salt = await bcrypt.genSalt(10);
+    // console.log(newpassword === confirmPassword)
+    if (newpassword === confirmPassword) {
+      
+      const results = await Users.findByPk(user_id)
+
+      // console.log(results);
+      if (results) {
+        const user = results;
+        bcrypt.compare(
+          oldpassword,
+          user.password,
+          async (err, isMatch) => {
+            if (err) {
+              return res.status(404).json({
+                success: false,
+                errors: [
+                  {
+                    msg: "Error occured at password matching",
+                  },
+                ],
+              });
+            }
+
+            // checking if password is matching or not
+            if (isMatch) {
+              const hashedPassword = await bcrypt.hash(newpassword, salt);
+              const update = await Users.update({
+                password: hashedPassword
+              },{
+                where:{
+                  id:user_id
+                }
+              })
+              
+              return res.status(201).json({
+                success: true,
+                msg: "Password Changed Successfully .",
+              });
+            } else {
+              // password is incorrect
+              return res.status(400).json({
+                success: false,
+                errors: [
+                  {
+                    msg: "Invalid credentials!",
+                  },
+                ],
+              });
+            }
+          }
+        );
+      } else {
+        // if user does not exist
+        return res.status(400).json({
+          success: false,
+          errors: [
+            {
+              msg: "Invalid credentials!",
+            },
+          ],
+        });
+      }
+    }
+
+    else {
+      return res.status(404).json({
+        success: false,
+        errors: [
+          {
+            msg: "Password and Confirm Password are not matching.",
+          },
+        ],
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      errors: [
+        {
+          msg: "Internal server error",
+        },
+      ],
+    });
+  }
+
+}
 module.exports = {
   allUser,
   login,
   register,
   registerAdmin,
-  booking
+  booking,
+  Info,
+  InfoUpdate,
+  changePassword
 };

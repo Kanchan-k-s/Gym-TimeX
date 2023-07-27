@@ -65,9 +65,14 @@ export default {
             })
         },
         oneClick: function (id) {
+            this.isLoading = true
             Employee.updateSlot(id).then((res) => {
-                console.log(res.data)
+                setTimeout(() => {
+                    this.isLoading = false;
+                    this.$toast.success("Slot Booked")
+                }, 1000);
                 this.showData(this.currentDate);
+                
             })
         },
         toggleSlotActive(slot) {

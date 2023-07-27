@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
         <div class="container-xl">
             <!-- Logo -->
-            <a class="navbar-brand" href="/admin/panel">
+            <a class="navbar-brand" href="/">
                 <video style="height:60px; width:60px;"
          src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
             </a>
@@ -20,7 +20,7 @@
                     <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
                     <a class="nav-item nav-link active" href="/employee/booking">Booking</a>
                     <a class="nav-item nav-link active" href="/employee/equipments">Equipments</a>
-                    <a class="nav-item nav-link active" href="/" aria-current="page">Setting</a>
+                    <a class="nav-item nav-link active" href="/settings" aria-current="page">Setting</a>
                 </div>
                 <!-- Action -->
                 <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
