@@ -18,7 +18,7 @@
                 <!-- Nav -->
                 <div class="navbar-nav mx-lg-auto">
                     <a class="nav-item nav-link active" href="/admin/panel" >Home</a>
-                    <a class="nav-item nav-link active" href="/admin/settings">Setting</a>
+                    <a class="nav-item nav-link active" href="/settings">Setting</a>
                     
                 </div>
                 

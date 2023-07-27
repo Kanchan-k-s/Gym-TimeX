@@ -27,22 +27,37 @@
                                 </div>
                                 <form class="form" @submit.prevent="handleSubmitProfile" v-else-if="form_index === 0">
                                     <fieldset class="h3 mb-4">Edit Profile</fieldset>
-                                    <div class="mb-3 w-50">
-                                        <label class="mb-2">First Name</label>
-                                        <input type="text" v-model="user.first_name" placeholder="Enter First Name"
+                                    <div class="mb-3 w-50" :class="{ 'form-group--error': $v.user_name.$error }">
+                                        <label class="form__label">Username<span>*</span></label>
+                                    <div class="d-flex align-items-center">
+                                        <input class="form-control " v-model="user_name"
+                                            v-model.trim="$v.user_name.$model"
+                                            :class="{ 'is-invalid': $v.user_name.$error }"
+                                            v-bind:min="user_name" placeholder="Password" />
+                                    </div>
+                                    <div class="error text-danger" v-if="$v.user_name.$dirty && !$v.user_name.required
+                                        ">
+                                        * Username is required.
+                                    </div>
+                                    <div class="error text-danger" v-if="!$v.user_name.minLength">
+                                        * Username must have at least
+                                        {{ $v.user_name.$params.minLength.min }} letters.
+                                    </div>
+                                        <!-- <label class="mb-2">Name</label>
+                                        <input type="text" v-model="user_name" placeholder="Enter Name"
                                             class="form-control" v-bind:class="{ 'is-invalid': fnameError }" />
                                         <div class="invalid-feedback" id="feedback-1" v-if="errors[0]">
                                             {{ errors[0].message }}
-                                        </div>
+                                        </div> -->
                                     </div>
-                                    <div class="mb-3 w-50">
+                                    <!-- <div class="mb-3 w-50">
                                         <label class="mb-2">Last Name</label>
                                         <input type="text" v-model="user.last_name" placeholder="Enter Last Name"
                                             class="form-control" v-bind:class="{ 'is-invalid': lnameError }" />
                                         <div class="invalid-feedback" id="feedback-2" v-if="errors[1]">
                                             {{ errors[1].message }}
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                     <div class="mb-3">
                                         <input type="submit" value="Update" class="btn btn-primary" />
@@ -98,7 +113,7 @@
                                     }">
                                         <label for="" class="mb-2">Confirm Password</label>
                                         <div class="d-flex align-items-center w-50">
-                                            <input v-model="password.confirmpassword"
+                                            <input 
                                                 v-model.trim="$v.password.confirmPassword.$model"
                                                 :class="{ 'is-invalid': $v.password.confirmPassword.$error }"
                                                 placeholder="Re-enter New Password" class="form-control" :type="show[2]" />
@@ -145,7 +160,7 @@ export default {
     data() {
         return {
             isLoading: false,
-            user: {},
+            user_name:'',
             password: { oldpassword: "", password: "", confirmPassword: "" },
             show: { 0: "password", 1: "password", 2: "password" },
             eyeType: {
@@ -161,6 +176,10 @@ export default {
         };
     },
     validations: {
+        user_name:{
+            required,
+            minLength:minLength(3)
+        },
         password: {
             oldpassword: {
                 required,
@@ -190,60 +209,42 @@ export default {
         },
     },
     methods: {
-
-        validate_profile() {
-            this.errors = [];
-            console.log(this.user);
-            var len = this.user.first_name.length;
-            if (len < 1) {
-                this.fnameError = true;
-                this.errors.push({
-                    message: "First Name must be required.",
-                });
-            } else {
-                this.fnameError = false;
-                this.errors.push({
-                    message: "",
-                });
-            }
-            if (this.user.last_name.length < 1) {
-                this.lnameError = true;
-                this.errors.push({
-                    message: "Last Name must be required.",
-                });
-            } else {
-                this.lnameError = false;
-                this.errors.push({
-                    message: "",
-                });
-            }
-            if (this.lnameError || this.fnameError) {
-                return true;
-            } else {
-                return false;
-            }
+        getprofile(){
+            userApi.getUserInfo().then((res)=>{
+                this.user_name=res.data.name
+            })
         },
+        
         toggleShow(ind) {
             this.show[ind] = this.show[ind] === "text" ? "password" : "text";
             this.eyeType[ind] =
                 this.eyeType[ind] === "eye-fill" ? "eye-slash-fill" : "eye-fill";
         },
         handleSubmitProfile: async function () {
+            this.$v.$touch();
+            // console.log(this.$v)
+            if (this.$v.user_name.$invalid) {
+                const errors = [{ msg: 'Requires min 4 length' }]
+                this.toast(errors);
+            }
             try {
-                const error = await this.validate_profile();
-                if (!error) {
-                    const response = await userApi.updateUser(this.user);
+                // const error = await this.validate_profile();
+                    if(!this.$v.user_name.$invalid){
 
+                    
+                    const response = await userApi.updateUser({'name':this.user_name});
+                    // console.log(response)
                     if (response.data.success === true) {
                         this.$toast.success("Profile updated");
                         localStorage.setItem(
                             "name1",
-                            this.user.first_name + " " + this.user.last_name
+                            this.user_name
                         );
                     } else {
                         this.$toast.error("Try again!");
                     }
                 }
+                
             } catch (error) {
                 const errors = !error.response
                     ? [{ msg: error.message }]
@@ -253,11 +254,12 @@ export default {
         },
         handleSubmitPassword: async function () {
             this.$v.$touch();
-            if (this.$v.$invalid) {
+            if (this.$v.$invalid.password) {
                 return;
             }
             // console.log(this.password);
             try {
+                console.log(this.password)
                 const response = await userApi.changePassword(this.password);
                 if (response.data.success === true) {
                     this.$toast.success("Password updated");
@@ -272,6 +274,9 @@ export default {
             }
         },
     },
+    beforeMount(){
+        this.getprofile()
+    }
 
 };
 </script>

@@ -209,11 +209,11 @@ export default {
         },
         reg_user: async function () {
             
-            console.log("hi")
+            // console.log("hi")
             try {
                 
                 this.$v.$touch();
-                console.log(this.$v.Register)
+                // console.log(this.$v.Register)
                 if (this.$v.Register.$invalid) {
                     return;
                 }
@@ -224,7 +224,7 @@ export default {
                 }
                 
                 const res = await User.register(new_user)
-                console.log(res.data)
+                // console.log(res.data)
                 if (res.data.success) {
                     await Cookies.set("token", res.data.token);
                     localStorage.setItem("name1", res.data.user.name);

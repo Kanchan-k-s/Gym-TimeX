@@ -3,7 +3,7 @@
     <nav class="navbar scrolled-down navbar-expand-lg navbar-dark bg-dark px-0 py-3">
       <div class="container-xl">
         <!-- Logo -->
-        <a class="navbar-brand" href="/admin/panel">
+        <a class="navbar-brand" href="/">
           <video style="height:60px; width:60px;"
          src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
         </a>
@@ -22,7 +22,7 @@
             <a v-if="!show" class="nav-item nav-link active" href="/#contact" aria-current="page">Contact us</a>
             <a v-if="show" class="nav-item nav-link active" href="/employee/booking" aria-current="page">Booking</a>
             <a v-if="show" class="nav-item nav-link active" href="/employee/equipments" aria-current="page">Equipments</a>
-            <a v-if="show" class="nav-item nav-link active" href="/" aria-current="page">Settings</a>
+            <a v-if="show" class="nav-item nav-link active" href="/settings" aria-current="page">Settings</a>
           </div>
           <!-- Action -->
           <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
