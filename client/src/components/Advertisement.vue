@@ -37,7 +37,7 @@
         return `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${this.adClient}`;
       },
     },
-    mounted() {
+    beforeMount() {
       // Load AdSense script dynamically
       const script = document.createElement('script');
       script.src = this.adsbygoogleSrc;
@@ -46,7 +46,7 @@
       document.body.appendChild(script);
   
       // Trigger adsense unit
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      // (window.adsbygoogle = window.adsbygoogle || []).push({});
     },
   };
   </script>

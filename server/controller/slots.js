@@ -83,7 +83,7 @@ const updateNop = async (req, res) => {
         const User_data = await Users.findByPk(userId);
         // console.log(Slot_data.nop)
         // console.log(User_data.slot_id)
-        if (Slot_data.nop >= 0 && Slot_data.nop < capacity) {
+        if (Slot_data.nop >= 0 && Slot_data.nop < capacity && User_data.slot_id !== Slot_data.id) {
             if (User_data.slot_id === -1) {
                 const user = await Users.update({ 'slot_id': Slot_data.id }, {
                     where: {
@@ -116,24 +116,23 @@ const updateNop = async (req, res) => {
                      
                   });
             }
-            else if (User_data.slot_id === Slot_data.id) {
+        }else if (User_data.slot_id === Slot_data.id) {
 
-                const result = await Slots.update({ nop: sequelize.literal('nop -1') }, { where: { id: User_data.slot_id } });
-                const user = await Users.update({ 'slot_id': -1 }, {
-                    where: {
-                        id: userId
-                    }
-                })
+            const result = await Slots.update({ nop: sequelize.literal('nop -1') }, { where: { id: User_data.slot_id } });
+            const user = await Users.update({ 'slot_id': -1 }, {
+                where: {
+                    id: userId
+                }
+            })
 
-                // console.log(result)
-                res.status(200).json({
-                    success: true,
-                    
-                    msg: "Slot Booked",
-                     
-                  });
-            }
-        }else{
+            // console.log(result)
+            res.status(200).json({
+                success: true,
+                
+                msg: "Slot UnBooked",
+                 
+              });
+            }else{
             return res.status(400).json({
                 success: false,
                 errors: [
@@ -151,7 +150,7 @@ const updateNop = async (req, res) => {
             success: false,
             errors: [
               {
-                msg: "Error occured at password matching",
+                msg: "Error occured",
               },
             ],
           });

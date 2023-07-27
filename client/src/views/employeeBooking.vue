@@ -13,9 +13,9 @@
 
 
                 <div class="container " style="padding-top:20vh">
-                    <h1 class="text-center" style=" margin-bottom: 5%;">Slots for Current Date : </h1>
+                    <h1 class="text-center" style=" margin-bottom: 5%;">Slots from Current Date : </h1>
                     <div class="hover">
-                        <div class="card w-100 " :class="{ book: slot.Active, 'bg-light-red': slot.nop === 0 }"
+                        <div class="card w-100 " :class="{ book : slot.Active , fullbook: slot.nop === 0 }"
                             v-for="slot in slots" :key="slot.id" style="margin-top:2%">
                             <div class="card-body " :class="{ book: slot.Active }"
                                 v-on:click="slot.Active = !slot.Active; oneClick(slot.id)">
@@ -24,7 +24,7 @@
                                 }}</span></h4>
                                 <h5 class="card-title"><span>FROM: {{ slot.slot_in }}</span> <span class="float-end">TO:
                                         {{ slot.slot_out }}</span></h5>
-                                <p :style="{ color: slot.nop === 0 ? 'red' : 'black' }">Available : {{ slot.nop }}</p>
+                                <p >Available : {{ slot.nop }}</p>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ export default {
             Employee.updateSlot(id).then((res) => {
                 console.log(res.data)
                 if (res.data.success) {
-                    this.$toast.success("Slot Booked")
+                    this.$toast.success(res.data.msg)
                 }
                 else {
                     this.$toast.warning("Not Booked")
@@ -119,12 +119,12 @@ export default {
 }
 
 .book {
-    background-color: #90b418ce;
+    background-color: #008f21;
     color: white;
 }
 
-.color {
-    background-color: #b418189a;
+.fullbook {
+    background-color: #ee4545;
     color: white;
 }
 

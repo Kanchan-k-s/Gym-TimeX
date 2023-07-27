@@ -12,7 +12,7 @@
       <div class="bg">
 
         <div class="text-center"
-          style="color:rgb(255, 255, 255);padding-top: 9%;width:50%;margin-left:25%;margin-bottom: 2%; text-decoration: underline;">
+          style="color:rgb(255, 255, 255);padding-top: 10%;width:50%;margin-left:25%;margin-bottom: 2%; text-decoration: underline;">
           <h1> GYM TimeX {{ choice }} Equipments</h1>
         </div>
         <div class="container mt-3">
@@ -78,7 +78,7 @@ export default {
     categorySelect: function () {
       setTimeout(() => {
           this.isLoading = false;
-        }, 1300);
+        }, 1500);
         this.ShowCategory();
       Employee.showEquipmentsCategory(this.choice).then((res) => {
         this.equipments = res.data
@@ -114,6 +114,10 @@ export default {
 
 .img {
   height: 250px;
+}
+
+.row{
+  margin-right: 0;
 }
 </style>
 <!-- 

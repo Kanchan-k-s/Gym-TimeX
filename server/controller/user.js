@@ -269,14 +269,21 @@ const registerAdmin = async (req, res) => {
 
 const Info = async (req, res) => {
   try {
-    // console.log("di")
+    
     const User = db.Models.user;
     const userId = req.userId;
     const users = await User.findByPk(userId);
-    // console.log(users.name)
+    
     res.send({ name: users.name })
   } catch (e) {
-    console.log(e)
+    return res.status(500).json({
+      success: false,
+      errors: [
+        {
+          msg: "Internal server error",
+        },
+      ],
+    });
   }
 }
 
@@ -300,7 +307,14 @@ const InfoUpdate = async (req, res) => {
 
     })
   } catch (e) {
-    console.log(e)
+    return res.status(400).json({
+      success: false,
+      errors: [
+        {
+          msg: "Internal server error",
+        },
+      ],
+    });
   }
 }
 

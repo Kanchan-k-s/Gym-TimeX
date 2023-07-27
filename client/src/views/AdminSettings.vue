@@ -6,7 +6,7 @@
         <div v-else>
             <EmployeeNav></EmployeeNav>
         </div>
-        <div style="padding-top:15vh">
+        <div style="padding-top:16vh">
                     <div style="overflow: hidden">
                         <div id="profile" class="row">
                             <div class="col-12 title d-flex align-items-center ps-3 pt-3 pb-3">
@@ -217,9 +217,17 @@ export default {
     },
     methods: {
         getprofile(){
-            userApi.getUserInfo().then((res)=>{
+            try{
+                userApi.getUserInfo().then((res)=>{
                 this.user_name=res.data.name
             })
+            }catch(error){
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+            }
+            
         },
         
         toggleShow(ind) {
@@ -266,7 +274,7 @@ export default {
             }
             // console.log(this.password);
             try {
-                console.log(this.password)
+                // console.log(this.password)
                 const response = await userApi.changePassword(this.password);
                 if (response.data.success === true) {
                     this.$toast.success("Password updated");
@@ -396,7 +404,7 @@ h1 {
 .title {
   -webkit-box-shadow: 0px 4px 0px -1px rgba(0, 204, 255, 1);
   -moz-box-shadow: 0px 4px 0px -1px rgba(0, 204, 255, 1);
-  box-shadow: 0px 4px 0px -1px rgba(0, 204, 255, 1);
+  box-shadow: 0px 4px 0px -1px #464646;
 }
 
 label {

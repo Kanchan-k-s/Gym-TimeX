@@ -4,7 +4,7 @@ const { sequelize,db } = require("../models/dbConfig");
 const add = async (req, res) => {
   try {
     const Equipment = db.Models.equipments;
-    console.log(db.Models);
+    // console.log(db.Models);
     const query = req.body;
     const result = await Equipment.create(query);
     res.send(result);
@@ -48,7 +48,7 @@ const category = async (req, res) => {
   const Equipment = db.Models.equipments;
   if(cat==='All')
   {
-    console.log("hi")
+    // console.log("hi")
     const result = await Equipment.findAll();
     // console.log(result);
     res.send(result);
