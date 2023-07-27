@@ -1,7 +1,11 @@
 <template>
     <div>
-
-        <AdminNavbar></AdminNavbar>
+        <div v-if="type">
+            <AdminNavbar></AdminNavbar>
+        </div>
+        <div v-else>
+            <EmployeeNav></EmployeeNav>
+        </div>
         <div style="padding-top:15vh">
                     <div style="overflow: hidden">
                         <div id="profile" class="row">
@@ -148,12 +152,14 @@
 <script>
 
 import AdminNavbar from "../components/AdminNavbar.vue"
+import EmployeeNav from "../components/EmployeeNav.vue";
 import userApi from "../services/user";
 import errorToast from "@/mixins/errorToast";
 import { required, sameAs, minLength } from "vuelidate/lib/validators";
 export default {
     components: {
-        AdminNavbar
+        AdminNavbar,
+        EmployeeNav
     },
     mixins: [errorToast],
 
@@ -173,6 +179,7 @@ export default {
             errors: [],
             fnameError: false,
             lnameError: false,
+            type:true,
         };
     },
     validations: {
@@ -276,6 +283,7 @@ export default {
     },
     beforeMount(){
         this.getprofile()
+        this.type=localStorage.getItem("user1")==='Admin'
     }
 
 };
