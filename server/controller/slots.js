@@ -45,16 +45,14 @@ const showDate = async (req, res) => {
         let Gym = db.Models.gyms;
         const capacity = await Gym.findAll()
         result.forEach(ele => {
-            ele.nop = capacity[0].capacity-ele.nop
-            if(ele.id === user.slot_id )
-            {
-                ele.dataValues['Active']=true
+            ele.nop = capacity[0].capacity - ele.nop
+            if (ele.id === user.slot_id) {
+                ele.dataValues['Active'] = true
             }
-            else{
-                ele.dataValues['Active']=false
+            else {
+                ele.dataValues['Active'] = false
             }
         });
-        
         res.send(result)
     } catch (e) {
         console.log(e)
@@ -75,56 +73,88 @@ const showOne = async (req, res) => {
 const updateNop = async (req, res) => {
     const Slots = db.Models.slots
     const Users = db.Models.user
+    const Gyms=db.Models.gyms
     try {
         const Slot_data = await Slots.findOne({ where: { id: req.params.id } });
         const userId = req.userId;
+        let capacity = await Gyms.findAll();
+        capacity = capacity[0].capacity
+        // console.log("capacity", capacity)
         const User_data = await Users.findByPk(userId);
-        console.log(User_data.slot_id)
-        if (User_data.slot_id === -1) {
-            const user = await Users.update({ 'slot_id': Slot_data.id }, {
-                where: {
-                    id: userId
-                }
-            })
-            const result = await Slots.update({ nop: sequelize.literal('nop +1') }, { where: { id: req.params.id } });
+        // console.log(Slot_data.nop)
+        // console.log(User_data.slot_id)
+        if (Slot_data.nop >= 0 && Slot_data.nop < capacity) {
+            if (User_data.slot_id === -1) {
+                const user = await Users.update({ 'slot_id': Slot_data.id }, {
+                    where: {
+                        id: userId
+                    }
+                })
+                const result = await Slots.update({ nop: sequelize.literal('nop +1') }, { where: { id: req.params.id } });
+
+                res.status(200).json({
+                    success: true,
+                    
+                    msg: "Slot Booked",
+                     
+                  });
+            }
+            else if (User_data.slot_id !== Slot_data.id) {
+
+                const result = await Slots.update({ nop: sequelize.literal('nop -1') }, { where: { id: User_data.slot_id } });
+                const user = await Users.update({ 'slot_id': Slot_data.id }, {
+                    where: {
+                        id: userId
+                    }
+                })
+                await Slots.update({ nop: sequelize.literal('nop +1') }, { where: { id: Slot_data.id } });
+
+                res.status(200).json({
+                    success: true,
+                    
+                    msg: "Slot Booked",
+                     
+                  });
+            }
+            else if (User_data.slot_id === Slot_data.id) {
+
+                const result = await Slots.update({ nop: sequelize.literal('nop -1') }, { where: { id: User_data.slot_id } });
+                const user = await Users.update({ 'slot_id': -1 }, {
+                    where: {
+                        id: userId
+                    }
+                })
+
+                // console.log(result)
+                res.status(200).json({
+                    success: true,
+                    
+                    msg: "Slot Booked",
+                     
+                  });
+            }
+        }else{
+            return res.status(400).json({
+                success: false,
+                errors: [
+                  {
+                    msg: "Cannot Book this Slot",
+                  },
+                ],
+              });
             
-            res.send(result)
-        }
-        else if (User_data.slot_id !== Slot_data.id) {
-           
-            const result = await Slots.update({ nop: sequelize.literal('nop -1') }, { where: { id: User_data.slot_id } });
-            const user = await Users.update({ 'slot_id': Slot_data.id }, {
-                where: {
-                    id: userId
-                }
-            })
-            await Slots.update({ nop: sequelize.literal('nop +1') }, { where: { id: Slot_data.id } });
-          
-            res.send(result)
-        }
-        else if (User_data.slot_id === Slot_data.id) {
-            
-            const result = await Slots.update({ nop: sequelize.literal('nop -1') }, { where: { id: User_data.slot_id } });
-            const user = await Users.update({ 'slot_id': -1 }, {
-                where: {
-                    id: userId
-                }
-            })
-            
-            // console.log(result)
-            res.send(result)
         }
 
-        // else {
-        //     const result = await Slots.update({ nop: sequelize.literal('nop -1') }, { where: { id: User_data.slot_id } });
-        //     const user=await Users.update({'slot_id':Slot_data.id},{where:{
-        //         id: userId
-        //     }})
-        //     console.log('Condition 3',user.slot_id)
-        //     res.send(result)
-        // }
+
     } catch (e) {
-        console.log(e)
+        return res.status(404).json({
+            success: false,
+            errors: [
+              {
+                msg: "Error occured at password matching",
+              },
+            ],
+          });
     }
 }
 
