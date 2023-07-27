@@ -38,7 +38,9 @@
 <script>
 import EmployeeNav from '../components/EmployeeNav.vue';
 import Employee from '../services/employee'
+import errorToast from "@/mixins/errorToast";
 export default {
+    mixins: [errorToast],
     components: {
         EmployeeNav
     },
@@ -67,12 +69,26 @@ export default {
         oneClick: function (id) {
             this.isLoading = true
             Employee.updateSlot(id).then((res) => {
+                console.log(res.data)
+                if(res.data.success)
+                {
+                    this.$toast.success("Slot Booked")
+                }
+                else{
+                    this.$toast.warning("Not Booked")
+                }
                 setTimeout(() => {
                     this.isLoading = false;
-                    this.$toast.success("Slot Booked")
                 }, 1000);
                 this.showData(this.currentDate);
-                
+            }).catch((error)=>{
+                this.isLoading = false;
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+                this.showData(this.currentDate);
             })
         },
         toggleSlotActive(slot) {
