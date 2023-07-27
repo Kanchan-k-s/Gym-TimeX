@@ -4,8 +4,8 @@
             <EmployeeNav> </EmployeeNav>
             <div v-if="isLoading">
                 <video style="height:30vh; width:30vh;margin-left:43%; margin-top:20% "
-        src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-9139454-7459468.mp4" autoplay="autoplay"
-        muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
+                    src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-9139454-7459468.mp4" autoplay="autoplay"
+                    muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
             </div>
 
             <!-- <EmployeeNav></EmployeeNav> -->
@@ -15,9 +15,8 @@
                 <div class="container " style="padding-top:20vh">
                     <h1 class="text-center" style=" margin-bottom: 5%;">Slots for Current Date : </h1>
                     <div class="hover">
-
-
-                        <div class="card w-100 " v-for="slot in slots" :key="slot.id" style="margin-top:2%">
+                        <div class="card w-100 " :class="{ book: slot.Active, 'bg-light-red': slot.nop === 0 }"
+                            v-for="slot in slots" :key="slot.id" style="margin-top:2%">
                             <div class="card-body " :class="{ book: slot.Active }"
                                 v-on:click="slot.Active = !slot.Active; oneClick(slot.id)">
                                 <!-- <p>{{ slot }}</p> -->
@@ -25,7 +24,7 @@
                                 }}</span></h4>
                                 <h5 class="card-title"><span>FROM: {{ slot.slot_in }}</span> <span class="float-end">TO:
                                         {{ slot.slot_out }}</span></h5>
-                                <p>Available : {{ slot.nop }}</p>
+                                <p :style="{ color: slot.nop === 0 ? 'red' : 'black' }">Available : {{ slot.nop }}</p>
                             </div>
                         </div>
                     </div>
@@ -70,18 +69,17 @@ export default {
             this.isLoading = true
             Employee.updateSlot(id).then((res) => {
                 console.log(res.data)
-                if(res.data.success)
-                {
+                if (res.data.success) {
                     this.$toast.success("Slot Booked")
                 }
-                else{
+                else {
                     this.$toast.warning("Not Booked")
                 }
                 setTimeout(() => {
                     this.isLoading = false;
                 }, 1000);
                 this.showData(this.currentDate);
-            }).catch((error)=>{
+            }).catch((error) => {
                 this.isLoading = false;
                 const errors = !error.response
                     ? [{ msg: error.message }]
@@ -125,6 +123,12 @@ export default {
     color: white;
 }
 
+.color {
+    background-color: #b418189a;
+    color: white;
+}
+
 .container {
     width: 60%
-}</style>
+}
+</style>
