@@ -101,11 +101,37 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TIME,
             allowNull: true
 
-        }
-    }, {
+        },
+    });
+        Models.sponsor = sequelize.define('sponsor', {
+        Company:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Product:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Image_link:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Product_link:{
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Revenue:{
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+    });
+
+    
+    
+    {
         // Other model options go here
 
-    });
+    };
     // Slots.hasMany(User)
     // Models.user.belongsTo(Models.slots, { foreignKey: 'slot_id', as: 'slot' });
     // Models.slots.hasMany(Models.user, { foreignKey: 'slot_id' });
