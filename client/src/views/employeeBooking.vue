@@ -7,11 +7,8 @@
                     src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-9139454-7459468.mp4" autoplay="autoplay"
                     muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
             </div>
-
             <!-- <EmployeeNav></EmployeeNav> -->
             <div class="slot bg" v-else>
-
-
                 <div class="container " style="padding-top:20vh">
                     <h1 class="text-center" style=" margin-bottom: 5%;">Slots of Current Date : </h1>
                     <div class="text-center col-sm-4">
@@ -108,6 +105,10 @@ export default {
 </script>
 
 <style scoped>
+.img{
+    height: 30%;
+    width: 40;
+}
 .bg {
     background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO9uUa7XZX6cO2SrHP-0uz3E1EdD2GjlZcng&usqp=CAU") no-repeat center fixed;
     background-size: cover;

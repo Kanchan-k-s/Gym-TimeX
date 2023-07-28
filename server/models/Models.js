@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Models ={}
+    const Models = {}
     Models.gyms = sequelize.define('gym', {
 
         opening_time: {
@@ -17,14 +17,14 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         // Other model options go here
     });
-    
+
     Models.equipments = sequelize.define('equipment', {
 
         name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        category:{
+        category: {
             type: DataTypes.STRING,
             allowNull: true
         },
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true,
             defaultValue: 0,
         },
-        desc:{
+        desc: {
             type: DataTypes.STRING,
             allowNull: true
         },
@@ -54,7 +54,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TIME,
             allowNull: false
         },
-        date:{
+        date: {
             type: DataTypes.DATE,
             allowNull: false
         },
@@ -67,12 +67,12 @@ module.exports = (sequelize, DataTypes) => {
         // Other model options go here
     });
     Models.user = sequelize.define('users', {
-        email:{
+        email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
         },
-        name:{
+        name: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -80,7 +80,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         },
-        password:{
+        password: {
             type: DataTypes.STRING,
             allowNull: false
         },
@@ -91,7 +91,7 @@ module.exports = (sequelize, DataTypes) => {
             //     model:Models.slots,
             //     key: 'id'
             // },
-            defaultValue:-1
+            defaultValue: -1
         },
         check_in: {
             type: DataTypes.TIME,
@@ -101,11 +101,31 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TIME,
             allowNull: true
 
-        }
-    }, {
-        // Other model options go here
-
+        },
     });
+    Models.sponsor = sequelize.define('sponsor', {
+        Company: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Product: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Image_link: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Product_link: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
+        Revenue: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+    });
+
 
     Models.relations = sequelize.define('relation', {
 
@@ -113,11 +133,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        user_id:{
+        user_id: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
-        date:{
+        date: {
             type: DataTypes.DATE,
             allowNull: false
         }
