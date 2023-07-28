@@ -509,7 +509,7 @@ export default {
         this.getGym();
         this.allUsers();
         // this.currentDate.setDate(this.currentDate.getDate()-1)
-        console.log(this.currentDate)
+        // console.log(this.currentDate)
         this.allUsersToday();
     }
 }

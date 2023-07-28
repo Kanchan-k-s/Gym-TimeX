@@ -13,7 +13,10 @@
 
 
                 <div class="container " style="padding-top:20vh">
-                    <h1 class="text-center" style=" margin-bottom: 5%;">Slots from Current Date : </h1>
+                    <h1 class="text-center" style=" margin-bottom: 5%;">Slots of Current Date : </h1>
+                    <div class="text-center col-sm-4">
+                                <input class="form-control" type="date" @change="showData(currentDate)" v-model="currentDate" />
+                            </div>
                     <div class="hover">
                         <div class="card w-100 " :class="{ book : slot.Active , fullbook: slot.nop === 0 }"
                             v-for="slot in slots" :key="slot.id" style="margin-top:2%">
@@ -53,6 +56,7 @@ export default {
     ,
     methods: {
         showData: function (currentDate) {
+            console.log(currentDate)
             this.isLoading = true
             Employee.slotDate({ curr_date: currentDate }).then((res) => {
                 setTimeout(() => {
@@ -96,7 +100,7 @@ export default {
         }
     },
     created() {
-        this.currentDate.setDate(this.currentDate.getDate() - 1)
+        this.currentDate.setDate(this.currentDate.getDate())
         console.log(this.currentDate)
         this.showData(this.currentDate);
     }

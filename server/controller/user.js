@@ -1,5 +1,7 @@
-const { db } = require("../models/dbConfig");
-const { Op, and } = require("sequelize")
+const { db,sequelize } = require("../models/dbConfig");
+const { Op,QueryTypes  } = require("sequelize")
+
+
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const secret = process.env.JWT_SECRET;
@@ -177,49 +179,77 @@ const register = async (req, res) => {
 
 const booking = async (req, res) => {
   try {
-
-    let { curr_date } = req.body
+     let { curr_date } = req.body
     curr_date = new Date(curr_date.split('T')[0] + 'T00:00:00.000Z')
-    const User = db.Models.user;
-    const Slots = db.Models.slots;
+    const users = await sequelize.query("SELECT users.id as id,users.name,slots.slot_in,slots.slot_out FROM users, slots, relations where relations.user_id=users.id and relations.slot_id=slots.id and relations.date = :date ", 
+    { 
+      replacements: { date: curr_date },
+      type: QueryTypes.SELECT 
+    });
+    // console.log(users)
+    res.send(users)
+   
+    // const User = db.Models.user;
+    // const Slots = db.Models.slots;
+    // const Relation = db.Models.relations;
 
-    const users = await User.findAll({
-      attributes: ['id', 'name', 'email', 'check_in', 'check_out', 'slot_id'],
-    });
-
-    const slotIds = users.map((user) => user.slot_id);
-    const slots = await Slots.findAll({
-      attributes: ['id', 'date', 'slot_in', 'slot_out'],
-      where: {
-        id: slotIds,
-        date: {
-          [Op.eq]: curr_date
-        }
-      },
-    });
-    // const text = slots.find((slot) => (slot.id === user.slot_id && slot.date===curr_date));
-    let usersWithSlotInfo = users.map((user) => {
-      const userSlot = slots.find((slot) => slot.id === user.slot_id);
-      // console.log(userSlot)
-      return {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        slot_id: user.slot_id,
-        date: userSlot ? userSlot.date : null,
-        slot_in: userSlot ? userSlot.slot_in : null,
-        slot_out: userSlot ? userSlot.slot_out : null,
-        check_in: user.check_in,
-        check_out: user.check_out
-      };
-    });
-    usersWithSlotInfo = usersWithSlotInfo.filter(ele => {
+    // const rel = await Relation.findAll({where:{
+    //   date: curr_date
+    // }})
+    // let user_ids=[]
+    // let slot_ids=[]
+    // rel.forEach((item)=>{
+    //   user_ids.push(item.user_id)
+    //   slot_ids.push(item.slot_id)
+    // })
+    
+    // console.log("Hi",user_ids,slot_ids)
+    // const users = await User.findAll({
+    //   attributes: ['id', 'name', 'email', 'check_in', 'check_out', 'slot_id'],
+    // },{
+    //   where :{
+    //     id :{
+    //       [Op.in]:user_ids
+    //     },
+    //     slot_id:{
+    //       [Op.in]:slot_ids
+    //     }
+    //   }
+    // });
+    // // console.log(users)
+    // // const slotIds = users.map((user) => user.slot_id);
+    // const slots = await Slots.findAll({
+    //   attributes: ['id', 'date', 'slot_in', 'slot_out'],
+    //   where: {
+    //     id: {
+    //       [Op.in]:slot_ids
+    //     }
+    //   },
+    // });
+    // console.log(slots)
+    // // const text = slots.find((slot) => (slot.id === user.slot_id && slot.date===curr_date));
+    // let usersWithSlotInfo = users.map((user) => {
+    //   const userSlot = slots.find((slot) => slot.id === user.slot_id);
+    //   // console.log(userSlot)
+    //   return {
+    //     id: user.id,
+    //     name: user.name,
+    //     email: user.email,
+    //     slot_id: user.slot_id,
+    //     date: userSlot ? userSlot.date : null,
+    //     slot_in: userSlot ? userSlot.slot_in : null,
+    //     slot_out: userSlot ? userSlot.slot_out : null,
+    //     check_in: user.check_in,
+    //     check_out: user.check_out
+    //   };
+    // });
+    // usersWithSlotInfo = usersWithSlotInfo.filter(ele => {
       // console.log(ele.date ==curr_date)
-      if (ele.date != null)
-        return ele
-    });
+    //   if (ele.date != null)
+    //     return ele
+    // });
 
-    res.send(usersWithSlotInfo)
+    // res.send(usersWithSlotInfo)
 
   } catch (e) {
     console.log(e)

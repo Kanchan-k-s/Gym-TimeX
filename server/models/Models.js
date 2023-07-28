@@ -106,6 +106,29 @@ module.exports = (sequelize, DataTypes) => {
         // Other model options go here
 
     });
+
+    Models.relations = sequelize.define('relation', {
+
+        slot_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        user_id:{
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        date:{
+            type: DataTypes.DATE,
+            allowNull: false
+        }
+    }, {
+        // indexes: [
+        //     {
+        //         unique: true,
+        //         fields: ['user_id', 'slot_id']
+        //     }
+        // ]
+    });
     // Slots.hasMany(User)
     // Models.user.belongsTo(Models.slots, { foreignKey: 'slot_id', as: 'slot' });
     // Models.slots.hasMany(Models.user, { foreignKey: 'slot_id' });
