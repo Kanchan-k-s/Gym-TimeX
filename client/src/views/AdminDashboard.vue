@@ -344,7 +344,7 @@
                     </div>
                 </div>
 
-                <div class="accordion-item">
+                <!-- <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
@@ -367,19 +367,24 @@
                                             <th scope="col">Product</th>
                                             <th scope="col">Image Link</th>
                                             <th scope="col">Product Link</th>
-                                            <th scope="col">Revenue</th>                                            
-                                           <th></th>
+                                            <th scope="col">Revenue</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr v-if="showsponsorCreateRow">
                                             <td></td>
-                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Company" /></td>
-                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Product" /></td>
-                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Image_link" />
+                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Company" />
                                             </td>
-                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Product_link" /></td>
-                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Revenue" /></td>
+                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Product" />
+                                            </td>
+                                            <td><input class="form-control" type="text"
+                                                    v-model="newsponsorRow.Image_link" />
+                                            </td>
+                                            <td><input class="form-control" type="text"
+                                                    v-model="newsponsorRow.Product_link" /></td>
+                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Revenue" />
+                                            </td>
                                             <td>
                                                 <button class="btn btn-success" @click="createsponsor()">Add
                                                     Sponsor</button>
@@ -390,10 +395,14 @@
                                         <tr v-if="onsponsorUpdate">
                                             <th scope="row"> {{ newsponsorObject.id }} </th>
 
-                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Company"></td>
-                                            <td><input class="form-control" type="number" v-model="newsponsorObject.Product"></td>
-                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Image_link"></td>
-                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Product_link"></td>
+                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Company">
+                                            </td>
+                                            <td><input class="form-control" type="number"
+                                                    v-model="newsponsorObject.Product"></td>
+                                            <td> <input class="form-control" type="text"
+                                                    v-model="newsponsorObject.Image_link"></td>
+                                            <td> <input class="form-control" type="text"
+                                                    v-model="newsponsorObject.Product_link"></td>
                                             <td><input class="form-control" type="text" v-model="newsponsorObject.Revenue">
                                             </td>
                                             <td>
@@ -414,7 +423,7 @@
                                             </td>
                                             <td><button class="btn btn-info" @click="backsponsorUpdate()">Back</button></td>
                                         </tr>
-                                       
+
                                         <tr v-for="sponsor in sponsors">
                                             <th scope="row">{{ sponsor.id }}</th>
                                             <td>{{ sponsor.Company }}</td>
@@ -437,7 +446,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -503,9 +512,9 @@ export default {
     methods: {
 
         allSponsor: function () {
-            AdminApi.allSponsor().then((res) => {
-                this.sponsors = res.data
-            });
+            // AdminApi.allSponsor().then((res) => {
+            //     this.sponsors = res.data
+            // });
         },
         allEquipments: function () {
             AdminApi.allEquipments().then((res) => {
@@ -517,16 +526,16 @@ export default {
                 this.slots = res.data
             });
         },
-        allUsers:function(){
-            AdminApi.allUsers().then((res)=>{
+        allUsers: function () {
+            AdminApi.allUsers().then((res) => {
                 this.users = res.data.usersWithSlotInfo
                 // console.log(res.data)
             })
         },
         allUsersToday: function () {
             console.log(this.currentDate)
-            AdminApi.allUsersToday({ curr_date: this.currentDate }).then((res)=>{
-                this.usertoday= res.data
+            AdminApi.allUsersToday({ curr_date: this.currentDate }).then((res) => {
+                this.usertoday = res.data
                 // console.log("hi"+res.data.usersWithSlotInfo)
                 // console.log(res.data)
             })
@@ -538,10 +547,10 @@ export default {
             });
         },
         delSponsor: function (id) {
-            AdminApi.deleteSponsor(id).then((res) => {
-                this.$toast.success("Sponsor Deleted");
-                this.allSponsor()
-            });
+            // AdminApi.deleteSponsor(id).then((res) => {
+            //     this.$toast.success("Sponsor Deleted");
+            //     this.allSponsor()
+            // });
         },
         delSlot: function (id) {
             AdminApi.deleteSlot(id).then((res) => {
@@ -571,20 +580,20 @@ export default {
             });
         },
         createSponsor: function () {
-            AdminApi.createSponsor(this.newSponsorRow).then((res) => {
-                this.$toast.success("Sponsor Added");
-                this.allSponsor()
-                this.toggleSponsorCreateRow()
-            });
+            // AdminApi.createSponsor(this.newSponsorRow).then((res) => {
+            //     this.$toast.success("Sponsor Added");
+            //     this.allSponsor()
+            //     this.toggleSponsorCreateRow()
+            // });
         },
         updateSponsor: function () {
-            AdminApi.updateSponsor(this.newObject).then((res) => {
-                this.onUpdate = false;
-                this.allSponsor()
-                this.resetNewRow();
-                this.newObject = {}
-                this.$toast.success("Sponsor Updated");
-            });
+            // AdminApi.updateSponsor(this.newObject).then((res) => {
+            //     this.onUpdate = false;
+            //     this.allSponsor()
+            //     this.resetNewRow();
+            //     this.newObject = {}
+            //     this.$toast.success("Sponsor Updated");
+            // });
         },
         updateSlot: function () {
             AdminApi.updateSlot(this.newObject).then((res) => {
