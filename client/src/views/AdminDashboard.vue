@@ -320,23 +320,6 @@
                                                     @click="delEquip(equipment.id)">Delete</button>
                                             </td>
                                         </tr>
-                                        <tr v-for="sponsor in sponsors">
-                                            <th scope="row">{{ sponsor.id }}</th>
-                                            <td>{{ sponsor.Company }}</td>
-                                            <td>{{ sponsor.Product }}</td>
-                                            <td>{{ sponsor.Image_link }}</td>
-                                            <td>{{ sponsor.Product_link }}</td>
-                                            <td>{{ sponsor.Revenue }}</td>
-                                            <td>
-                                                <button class="btn btn-warning"
-                                                    @click="clickEquiUpdate(equipment)">Update</button>
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-danger"
-                                                    @click="delEquip(equipment.id)">Delete</button>
-                                            </td>
-                                        </tr>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -347,11 +330,11 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseThree">
                             Sponsors
                         </button>
                     </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
                         data-bs-parent="#accordionFlushExample">
 
                         <div class="accordion-body">
@@ -367,7 +350,8 @@
                                             <th scope="col">Product</th>
                                             <th scope="col">Image Link</th>
                                             <th scope="col">Product Link</th>
-                                            <th scope="col">Revenue</th>                                            
+                                            <th scope="col">Revenue</th>  
+                                            <th scope="col">Amount</th>                                            
                                            <th></th>
                                         </tr>
                                     </thead>
@@ -379,7 +363,8 @@
                                             <td><input class="form-control" type="text" v-model="newsponsorRow.Image_link" />
                                             </td>
                                             <td><input class="form-control" type="text" v-model="newsponsorRow.Product_link" /></td>
-                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Revenue" /></td>
+                                            <td><input class="form-control" type="number" v-model="newsponsorRow.Revenue" /></td>
+                                            <td><input class="form-control" type="number" v-model="newsponsorRow.Amount" /></td>
                                             <td>
                                                 <button class="btn btn-success" @click="createsponsor()">Add
                                                     Sponsor</button>
@@ -391,16 +376,12 @@
                                             <th scope="row"> {{ newsponsorObject.id }} </th>
 
                                             <td> <input class="form-control" type="text" v-model="newsponsorObject.Company"></td>
-                                            <td><input class="form-control" type="number" v-model="newsponsorObject.Product"></td>
-                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Image_link"></td>
-                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Product_link"></td>
-                                            <td><input class="form-control" type="text" v-model="newsponsorObject.Revenue">
-                                            </td>
+                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Product"></td>
                                             <td>
                                                 <div class="input-group">
                                                     <span class="input-group-text"></span>
                                                     <textarea class="form-control" aria-label="With textarea"
-                                                        v-model="newsponsorObject.desc"></textarea>
+                                                        v-model="newsponsorObject.Image_link"></textarea>
                                                 </div>
 
                                             </td>
@@ -408,10 +389,13 @@
                                                 <div class="input-group">
                                                     <span class="input-group-text"></span>
                                                     <textarea class="form-control" aria-label="With textarea"
-                                                        v-model="newsponsorObject.img"></textarea>
+                                                        v-model="newsponsorObject.Product_link"></textarea>
                                                 </div>
                                                 <button class="btn btn-success" @click="updatesponsor()">Update</button>
                                             </td>
+                                            <td> <input class="form-control" type="number" v-model="newsponsorObject.Revenue">
+                                            </td>
+                                            <td> <input class="form-control" type="number" v-model="newsponsorObject.Amount"></td>
                                             <td><button class="btn btn-info" @click="backsponsorUpdate()">Back</button></td>
                                         </tr>
                                        
@@ -422,13 +406,14 @@
                                             <td>{{ sponsor.Image_link }}</td>
                                             <td>{{ sponsor.Product_link }}</td>
                                             <td>{{ sponsor.Revenue }}</td>
+                                            <td>{{ sponsor.Amount }}</td>
                                             <td>
                                                 <button class="btn btn-warning"
-                                                    @click="clickEquiUpdate(equipment)">Update</button>
+                                                    @click="clicksponsorUpdate(sponsor)">Update</button>
                                             </td>
                                             <td>
                                                 <button class="btn btn-danger"
-                                                    @click="delEquip(equipment.id)">Delete</button>
+                                                    @click="delsponsor(sponsor.id)">Delete</button>
                                             </td>
                                         </tr>
 
@@ -480,16 +465,21 @@ export default {
                 Product: '',
                 Image_link: '',
                 Product_link: '',
-                Revenue: ''
+                Revenue: '',
+                Amount:''
             },
             newObject: {},
             newEquipObject: {},
+            newsponsorObject: {},
             showCreateRow: false,
             showEquipCreateRow: false,
+            showsponsorCreateRow: false,
             onUpdate: false,
+            onsponsorUpdate: false,
             onEquipUpdate: false,
             clickUpdateGym: false,
             currentDate: new Date()
+
         }
     },
     computed: {
@@ -504,7 +494,7 @@ export default {
 
         allSponsor: function () {
             AdminApi.allSponsor().then((res) => {
-                this.sponsors = res.data
+                this.sponsor = res.data
             });
         },
         allEquipments: function () {
@@ -618,8 +608,15 @@ export default {
             this.showEquipCreateRow = !this.showEquipCreateRow;
             this.resetEquipRow();
         },
+        togglesponsorCreateRow() {
+            this.showsponsorCreateRow = !this.showsponsorCreateRow;
+            this.resetsponsorRow();
+        },
         resetEquipRow() {
             this.newEquipRow = {};
+        },
+        resetsponsorRow() {
+            this.newsponsorRow = {};
         },
         resetNewRow() {
             this.newRow = {
@@ -642,6 +639,13 @@ export default {
                 return item.id !== equip.id
             })
         },
+        clicksponsorUpdate(sponsor) {
+            this.onsponsorUpdate = true;
+            this.newsponsorObject = sponsor;
+            this.sponsor = this.sponsor.filter((item) => {
+                return item.id !== sponsor.id
+            })
+        },
         backUpdate() {
             this.onUpdate = false;
             this.allSlots();
@@ -651,6 +655,11 @@ export default {
             this.onEquipUpdate = false;
             this.allEquipments();
             this.newEquipObject = {}
+        },
+        backsponsorUpdate() {
+            this.onsponsorUpdate = false;
+            this.allsponsor();
+            this.newsponsorObject = {}
         }
     },
     created() {

@@ -49,6 +49,7 @@ const showDate = async (req, res) => {
         
         let Gym = db.Models.gyms;
         const capacity = await Gym.findAll()
+        console.log(result)
         result.forEach(ele => {
             ele.nop = capacity[0].capacity - ele.nop
             if ( ele.id===rel[0].slot_id) {
