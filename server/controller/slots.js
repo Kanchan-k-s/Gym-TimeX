@@ -41,25 +41,37 @@ const showDate = async (req, res) => {
             },
             order: [['date', 'ASC'], ['slot_in', 'ASC']]
         });
-        
+        // console.log(req.userId)
+        // console.log(curr_date)
         let rel = await Relation.findAll({where:{
             user_id:req.userId,
             date:curr_date.split('T')[0]+'T00:00:00.000Z'
         }})
-        
+        // console.log(rel.length)
         let Gym = db.Models.gyms;
         const capacity = await Gym.findAll()
-        console.log(result)
-        result.forEach(ele => {
-            ele.nop = capacity[0].capacity - ele.nop
-            if ( ele.id===rel[0].slot_id) {
-                ele.dataValues['Active'] = true
-            }
-            else {
-                ele.dataValues['Active'] = false
-            }
-        });
-        res.send(result)
+        if(rel.length!==0)
+        {
+            result.forEach(ele => {
+                ele.nop = capacity[0].capacity - ele.nop
+                if ( ele.id===rel[0].slot_id) {
+                    ele.dataValues['Active'] = true
+                }
+                else {
+                    ele.dataValues['Active'] = false
+                }
+            });
+            res.send({
+                success:true,
+                result
+            })
+        }else{
+            res.send({
+                success:false,
+                msg:"No Slot for Today"
+            })
+        }
+        
     } catch (e) {
         console.log(e)
     }
@@ -88,16 +100,6 @@ const showOne = async (req, res) => {
     }
 }
 
-const relation = async (req, res) => {
-    try {
-        const Relation = db.Models.relations
-        const Slots = db.Models.slots
-        const Users = db.Models.user
-
-    } catch (e) {
-        console.log(e)
-    }
-}
 
 const updateNop = async (req, res) => {
     const Slots = db.Models.slots
