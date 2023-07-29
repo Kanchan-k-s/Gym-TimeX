@@ -125,8 +125,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true
         },
     });
-
-
     Models.relations = sequelize.define('relation', {
 
         slot_id: {

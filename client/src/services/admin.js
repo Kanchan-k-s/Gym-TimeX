@@ -37,6 +37,19 @@ export default {
 
     updateGym(gym){
         return api.put("http://localhost:3000/admin/gyms/update/"+gym.id,gym)
+    },
+    createSponsor(Row){
+        return api.post("http://localhost:3000/admin/sponsor/add",Row);
+    },
+    updateSponsor(Row){
+        return api.put("http://localhost:3000/admin/sponsor/update/"+Row.id,Row);
+    },
+    showSponsor(){
+        return api.get("http://localhost:3000/admin/sponsor/all")
+    },
+    deleteSponsor(id){
+        return api.delete("http://localhost:3000/admin/sponsor/"+id);
     }
+
 
 }
