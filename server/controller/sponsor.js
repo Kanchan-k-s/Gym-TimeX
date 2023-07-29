@@ -13,6 +13,24 @@ const add = async (req, res) => {
     }
 }
 
+const addRevenue =async(req,res)=>{
+    const Sponsor = db.Models.sponsor
+    try {
+        const adds = await Sponsor.findByPk(req.params.id)
+        const result = await Sponsor.update({
+            Revenue:adds.Revenue+adds.Amount
+            // nop: sequelize.literal('nop +1')
+        },{
+            where:{
+            id:req.params.id
+        }
+    });
+        res.send(result)
+    } catch (e) {
+        console.log(e)
+    }
+}
+
 const show = async (req, res) => {
     const Sponsor = db.Models.sponsor
     try {
@@ -52,5 +70,6 @@ module.exports = {
     add,
     show,
     update,
-    delrow
+    delrow,
+    addRevenue
 }

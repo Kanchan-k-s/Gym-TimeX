@@ -5,7 +5,8 @@
         <!-- Logo -->
         <a class="navbar-brand" href="/">
           <video style="height:60px; width:60px;"
-         src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
+            src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4" autoplay="autoplay"
+            muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
         </a>
         <h1 class="text-start" style="color:white"> GYM TimeX </h1>
         <!-- Navbar toggle -->
@@ -198,7 +199,7 @@
     </div>
   </div>
 </div> -->
-<!-- <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="max-height: 220px;">
+    <!-- <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="max-height: 220px;">
   <div class="carousel-inner" style="height: 40%; width 40%; margin-left:40%; ">
     <div class="carousel-item imgh active" data-bs-interval="2000">
       <img src="https://stock.intellemo.com/6296f59625cabfb4867333e5/6296f59825cabfb4867333e6-v265/protein_powder_l.jpg" class="d-block imgh w-40" alt="...">
@@ -226,32 +227,45 @@
   </button>
 
 </div> -->
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item carousel2 active" data-bs-interval="2000">
-      <img src="https://stock.intellemo.com/6296f59625cabfb4867333e5/6296f59825cabfb4867333e6-v265/protein_powder_l.jpg" class="d-block w-25 mx-auto" alt="">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+          aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+          aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+          aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item carousel2 active" data-bs-interval="2000">
+          <img
+            src="https://stock.intellemo.com/6296f59625cabfb4867333e5/6296f59825cabfb4867333e6-v265/protein_powder_l.jpg"
+            class="d-block w-25 mx-auto" alt="">
+        </div>
+        <div class="carousel-item carousel2" v-for="sponser in sponsers" data-bs-interval="2000">
+          <a :href=sponser.Product_link v-on:click="addRevenue(sponser.id)">
+            <img
+            :src=sponser.Image_link
+            class="d-block w-25 mx-auto" alt="">
+          </a>
+          
+        </div>
+        <!-- <div class="carousel-item carousel2" data-bs-interval="2000">
+          <img src="https://sp2cdn-idea-global.zingfront.com/sp_opera/1bd18840f6eae1ab044e795c1eedc612.jpg"
+            class="d-block w-25 mx-auto" alt="">
+        </div> -->
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <div class="carousel-item carousel2" data-bs-interval="2000">
-      <img src="https://coreldrawdesign.com/resources/previews/preview-trendy-sports-shoes-advertisement-promotional-banner-vector-1657725702.jpg" class="d-block w-25 mx-auto" alt="">
-    </div>
-    <div class="carousel-item carousel2" data-bs-interval="2000">
-      <img src="https://sp2cdn-idea-global.zingfront.com/sp_opera/1bd18840f6eae1ab044e795c1eedc612.jpg" class="d-block w-25 mx-auto" alt="">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
     <section id="contact" class="pt-5 bg">
 
       <!-- <div class="cont pt-5">
@@ -361,7 +375,8 @@
   </div>
 </template>
 <script>
-import { BIconHandThumbsDown } from "bootstrap-vue";
+import { BIconHandThumbsDown, BIconThreeDotsVertical } from "bootstrap-vue";
+import employeeApi from "../services/employee"
 import mixin from "../mixins/authmixin";
 import Cookies from "js-cookie";
 export default {
@@ -369,26 +384,36 @@ export default {
   data() {
     return {
       show: false,
-      user:'',
-      sponser:[
-        
-      ],
+      user: '',
+      sponsers: [],
     }
   },
 
-  created(){
 
-  },
   methods: {
-
+    showAdds(){
+      employeeApi.showAdds().then((res)=>{
+        this.sponsers= res.data
+      })
+    },
+    addRevenue(id){
+      employeeApi.addRevenue(id).then((res)=>{
+        console.log(res)
+        // this.sponsers= res.data
+      })
+    },
     start() {
       this.$router.push('/sign/up')
-    }
+    },
+
+  },
+  created() {
+    this.showAdds();
   },
   beforeMount() {
     const token = Cookies.get("token");
-    this.user=localStorage.getItem("name1")
-    console.log(token === undefined)
+    this.user = localStorage.getItem("name1")
+    // console.log(token === undefined)
     if (token !== undefined) {
       this.show = true;
     }
@@ -400,18 +425,19 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
 
-.carousel2[data-v-2a51d747]{
-    height: 50vh;
+.carousel2[data-v-2a51d747] {
+  height: 50vh;
 }
 
 
-.imgh{
+.imgh {
   height: 30%;
   width: 40vh;
 }
-.bg{
-background: url("https://t3.ftcdn.net/jpg/03/23/85/94/360_F_323859450_8uOTMisto96ip50G5kOVWuMgNJCNigDg.jpg") no-repeat center;
-background-size: cover;
+
+.bg {
+  background: url("https://t3.ftcdn.net/jpg/03/23/85/94/360_F_323859450_8uOTMisto96ip50G5kOVWuMgNJCNigDg.jpg") no-repeat center;
+  background-size: cover;
 }
 
 .boxshad {

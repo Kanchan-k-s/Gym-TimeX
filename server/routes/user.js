@@ -4,7 +4,7 @@ const gym =require("../controller/gyms")
 const express = require("express");
 const verifytoken = require("../middlewares/verifytoken");
 const router = express.Router();
-
+const sponsor = require("../controller/sponsor")
 
 router.post('/login',user.login)
 router.post('/register',user.register)
@@ -26,5 +26,7 @@ router.get('/info',verifytoken,checkRole,user.Info)
 router.post('/info/update',verifytoken,checkRole,user.InfoUpdate)
 router.get('/info',verifytoken,checkRole,user.Info)
 router.post('/password/update',verifytoken,checkRole,user.changePassword)
+router.get('/sponser/',sponsor.show)
+router.get('/sponser/:id',sponsor.addRevenue)
 router.post('/add/gym',gym.add)
 module.exports = router;

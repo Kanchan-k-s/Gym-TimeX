@@ -2,7 +2,7 @@
 const slot = require("../controller/slots")
 const equipment = require("../controller/equipments")
 const gyms = require("../controller/gyms")
-const sponsor = require("../controller/sponsor")
+
 const express = require("express");
 const verifytoken = require("../middlewares/verifytoken");
 
@@ -30,6 +30,6 @@ router.get('/equipments',equipment.showEmployee)
 
 router.get('/slot/:id',slot.updateNop)
 
-router.get('/sponsor/',sponsor.show)
+
 
 module.exports = router;
