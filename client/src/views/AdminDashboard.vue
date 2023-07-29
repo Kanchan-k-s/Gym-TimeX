@@ -479,7 +479,6 @@ export default {
             onEquipUpdate: false,
             clickUpdateGym: false,
             currentDate: new Date()
-
         }
     },
     computed: {
