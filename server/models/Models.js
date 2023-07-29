@@ -122,8 +122,14 @@ module.exports = (sequelize, DataTypes) => {
         },
         Revenue: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: true,
+            defaultValue:0
         },
+        Amount:{
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            defaultValue:0
+        }
     });
     Models.relations = sequelize.define('relation', {
 
