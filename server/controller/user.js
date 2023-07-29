@@ -37,9 +37,12 @@ const allUser = async (req, res) => {
         check_out: user.check_out
       };
     });
-
+    res.status(200).json({
+      usersWithSlotInfo,
+      message: "Showing All User.",
+    });
     // console.log(usersWithSlotInfo);
-    res.send(usersWithSlotInfo);
+    // res.send(usersWithSlotInfo);
   } catch (e) {
     res.status(500).json({
       success: false,
@@ -277,7 +280,7 @@ const registerAdmin = async (req, res) => {
       const hashedPassword = await bcrypt.hash(query.password, 10);
       query.password = hashedPassword;
       const result = await User.create(query);
-      console.log(result);
+      // console.log(result);
       res.status(201).json({
         success: true,
         user: [
