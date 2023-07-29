@@ -3,6 +3,7 @@ const slot = require("../controller/slots")
 const equipment = require("../controller/equipments")
 const gyms = require("../controller/gyms")
 const user = require("../controller/user")
+const sponsor = require("../controller/sponsor")
 const express = require("express");
 const verifytoken = require("../middlewares/verifytoken");
 
@@ -34,6 +35,11 @@ router.get('/equipment/all', equipment.show)
 router.get('/equipment/:id', equipment.showOne)
 router.delete('/equipment/:id', equipment.delEquip)
 router.put('/equipment/update/:id', equipment.update)
+
+router.post('/sponsor/add', sponsor.add)
+router.get('/sponsor/all', sponsor.show)
+router.delete('/sponsor/:id', sponsor.delrow)
+router.put('/sponsor/update/:id', sponsor.update)
 
 // router.post('/gyms/add', gyms.add)
 router.get('/gyms/all', gyms.show)

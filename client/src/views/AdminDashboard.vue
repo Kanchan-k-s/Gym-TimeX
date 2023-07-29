@@ -29,20 +29,22 @@
                                     </thead>
                                     <tbody>
                                         <tr v-if="!clickUpdateGym">
-                                            <td>{{gym.opening_time }}</td>
-                                            <td>{{gym.closing_time }}</td>
+                                            <td>{{ gym.opening_time }}</td>
+                                            <td>{{ gym.closing_time }}</td>
                                             <td>{{ gym.capacity }}</td>
-                                            <td><button class="btn btn-warning" @click="clickUpdateGym=!clickUpdateGym">Update</button></td>
+                                            <td><button class="btn btn-warning"
+                                                    @click="clickUpdateGym = !clickUpdateGym">Update</button></td>
                                         </tr>
                                         <tr v-else>
-                                            <td><input class="form-control" type="time" v-model="gym.opening_time " /></td>
+                                            <td><input class="form-control" type="time" v-model="gym.opening_time" /></td>
                                             <td><input class="form-control" type="time" v-model="gym.closing_time" /></td>
                                             <td><input class="form-control" type="number" v-model="gym.capacity" /></td>
                                             <td>
-                                                <button class="btn btn-success" @click="UpdateGym()">Update Gym Info</button>
+                                                <button class="btn btn-success" @click="UpdateGym()">Update Gym
+                                                    Info</button>
                                             </td>
                                             <td><button class="btn btn-info"
-                                                    @click="clickUpdateGym=!clickUpdateGym">Back</button></td>
+                                                    @click="clickUpdateGym = !clickUpdateGym">Back</button></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -79,8 +81,8 @@
                                             <th scope="row">{{ user.id }}</th>
                                             <td>{{ user.name }}</td>
                                             <td>{{ user.email }}</td>
-                                            <td >{{ user.date===null?'': user.date.split('T')[0] }}</td>
-                                            <td >{{ user.slot_in }}</td>
+                                            <td>{{ user.date === null ? '' : user.date.split('T')[0] }}</td>
+                                            <td>{{ user.slot_in }}</td>
                                             <td>{{ user.slot_out }}</td>
                                             <td>{{ user.check_in }}</td>
                                             <td>{{ user.check_out }}</td>
@@ -104,7 +106,7 @@
                             <div class="text-center col-sm-4">
                                 <input class="form-control" type="date" @change="allUsersToday" v-model="currentDate" />
                             </div>
-                            
+
                             <br>
                             <div>
                                 <table border="1px" class="table">
@@ -118,9 +120,9 @@
 
                                         </tr>
                                     </thead>
-                                    
+
                                     <tbody>
-                                        
+
                                         <tr v-for="user in usertoday">
                                             <!-- <td>{{ user }}</td> -->
                                             <th scope="row">{{ user.id }}</th>
@@ -177,7 +179,7 @@
                                         </tr>
                                         <tr v-if="onUpdate">
                                             <th scope="row"> {{ newObject.id }} </th>
-                                            <td>{{ newObject.date }}  </td>
+                                            <td>{{ newObject.date }} </td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_in" /></td>
                                             <td><input class="form-control" type="time" v-model="newObject.slot_out" /></td>
                                             <td>{{ newObject.nop }}</td>
@@ -223,6 +225,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingThree">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -256,7 +259,8 @@
                                             <td></td>
                                             <td><input class="form-control" type="text" v-model="newEquipRow.name" /></td>
                                             <td><input class="form-control" type="number" v-model="newEquipRow.qty" /></td>
-                                            <td><input class="form-control" type="text" v-model="newEquipRow.category" /></td>
+                                            <td><input class="form-control" type="text" v-model="newEquipRow.category" />
+                                            </td>
                                             <td><input class="form-control" type="text" v-model="newEquipRow.desc" /></td>
                                             <td><input class="form-control" type="text" v-model="newEquipRow.img" /></td>
                                             <td>
@@ -271,7 +275,8 @@
 
                                             <td> <input class="form-control" type="text" v-model="newEquipObject.name"></td>
                                             <td><input class="form-control" type="number" v-model="newEquipObject.qty"></td>
-                                            <td><input class="form-control" type="text" v-model="newEquipObject.category"></td>
+                                            <td><input class="form-control" type="text" v-model="newEquipObject.category">
+                                            </td>
                                             <td>
                                                 <div class="input-group">
                                                     <span class="input-group-text"></span>
@@ -315,6 +320,117 @@
                                                     @click="delEquip(equipment.id)">Delete</button>
                                             </td>
                                         </tr>
+                                        <tr v-for="sponsor in sponsors">
+                                            <th scope="row">{{ sponsor.id }}</th>
+                                            <td>{{ sponsor.Company }}</td>
+                                            <td>{{ sponsor.Product }}</td>
+                                            <td>{{ sponsor.Image_link }}</td>
+                                            <td>{{ sponsor.Product_link }}</td>
+                                            <td>{{ sponsor.Revenue }}</td>
+                                            <td>
+                                                <button class="btn btn-warning"
+                                                    @click="clickEquiUpdate(equipment)">Update</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger"
+                                                    @click="delEquip(equipment.id)">Delete</button>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            Sponsors
+                        </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                        data-bs-parent="#accordionFlushExample">
+
+                        <div class="accordion-body">
+                            <div class="add-row-container" v-if="!showsponsorCreateRow">
+                                <button class="btn btn-info" @click="togglesponsorCreateRow">Add Sponsor</button>
+                            </div>
+                            <div>
+                                <table border="1px" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Company</th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Image Link</th>
+                                            <th scope="col">Product Link</th>
+                                            <th scope="col">Revenue</th>                                            
+                                           <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-if="showsponsorCreateRow">
+                                            <td></td>
+                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Company" /></td>
+                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Product" /></td>
+                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Image_link" />
+                                            </td>
+                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Product_link" /></td>
+                                            <td><input class="form-control" type="text" v-model="newsponsorRow.Revenue" /></td>
+                                            <td>
+                                                <button class="btn btn-success" @click="createsponsor()">Add
+                                                    Sponsor</button>
+                                            </td>
+                                            <td><button class="btn btn-info"
+                                                    @click="showsponsorCreateRow = !showsponsorCreateRow">Back</button></td>
+                                        </tr>
+                                        <tr v-if="onsponsorUpdate">
+                                            <th scope="row"> {{ newsponsorObject.id }} </th>
+
+                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Company"></td>
+                                            <td><input class="form-control" type="number" v-model="newsponsorObject.Product"></td>
+                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Image_link"></td>
+                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Product_link"></td>
+                                            <td><input class="form-control" type="text" v-model="newsponsorObject.Revenue">
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"></span>
+                                                    <textarea class="form-control" aria-label="With textarea"
+                                                        v-model="newsponsorObject.desc"></textarea>
+                                                </div>
+
+                                            </td>
+                                            <td>
+                                                <div class="input-group">
+                                                    <span class="input-group-text"></span>
+                                                    <textarea class="form-control" aria-label="With textarea"
+                                                        v-model="newsponsorObject.img"></textarea>
+                                                </div>
+                                                <button class="btn btn-success" @click="updatesponsor()">Update</button>
+                                            </td>
+                                            <td><button class="btn btn-info" @click="backsponsorUpdate()">Back</button></td>
+                                        </tr>
+                                       
+                                        <tr v-for="sponsor in sponsors">
+                                            <th scope="row">{{ sponsor.id }}</th>
+                                            <td>{{ sponsor.Company }}</td>
+                                            <td>{{ sponsor.Product }}</td>
+                                            <td>{{ sponsor.Image_link }}</td>
+                                            <td>{{ sponsor.Product_link }}</td>
+                                            <td>{{ sponsor.Revenue }}</td>
+                                            <td>
+                                                <button class="btn btn-warning"
+                                                    @click="clickEquiUpdate(equipment)">Update</button>
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-danger"
+                                                    @click="delEquip(equipment.id)">Delete</button>
+                                            </td>
+                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -341,7 +457,7 @@ export default {
             slots: [],
             bookedslots: []
             ,
-            usertoday:[],
+            usertoday: [],
             equipments: [],
             newRow: {
                 slot_in: '',
@@ -354,10 +470,17 @@ export default {
                 desc: '',
                 img: ''
             },
-            gym:{
-                opening_time:'',
-                closing_time:'',
-                capacity:''
+            gym: {
+                opening_time: '',
+                closing_time: '',
+                capacity: ''
+            },
+            sponsors: {
+                Company: '',
+                Product: '',
+                Image_link: '',
+                Product_link: '',
+                Revenue: ''
             },
             newObject: {},
             newEquipObject: {},
@@ -365,8 +488,8 @@ export default {
             showEquipCreateRow: false,
             onUpdate: false,
             onEquipUpdate: false,
-            clickUpdateGym:false,
-            currentDate:new Date()
+            clickUpdateGym: false,
+            currentDate: new Date()
         }
     },
     computed: {
@@ -379,6 +502,11 @@ export default {
     },
     methods: {
 
+        allSponsor: function () {
+            AdminApi.allSponsor().then((res) => {
+                this.sponsors = res.data
+            });
+        },
         allEquipments: function () {
             AdminApi.allEquipments().then((res) => {
                 this.equipments = res.data
@@ -389,24 +517,30 @@ export default {
                 this.slots = res.data
             });
         },
-        allUsers:function(){
-            AdminApi.allUsers().then((res)=>{
+        allUsers: function () {
+            AdminApi.allUsers().then((res) => {
                 this.users = res.data
                 console.log(res.data)
             })
         },
-        allUsersToday:function(){
+        allUsersToday: function () {
             console.log(this.currentDate)
-            AdminApi.allUsersToday({ curr_date: this.currentDate }).then((res)=>{
-                this.usertoday= res.data
-                
+            AdminApi.allUsersToday({ curr_date: this.currentDate }).then((res) => {
+                this.usertoday = res.data
+
                 // console.log(res.data)
             })
         },
-        getGym:function(){
+        getGym: function () {
             AdminApi.showGym().then((res) => {
                 this.gym = res.data[0]
                 // console.log(res.data[0])
+            });
+        },
+        delSponsor: function (id) {
+            AdminApi.deleteSponsor(id).then((res) => {
+                this.$toast.success("Sponsor Deleted");
+                this.allSponsor()
             });
         },
         delSlot: function (id) {
@@ -436,6 +570,22 @@ export default {
                 this.toggleEquipCreateRow()
             });
         },
+        createSponsor: function () {
+            AdminApi.createSponsor(this.newSponsorRow).then((res) => {
+                this.$toast.success("Sponsor Added");
+                this.allSponsor()
+                this.toggleSponsorCreateRow()
+            });
+        },
+        updateSponsor: function () {
+            AdminApi.updateSponsor(this.newObject).then((res) => {
+                this.onUpdate = false;
+                this.allSponsor()
+                this.resetNewRow();
+                this.newObject = {}
+                this.$toast.success("Sponsor Updated");
+            });
+        },
         updateSlot: function () {
             AdminApi.updateSlot(this.newObject).then((res) => {
                 this.onUpdate = false;
@@ -453,10 +603,10 @@ export default {
                 this.$toast.success("Equipment Updated");
             });
         },
-        UpdateGym:function(){
-            AdminApi.updateGym(this.gym).then((res)=>{
+        UpdateGym: function () {
+            AdminApi.updateGym(this.gym).then((res) => {
                 this.getGym();
-                this.clickUpdateGym=!this.clickUpdateGym
+                this.clickUpdateGym = !this.clickUpdateGym
                 this.$toast.success("Gym Updated");
             })
         },
@@ -480,7 +630,7 @@ export default {
         clickUpdate(slot) {
             this.onUpdate = true;
             this.newObject = slot;
-            this.newObject['date']=this.newObject['date'].split('T')[0]
+            this.newObject['date'] = this.newObject['date'].split('T')[0]
             this.slots = this.slots.filter((item) => {
                 return item.id !== slot.id
             })
@@ -508,6 +658,7 @@ export default {
         this.allSlots();
         this.getGym();
         this.allUsers();
+        this.allSponsor();
         // this.currentDate.setDate(this.currentDate.getDate()-1)
         // console.log(this.currentDate)
         this.allUsersToday();
