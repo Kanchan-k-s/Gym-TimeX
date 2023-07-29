@@ -507,17 +507,17 @@ export default {
                 this.slots = res.data
             });
         },
-        allUsers: function () {
-            AdminApi.allUsers().then((res) => {
-                this.users = res.data
-                console.log(res.data)
+        allUsers:function(){
+            AdminApi.allUsers().then((res)=>{
+                this.users = res.data.usersWithSlotInfo
+                // console.log(res.data)
             })
         },
         allUsersToday: function () {
             console.log(this.currentDate)
-            AdminApi.allUsersToday({ curr_date: this.currentDate }).then((res) => {
-                this.usertoday = res.data
-
+            AdminApi.allUsersToday({ curr_date: this.currentDate }).then((res)=>{
+                this.usertoday= res.data
+                // console.log("hi"+res.data.usersWithSlotInfo)
                 // console.log(res.data)
             })
         },

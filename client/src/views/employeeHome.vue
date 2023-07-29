@@ -198,7 +198,7 @@
     </div>
   </div>
 </div> -->
-<div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="max-height: 220px;">
+<!-- <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" style="max-height: 220px;">
   <div class="carousel-inner" style="height: 40%; width 40%; margin-left:40%; ">
     <div class="carousel-item imgh active" data-bs-interval="2000">
       <img src="https://stock.intellemo.com/6296f59625cabfb4867333e5/6296f59825cabfb4867333e6-v265/protein_powder_l.jpg" class="d-block imgh w-40" alt="...">
@@ -225,6 +225,32 @@
     <span class="visually-hidden">Next</span>
   </button>
 
+</div> -->
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item carousel2 active" data-bs-interval="2000">
+      <img src="https://stock.intellemo.com/6296f59625cabfb4867333e5/6296f59825cabfb4867333e6-v265/protein_powder_l.jpg" class="d-block w-25 mx-auto" alt="">
+    </div>
+    <div class="carousel-item carousel2" data-bs-interval="2000">
+      <img src="https://coreldrawdesign.com/resources/previews/preview-trendy-sports-shoes-advertisement-promotional-banner-vector-1657725702.jpg" class="d-block w-25 mx-auto" alt="">
+    </div>
+    <div class="carousel-item carousel2" data-bs-interval="2000">
+      <img src="https://sp2cdn-idea-global.zingfront.com/sp_opera/1bd18840f6eae1ab044e795c1eedc612.jpg" class="d-block w-25 mx-auto" alt="">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
 </div>
     <section id="contact" class="pt-5 bg">
 
@@ -344,6 +370,9 @@ export default {
     return {
       show: false,
       user:'',
+      sponser:[
+        
+      ],
     }
   },
 
@@ -370,6 +399,11 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
+
+.carousel2[data-v-2a51d747]{
+    height: 50vh;
+}
+
 
 .imgh{
   height: 30%;
