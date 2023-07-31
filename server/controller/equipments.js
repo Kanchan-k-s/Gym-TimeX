@@ -21,8 +21,10 @@ const add = async (req, res) => {
 
 const show = async (req, res) => {
   const Equipment = db.Models.equipments;
+
   try {
     const result = await Equipment.findAll();
+    
     res.status(200).json({
       success: true,
       result
@@ -36,6 +38,7 @@ const show = async (req, res) => {
 };
 
 const showEmployee = async (req, res) => {
+  // console.log("hi 1")
   const Equipment = db.Models.equipments;
   try {
     // const result = await Equipment.findAll();
@@ -45,7 +48,7 @@ const showEmployee = async (req, res) => {
       ],
         group: ['category'],
       });
-  
+      // console.log(categoryCounts)
     //   res.json(categoryCounts);
     // const data ={result,categoryCounts}
     res.status(200).json({
@@ -53,6 +56,7 @@ const showEmployee = async (req, res) => {
       categoryCounts
   });
   } catch (e) {
+    // console.log(e)
     res.status(500).json({
       success: false,
       errors: [{ msg: "Server error" }],
@@ -61,7 +65,7 @@ const showEmployee = async (req, res) => {
 };
 const category = async (req, res) => {
   try {
-    
+    // console.log("hi")
   const cat = req.params.cat
   const Equipment = db.Models.equipments;
   if(cat==='All')
@@ -80,7 +84,11 @@ const category = async (req, res) => {
         category: cat,
       },
     });
-    res.send(result);
+    
+    res.status(200).json({
+      success: true,
+      result
+  });
   }
   
   

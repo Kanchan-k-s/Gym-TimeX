@@ -65,24 +65,40 @@ export default {
     }
   },
   methods: {
-    ShowCategory: function () {
-      Employee.showEquipments().then((res) => {
+    ShowCategory: async function () {
+      try{
+        // console.log("hi")
+        const result = await Employee.showEquipments();
+        // console.log(result)
+        if(result.data.success)
+        {
           this.category=[]
-        // this.equipments = res.data.result
-        res.data.forEach(element => {
+          // console.log(result.data)
+          result.data.categoryCounts.forEach(element => {
           this.category.push(element.category)
         });
+        }
+      }catch(e){
+        console.log(e)
+      }
+      
 
-      });
+    
     },
-    categorySelect: function () {
-      setTimeout(() => {
+    categorySelect: async function () {
+      try{
+        // console.log("hi cat")
+        setTimeout(() => {
           this.isLoading = false;
         }, 1500);
         this.ShowCategory();
-      Employee.showEquipmentsCategory(this.choice).then((res) => {
-        this.equipments = res.data
-      });
+        const res = await Employee.showEquipmentsCategory(this.choice)
+        // console.log(res.data)
+        this.equipments = res.data.result
+      }catch(e){
+        console.log(e)
+      }
+      
     }
   },
   created() {
