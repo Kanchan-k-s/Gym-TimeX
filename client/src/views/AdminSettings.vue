@@ -116,7 +116,7 @@
                                         'form-group--error': $v.password.confirmPassword.$error,
                                     }">
                                         <label for="" class="mb-2">Confirm Password</label>
-                                        <div class="d-flex align-items-center w-50">
+                                        <div class="d-flex align-items-center w-50 ">
                                             <input 
                                                 v-model.trim="$v.password.confirmPassword.$model"
                                                 :class="{ 'is-invalid': $v.password.confirmPassword.$error }"

@@ -14,8 +14,8 @@
                     <div class="text-center col-sm-4">
                         <input class="form-control" type="date" @change="showData(currentDate)" v-model="currentDate" />
                     </div>
-                    <div class="hover">
-                        <div class="card w-100 " :class="{ book: slot.Active, fullbook: slot.nop === 0 }"
+                    <div class="hover" style="margin-top:2%">
+                        <div class="card w-100 h-25 " :class="{ book: slot.Active, fullbook: slot.nop === 0 }"
                             v-for="slot in slots" :key="slot.id" style="margin-top:2%">
                             <div class="card-body " :class="{ book: slot.Active }"
                                 v-on:click="slot.Active = !slot.Active; oneClick(slot.id)">
@@ -24,7 +24,8 @@
                                 }}</span></h4>
                                 <h5 class="card-title"><span>FROM: {{ slot.slot_in }}</span> <span class="float-end">TO:
                                         {{ slot.slot_out }}</span></h5>
-                                <p>Available : {{ slot.nop }}</p>
+                                        <br>
+                                <p class="text-start">Available : {{ slot.nop }}</p>
                             </div>
                         </div>
                     </div>

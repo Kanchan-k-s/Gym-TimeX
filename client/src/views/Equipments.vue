@@ -12,12 +12,12 @@
       <div class="bg">
 
         <div class="text-center"
-          style="color:rgb(255, 255, 255);padding-top: 10%;width:50%;margin-left:25%;margin-bottom: 2%; text-decoration: underline;">
+          style="color:rgb(255, 255, 255);padding-top: 25vh;width:50%;margin-left:25%;margin-bottom: 2%; text-decoration: underline;">
           <h1> GYM TimeX {{ choice }} Equipments</h1>
         </div>
         <div class="container mt-3">
 
-          <div class="d-flex justify-content-end">
+          <div class="d-flex justify-content-end ">
             <!-- <h6> Choose Category :</h6> -->
             <select class="form-select w-25 float-end" @change="categorySelect()" v-model="choice"
               aria-label="Default select example">
@@ -29,9 +29,9 @@
             </select>
           </div>
         </div>
-        <div class="row">
+        <div class="row" style="padding:3%">
           <div class="col-sm-3" v-for="equipment in equipments" style="margin-top: 2%;">
-            <div class="card" style="height: 470px;">
+            <div class="card" style="height: 100%;">
               <!-- <p>Category:{{equipment.category}}</p> -->
               <div class="card-header">
                 {{ equipment.name }}
@@ -114,10 +114,12 @@ export default {
 
   background: url("https://img.freepik.com/free-photo/3d-grunge-room-interior-with-spotlight-smoky-atmosphere-background_1048-11333.jpg?w=740&t=st=1690287523~exp=1690288123~hmac=2ca2f6f78e5c244bef1ed7f7213c35636ad49ced398ba64b926b62b6c6b4fb7c") no-repeat center fixed;
   background-size: cover;
+ 
   
 }
 .body {
   background-color: black;
+  margin-top:30%;
 }
 
 .black {
@@ -129,7 +131,7 @@ export default {
 }
 
 .img {
-  height: 250px;
+  height: 65%;
 }
 
 .row{
