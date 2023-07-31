@@ -236,6 +236,7 @@ export default {
                 const res = await User.register(new_user)
                 // console.log(res.data)
                 if (res.data.success) {
+                    this.$toast.success('Registered')
                     await Cookies.set("token", res.data.token);
                     localStorage.setItem("name1", res.data.user.name);
                     localStorage.setItem("user1", res.data.user.type);
@@ -272,6 +273,7 @@ export default {
                 this.isLoading = true;
                 const res = await User.login(user)
                 if (res.data.success) {
+                    this.$toast.success('Logged In ')
                     await Cookies.set("token", res.data.token);
                     localStorage.setItem("name1", res.data.user.name);
                     localStorage.setItem("user1", res.data.user.type);

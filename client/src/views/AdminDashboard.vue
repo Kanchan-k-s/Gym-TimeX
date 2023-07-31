@@ -97,7 +97,7 @@
                     <h2 class="accordion-header" id="flush-headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                            Number of People Booked
+                            People Booked
                         </button>
                     </h2>
                     <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
@@ -240,7 +240,7 @@
                             <div class="add-row-container" v-if="!showEquipCreateRow">
                                 <button class="btn btn-info" @click="toggleEquipCreateRow">Add Equipment</button>
                             </div>
-                            <div class="table-responsive">
+                            <div class="">
                                 <table border="1px" class="table">
                                     <thead>
                                         <tr>
@@ -350,10 +350,10 @@
                                             <th scope="col">Product</th>
                                             <th scope="col">Image Link</th>
                                             <th scope="col">Product Link</th>
-                                            <th scope="col">Revenue</th>  
-                                            <th scope="col">Amount</th>      
-                                            <th scope="col">Action</th>                                        
-                                           <th></th>
+                                            <th scope="col">Revenue</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Action</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -371,8 +371,10 @@
                                             <!-- <td><input class="form-control" type="text" v-model="newsponsorRow.Revenue" /> -->
                                             <!-- </td> -->
                                             <!-- <td><input class="form-control" type="text" v-model="newsponsorRow.Product_link" /></td> -->
-                                            <td><input class="form-control" type="number" v-model="newsponsorRow.Revenue" /></td>
-                                            <td><input class="form-control" type="number" v-model="newsponsorRow.Amount" /></td>
+                                            <td><input class="form-control" type="number" v-model="newsponsorRow.Revenue" />
+                                            </td>
+                                            <td><input class="form-control" type="number" v-model="newsponsorRow.Amount" />
+                                            </td>
                                             <td>
                                                 <button class="btn btn-success" @click="createSponsor()">Add
                                                     Sponsor</button>
@@ -383,8 +385,10 @@
                                         <tr v-if="onsponsorUpdate">
                                             <th scope="row"> {{ newsponsorObject.id }} </th>
 
-                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Company"></td>
-                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Product"></td>
+                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Company">
+                                            </td>
+                                            <td> <input class="form-control" type="text" v-model="newsponsorObject.Product">
+                                            </td>
                                             <td>
                                                 <div class="input-group">
                                                     <span class="input-group-text"></span>
@@ -399,12 +403,15 @@
                                                     <textarea class="form-control" aria-label="With textarea"
                                                         v-model="newsponsorObject.Product_link"></textarea>
                                                 </div>
-                                                
+
                                             </td>
-                                            <td> <input class="form-control" type="number" v-model="newsponsorObject.Revenue">
+                                            <td> <input class="form-control" type="number"
+                                                    v-model="newsponsorObject.Revenue">
                                             </td>
-                                            <td> <input class="form-control" type="number" v-model="newsponsorObject.Amount"></td>
-                                            <td><button class="btn btn-success" @click="updateSponsor()">Update</button></td>
+                                            <td> <input class="form-control" type="number"
+                                                    v-model="newsponsorObject.Amount"></td>
+                                            <td><button class="btn btn-success" @click="updateSponsor()">Update</button>
+                                            </td>
                                             <td><button class="btn btn-info" @click="backsponsorUpdate()">Back</button></td>
                                         </tr>
 
@@ -440,11 +447,12 @@
 <script>
 import { BIconHandThumbsDown, BIconThreeDotsVertical } from "bootstrap-vue";
 import AdminNavbar from "../components/AdminNavbar.vue"
+import errorToast from "../mixins/errorToast";
 
 import AdminApi from "../services/admin"
 
 export default {
-
+    mixins: [errorToast],
     data() {
         return {
             users: [],
@@ -475,7 +483,7 @@ export default {
                 Image_link: '',
                 Product_link: '',
                 Revenue: '',
-                Amount:''
+                Amount: ''
             },
             newObject: {},
             newEquipObject: {},
@@ -500,23 +508,52 @@ export default {
     },
     methods: {
 
-        allSponsor: function () {
-            AdminApi.showSponsor().then((res) => {
-                console.log(res)
-                this.sponsors = res.data
-            });
+        allSponsor: async function () {
+            try {
+                const res = await AdminApi.showSponsor()
+                if (res.data.success) {
+                    this.sponsors = res.data.result
+                }
+            } catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+
         },
-        allEquipments: function () {
-            AdminApi.allEquipments().then((res) => {
-                this.equipments = res.data
-            });
+        allEquipments: async function () {
+            try {
+                const res = await AdminApi.allEquipments()
+                if (res.data.success) {
+                    this.equipments = res.data.result
+                }
+            } catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+            
         },
-        allSlots: function () {
-            AdminApi.allSlots().then((res) => {
-                this.slots = res.data
-            });
+        allSlots: async function () {
+            try {
+                const res = await AdminApi.allSlots()
+                if (res.data.success) {
+                    this.slots = res.data.result
+                }
+            } catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
         },
-        allUsers: function () {
+        allUsers: async function () {
+            
             AdminApi.allUsers().then((res) => {
                 this.users = res.data.usersWithSlotInfo
                 // console.log(res.data)
@@ -530,85 +567,195 @@ export default {
                 // console.log(res.data)
             })
         },
-        getGym: function () {
-            AdminApi.showGym().then((res) => {
-                this.gym = res.data[0]
-                // console.log(res.data[0])
-            });
+        getGym: async function () {
+            try {
+                const res = await AdminApi.showGym()
+                if (res.data.success) {
+                    this.gym = res.data.result[0]
+                }
+            } catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+            
         },
-        delSponsor: function (id) {
-            AdminApi.deleteSponsor(id).then((res) => {
-                this.$toast.success("Sponsor Deleted");
-                this.allSponsor()
-            });
+        delSponsor: async function (id) {
+            try {
+                const result = await AdminApi.deleteSponsor(id)
+                if (result.data.success) {
+                    this.$toast.success("Sponsor Deleted");
+                    this.allSponsor()
+                }
+            } catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
         },
-        delSlot: function (id) {
-            AdminApi.deleteSlot(id).then((res) => {
-                this.$toast.success("Slot Deleted");
-                this.allSlots()
-            });
+        delSlot: async function (id) {
+            try {
+                const result = await AdminApi.deleteSlot(id)
+                if (result.data.success) {
+                    this.$toast.success("Slot Deleted");
+                    this.allSlots()
+                }
+            } catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
         },
-        delEquip: function (id) {
-            AdminApi.deleteEquip(id).then((res) => {
-                this.$toast.success("Equipment Deleted");
+        delEquip: async function (id) {
+            try {
+                const result = await AdminApi.deleteEquip(id)
+                if (result.data.success) {
+                    this.$toast.success("Equipment Deleted");
                 this.allEquipments()
-            });
+                }
+            } catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+            
         },
-        createSlot: function () {
-            AdminApi.createSlot(this.newRow).then((res) => {
-                this.allSlots()
+        createSlot: async function () {
+            try {
+                const result = await AdminApi.createSlot(this.newRow)
+                if (result.data.success) {
+                    this.allSlots()
                 this.toggleCreateRow()
                 this.resetNewRow();
                 this.$toast.success("Slot Added");
-            });
+                }
+
+            }
+            catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+            
         },
-        createEquip: function () {
-            AdminApi.createEquip(this.newEquipRow).then((res) => {
-                this.$toast.success("Equipment Added");
+        createEquip: async function () {
+            try {
+                const result = await AdminApi.createEquip(this.newEquipRow)
+                if (result.data.success) {
+                    this.$toast.success("Equipment Added");
                 this.allEquipments()
                 this.toggleEquipCreateRow()
-            });
+                }
+
+            }
+            catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+            
         },
-        createSponsor: function () {
-            AdminApi.createSponsor(this.newsponsorRow).then((res) => {
-                this.$toast.success("Sponsor Added");
-                this.allSponsor()
-                this.toggleSponsorCreateRow()
-            });
+        createSponsor: async function () {
+            try {
+                const result = await AdminApi.createSponsor(this.newsponsorRow)
+                if (result.data.success) {
+                    this.$toast.success("Sponsor Added");
+                    this.allSponsor()
+                    this.toggleSponsorCreateRow()
+                }
+
+            }
+            catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+
         },
-        updateSponsor: function () {
+        updateSponsor: async function () {
             // console.log(this.newsponsorObject)
-            AdminApi.updateSponsor(this.newsponsorObject).then((res) => {
+            try {
+                const result = await AdminApi.updateSponsor(this.newsponsorObject)
+
                 this.onsponsorUpdate = false;
                 this.allSponsor()
                 this.resetNewRow();
                 this.newsponsorObject = {}
                 this.$toast.success("Sponsor Updated");
-            });
+            }
+            catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+
         },
-        updateSlot: function () {
-            AdminApi.updateSlot(this.newObject).then((res) => {
+        updateSlot: async function () {
+            try {
+                const result = await AdminApi.updateSlot(this.newObject)
                 this.onUpdate = false;
                 this.allSlots()
                 this.resetNewRow();
                 this.newObject = {}
                 this.$toast.success("Slot Updated");
-            });
+            }
+            catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+            
         },
-        updateEquipment: function () {
-            AdminApi.updateEquip(this.newEquipObject).then((res) => {
+        updateEquipment: async function () {
+            try {
+                const result = await AdminApi.updateEquip(this.newEquipObject)
                 this.onEquipUpdate = false;
                 this.allEquipments()
                 this.newEquipObject = {}
                 this.$toast.success("Equipment Updated");
-            });
+            }
+            catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+            
         },
-        UpdateGym: function () {
-            AdminApi.updateGym(this.gym).then((res) => {
+        UpdateGym: async function () {
+            try {
+                const result = await AdminApi.updateGym(this.gym)
                 this.getGym();
                 this.clickUpdateGym = !this.clickUpdateGym
                 this.$toast.success("Gym Updated");
-            })
+            }
+            catch (error) {
+                const errors = !error.response
+                    ? [{ msg: error.message }]
+                    : error.response.data.errors;
+                this.toast(errors);
+                this.errorMessage = errors[0].msg;
+            }
+            
         },
         toggleCreateRow() {
             this.showCreateRow = !this.showCreateRow;
@@ -694,10 +841,11 @@ export default {
     align-items: center;
     height: 50px;
 }
+
 .table td {
-  /* display: block; */
-  overflow: hidden;
-  /* white-space: nowrap;
+    /* display: block; */
+    overflow: hidden;
+    /* white-space: nowrap;
   text-overflow: ellipsis; */
 }
 
@@ -714,4 +862,5 @@ export default {
 
 .add-row-button:hover {
     background-color: #0056b3;
-}</style>
+}
+</style>

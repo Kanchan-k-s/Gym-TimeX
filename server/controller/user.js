@@ -192,70 +192,9 @@ const booking = async (req, res) => {
     // console.log(users)
     res.send(users)
    
-    // const User = db.Models.user;
-    // const Slots = db.Models.slots;
-    // const Relation = db.Models.relations;
-
-    // const rel = await Relation.findAll({where:{
-    //   date: curr_date
-    // }})
-    // let user_ids=[]
-    // let slot_ids=[]
-    // rel.forEach((item)=>{
-    //   user_ids.push(item.user_id)
-    //   slot_ids.push(item.slot_id)
-    // })
-    
-    // console.log("Hi",user_ids,slot_ids)
-    // const users = await User.findAll({
-    //   attributes: ['id', 'name', 'email', 'check_in', 'check_out', 'slot_id'],
-    // },{
-    //   where :{
-    //     id :{
-    //       [Op.in]:user_ids
-    //     },
-    //     slot_id:{
-    //       [Op.in]:slot_ids
-    //     }
-    //   }
-    // });
-    // // console.log(users)
-    // // const slotIds = users.map((user) => user.slot_id);
-    // const slots = await Slots.findAll({
-    //   attributes: ['id', 'date', 'slot_in', 'slot_out'],
-    //   where: {
-    //     id: {
-    //       [Op.in]:slot_ids
-    //     }
-    //   },
-    // });
-    // console.log(slots)
-    // // const text = slots.find((slot) => (slot.id === user.slot_id && slot.date===curr_date));
-    // let usersWithSlotInfo = users.map((user) => {
-    //   const userSlot = slots.find((slot) => slot.id === user.slot_id);
-    //   // console.log(userSlot)
-    //   return {
-    //     id: user.id,
-    //     name: user.name,
-    //     email: user.email,
-    //     slot_id: user.slot_id,
-    //     date: userSlot ? userSlot.date : null,
-    //     slot_in: userSlot ? userSlot.slot_in : null,
-    //     slot_out: userSlot ? userSlot.slot_out : null,
-    //     check_in: user.check_in,
-    //     check_out: user.check_out
-    //   };
-    // });
-    // usersWithSlotInfo = usersWithSlotInfo.filter(ele => {
-      // console.log(ele.date ==curr_date)
-    //   if (ele.date != null)
-    //     return ele
-    // });
-
-    // res.send(usersWithSlotInfo)
 
   } catch (e) {
-    console.log(e)
+    // console.log(e)
     res.status(500).json({
       success: false,
       errors: [{ msg: "Server error" }],

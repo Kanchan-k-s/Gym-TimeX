@@ -53,7 +53,7 @@ export default {
     ,
     methods: {
         showData: function (currentDate) {
-            console.log(currentDate)
+            // console.log(currentDate)
             this.isLoading = true
             Employee.slotDate({ curr_date: currentDate }).then((res) => {
                 if (res.data.success) {
@@ -75,7 +75,7 @@ export default {
         oneClick: function (id) {
             this.isLoading = true
             Employee.updateSlot(id).then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 if (res.data.success) {
                     this.$toast.success(res.data.msg)
                 }

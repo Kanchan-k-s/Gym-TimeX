@@ -238,29 +238,27 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item carousel2 active" data-bs-interval="2000">
-          <img
-            src="https://stock.intellemo.com/6296f59625cabfb4867333e5/6296f59825cabfb4867333e6-v265/protein_powder_l.jpg"
-            class="d-block w-25 mx-auto" alt="">
+          <a href="/"><img
+            src="../assets/TimeX.png"
+            class="d-block w-25 mx-auto" alt=""></a>
         </div>
         <div class="carousel-item carousel2" v-for="sponser in sponsers" data-bs-interval="2000">
           <a :href=sponser.Product_link v-on:click="addRevenue(sponser.id)">
-            <img
-            :src=sponser.Image_link
-            class="d-block w-25 mx-auto" alt="">
+            <img :src=sponser.Image_link class="d-block w-25 mx-auto" alt="">
           </a>
-          
+
         </div>
         <!-- <div class="carousel-item carousel2" data-bs-interval="2000">
           <img src="https://sp2cdn-idea-global.zingfront.com/sp_opera/1bd18840f6eae1ab044e795c1eedc612.jpg"
             class="d-block w-25 mx-auto" alt="">
         </div> -->
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      <button class="spo carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
         data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon" ></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      <button class="spo carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
         data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
@@ -378,29 +376,42 @@
 import { BIconHandThumbsDown, BIconThreeDotsVertical } from "bootstrap-vue";
 import employeeApi from "../services/employee"
 import mixin from "../mixins/authmixin";
+import errorToast from "../mixins/errorToast"
 import Cookies from "js-cookie";
 export default {
-  mixins: [mixin],
+  mixins: [mixin, errorToast],
   data() {
     return {
       show: false,
       user: '',
       sponsers: [],
+      errorMessage: ''
     }
   },
 
 
   methods: {
-    showAdds(){
-      employeeApi.showAdds().then((res)=>{
-        this.sponsers= res.data
-      })
+    showAdds: async function () {
+      try {
+        const res = await employeeApi.showAdds();
+        // console.log(res.data)
+        if (res.data.success) {
+          this.sponsers = res.data.result
+        }else{
+          // this.$toast.warning("No Ads")
+        }
+
+      } catch (error) {
+        const errors = !error.response
+          ? [{ msg: error.message }]
+          : error.response.data.errors;
+        this.toast(errors);
+        this.errorMessage = errors[0].msg;
+      }
+
     },
-    addRevenue(id){
-      employeeApi.addRevenue(id).then((res)=>{
-        console.log(res)
-        // this.sponsers= res.data
-      })
+    addRevenue: async function(id) {
+      const res= await employeeApi.addRevenue(id)
     },
     start() {
       this.$router.push('/sign/up')
@@ -424,6 +435,13 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
+.spo > .carousel-control-prev-icon {
+ background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+}
+
+.spo >.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+}
 
 .carousel2[data-v-2a51d747] {
   height: 50vh;

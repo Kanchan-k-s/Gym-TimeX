@@ -7,10 +7,16 @@ const add = async (req, res) => {
         const query = req.body
         // console.log(query)
         const result = await Slots.create(query)
-        res.send(result)
+        res.status(200).json({
+            success: true,
+            result
+        });
 
     } catch (e) {
-        console.log(e)
+        res.status(500).json({
+            success: false,
+            errors: [{ msg: "Server error" }],
+        });
     }
 }
 
@@ -20,9 +26,15 @@ const show = async (req, res) => {
         const result = await Slots.findAll({
             order: [['date', 'DESC'], ['slot_in', 'ASC']]
         });
-        res.send(result)
+        res.status(200).json({
+            success: true,
+            result
+        });
     } catch (e) {
-        console.log(e)
+        res.status(500).json({
+            success: false,
+            errors: [{ msg: "Server error" }],
+        });
     }
 }
 
@@ -50,21 +62,37 @@ const showDate = async (req, res) => {
         // console.log(rel.length)
         let Gym = db.Models.gyms;
         const capacity = await Gym.findAll()
-        if(rel.length!==0)
+        if(result.length>0)
         {
-            result.forEach(ele => {
-                ele.nop = capacity[0].capacity - ele.nop
-                if ( ele.id===rel[0].slot_id) {
-                    ele.dataValues['Active'] = true
-                }
-                else {
-                    ele.dataValues['Active'] = false
-                }
-            });
-            res.send({
-                success:true,
-                result
-            })
+            if(rel.length>0)
+            {
+                result.forEach(ele => {
+                    ele.nop = capacity[0].capacity - ele.nop
+                    if ( ele.id===rel[0].slot_id) {
+                        ele.dataValues['Active'] = true
+                    }
+                    else {
+                        ele.dataValues['Active'] = false
+                    }
+                });
+                res.send({
+                    success:true,
+                    result
+                })
+                
+            }
+            else{
+                result.forEach(ele => {
+                    ele.nop = capacity[0].capacity - ele.nop
+                    ele.dataValues['Active']=false
+                })
+                res.send({
+                    success:true,
+                    result
+                })
+            }
+            
+            
         }else{
             res.send({
                 success:false,
@@ -73,30 +101,26 @@ const showDate = async (req, res) => {
         }
         
     } catch (e) {
-        console.log(e)
+        res.status(500).json({
+            success: false,
+            errors: [{ msg: "Server error" }],
+        });
     }
 }
-
-// const show = async (req, res) => {
-//     const Slots = db.Models.slots
-//     try {
-//         const result = await Slots.findAll({
-//             order: [['date', 'DESC'], ['slot_in', 'ASC']]
-//         });
-//         res.send(result)
-//     } catch (e) {
-//         console.log(e)
-//     }
-// }
-
 
 const showOne = async (req, res) => {
     const Slots = db.Models.slots
     try {
         const result = await Slots.findByPk(req.params.id);
-        res.send(result)
+        res.status(200).json({
+            success: true,
+            result
+        });
     } catch (e) {
-        console.log(e)
+        res.status(500).json({
+            success: false,
+            errors: [{ msg: "Server error" }],
+        });
     }
 }
 
@@ -192,17 +216,28 @@ const updateNop = async (req, res) => {
 }
 
 const update = async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const Slots = db.Models.slots
     try {
         const data = await Slots.findOne({ where: { id: req.params.id } });
         if (data) {
             const result = await Slots.update(req.body, { where: { id: req.params.id } });
-            res.send(result)
+            res.status(200).json({
+                success: true,
+                result
+            });
+        }else{
+            res.status(200).json({
+                success: false,
+                msg:"No such Id present"
+            });
         }
-        return "No such Id present";
+        
     } catch (e) {
-        console.log(e)
+        res.status(500).json({
+            success: false,
+            errors: [{ msg: "Server error" }],
+        });
     }
 }
 
@@ -210,10 +245,16 @@ const delSlot = async (req, res) => {
     const Slots = db.Models.slots
     try {
         const result = await Slots.destroy({ where: { id: req.params.id } });
-        res.json(result)
+        res.status(200).json({
+            success: true,
+            result
+        });
     }
     catch (e) {
-        console.log(e)
+        res.status(500).json({
+            success: false,
+            errors: [{ msg: "Server error" }],
+        });
     }
 }
 

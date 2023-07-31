@@ -7,9 +7,15 @@ const add = async (req, res) => {
     // console.log(db.Models);
     const query = req.body;
     const result = await Equipment.create(query);
-    res.send(result);
+    res.status(200).json({
+      success: true,
+      result
+  });
   } catch (e) {
-    console.log(e);
+    res.status(500).json({
+      success: false,
+      errors: [{ msg: "Server error" }],
+  });
   }
 };
 
@@ -17,9 +23,15 @@ const show = async (req, res) => {
   const Equipment = db.Models.equipments;
   try {
     const result = await Equipment.findAll();
-    res.send(result);
+    res.status(200).json({
+      success: true,
+      result
+  });
   } catch (e) {
-    console.log(e);
+    res.status(500).json({
+      success: false,
+      errors: [{ msg: "Server error" }],
+  });
   }
 };
 
@@ -36,9 +48,15 @@ const showEmployee = async (req, res) => {
   
     //   res.json(categoryCounts);
     // const data ={result,categoryCounts}
-    res.send(categoryCounts);
+    res.status(200).json({
+      success: true,
+      categoryCounts
+  });
   } catch (e) {
-    console.log(e);
+    res.status(500).json({
+      success: false,
+      errors: [{ msg: "Server error" }],
+  });
   }
 };
 const category = async (req, res) => {
@@ -51,7 +69,10 @@ const category = async (req, res) => {
     // console.log("hi")
     const result = await Equipment.findAll();
     // console.log(result);
-    res.send(result);
+    res.status(200).json({
+      success: true,
+      result
+  });
   }
   else{
     const result = await Equipment.findAll({
@@ -65,7 +86,10 @@ const category = async (req, res) => {
   
     
   } catch (e) {
-    console.log(e);
+    res.status(500).json({
+      success: false,
+      errors: [{ msg: "Server error" }],
+  });
   }
 };
 
@@ -73,9 +97,15 @@ const showOne = async (req, res) => {
   const Equipment = db.Models.equipments;
   try {
     const result = await Equipment.findByPk(req.params.id);
-    res.send(result);
+    res.status(200).json({
+      success: true,
+      result
+  });
   } catch (e) {
-    console.log(e);
+    res.status(500).json({
+      success: false,
+      errors: [{ msg: "Server error" }],
+  });
   }
 };
 
@@ -87,11 +117,17 @@ const update = async (req, res) => {
       const result = await Equipment.update(req.body, {
         where: { id: req.params.id },
       });
-      res.send(result);
+      res.status(200).json({
+        success: true,
+        result
+    });
     }
     return "No such Id present";
   } catch (e) {
-    console.log(e);
+    res.status(500).json({
+      success: false,
+      errors: [{ msg: "Server error" }],
+  });
   }
 };
 
@@ -99,9 +135,15 @@ const delEquip = async (req, res) => {
   const Equipment = db.Models.equipments;
   try {
     const result = await Equipment.destroy({ where: { id: req.params.id } });
-    res.json(result);
+    res.status(200).json({
+      success: true,
+      result
+  });
   } catch (e) {
-    console.log(e);
+    res.status(500).json({
+      success: false,
+      errors: [{ msg: "Server error" }],
+  });
   }
 };
 
