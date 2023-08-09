@@ -128,7 +128,7 @@
                 <div class="col-md-4 mb-3">
                   <div class="card" style="height: 100%;">
                     <img class="img-fluid img-size" alt="100%x280"
-                      src="https://media.istockphoto.com/id/1089939832/photo/happy-athletic-people-jogging-on-treadmills-in-a-health-club.jpg?s=612x612&w=0&k=20&c=SXA16QEZhLIYcDR0gHkVTY0MNSBIROmU7sTi3Tp8Bz0=">
+                      src="https://youfit.com/wp-content/uploads/2022/09/cardio-workouts-at-the-gym.png">
                     <div class="card-body">
                       <h4 class="card-title">Cardiovascular Equipment</h4>
                       <p class="card-text">Gyms typically provide a range of cardio machines, such as treadmills,
