@@ -150,11 +150,11 @@
                                         * Password must have at least
                                         {{ $v.Login.user_password.$params.minLength.min }} letters.
                                     </div>
-                                    <div class="error text-danger" v-if="$v.Login.user_password.$dirty && !$v.Login.user_password.valid
+                                    <!-- <div class="error text-danger" v-if="$v.Login.user_password.$dirty && !$v.Login.user_password.valid
                                         ">
                                         * The password requires an uppercase, lowercase, number and
                                         special character
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="login-form-submit-btn">
@@ -308,19 +308,7 @@ export default {
             },
             user_password: {
                 required,
-                minLength: minLength(4),
-                valid: function (value) {
-                    const containsUppercase = /[A-Z]/.test(value);
-                    const containsLowercase = /[a-z]/.test(value);
-                    const containsNumber = /[0-9]/.test(value);
-                    const containsSpecial = /[#?!@$%^&*-]/.test(value);
-                    return (
-                        containsUppercase &&
-                        containsLowercase &&
-                        containsNumber &&
-                        containsSpecial
-                    );
-                },
+                minLength: minLength(4)
             },
         },
         Register: {
