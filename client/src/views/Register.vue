@@ -101,7 +101,7 @@
                                 <div class="login-form-submit-btn">
                                     <button v-on:click="reg_user()">Create an Account</button>
                                 </div>
-                                <div class="login-form-5" v-on:click="register = false">
+                                <div class="login-form-5" v-on:click="register = false; $v.Login.$reset()">
                                     <p>Already have an account? <a>Sign In</a></p>
                                 </div>
                                 <a href="/" class="text-center"
@@ -160,7 +160,7 @@
                                 <div class="login-form-submit-btn">
                                     <button v-on:click="login()">Login</button>
                                 </div>
-                                <div class="login-form-5" v-on:click="register = true">
+                                <div class="login-form-5" v-on:click="register = true; $v.Register.$reset()">
                                     <p>Want to create an account? <a>Sign Up</a></p>
                                 </div>
                                 <a href="/" class="text-center"

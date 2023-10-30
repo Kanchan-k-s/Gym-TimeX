@@ -17,10 +17,10 @@
                                 </div>
                             </div>
                             <div class="col-4 text-muted navigation-links">
-                                <div class="icon-wrapper" :class="{ active: form_index === 0 }" @click="form_index = 0">
+                                <div class="icon-wrapper" :class="{ active: form_index === 0 }" @click="form_index = 0; $v.user_name.$reset()">
                                     <i class="ri-pencil-fill"></i> <span> Edit Profile </span>
                                 </div>
-                                <div class="icon-wrapper" :class="{ active: form_index === 1 }" @click="form_index = 1">
+                                <div class="icon-wrapper" :class="{ active: form_index === 1 }" @click="form_index = 1; $v.password.$reset()">
                                     <i class="ri-shield-keyhole-fill"></i> <span> Change Password</span>
                                 </div>
                              
@@ -67,21 +67,21 @@
                                         <input type="submit" value="Update" class="btn btn-primary" />
                                     </div>
                                 </form>
-                                <form class="form" @submit.prevent="handleSubmitPassword" v-else-if="form_index === 1">
+                                <form class="form" @submit.prevent="handleSubmitPassword" v-else-if="form_index === 1 ">
                                     <fieldset class="h3 mb-4">Change Password</fieldset>
                                     <div class="mb-3 w-50" :class="{ 'form-group--error': $v.password.oldpassword.$error }">
                                         <label for="" class="mb-2">Old Password</label>
                                         <div class="d-flex align-items-center">
                                             <input v-model="password.oldpassword"
                                                 v-model.trim="$v.password.oldpassword.$model"
-                                                :class="{ 'is-invalid': $v.password.oldpassword.$error }"
+                                                :class="{ 'is-invalid': $v.password.oldpassword.$error && $v.password.$touch}"
                                                 placeholder="Enter Old Password" class="form-control" :type="show[0]" />
                                             <b-icon style="margin-left: -25px; cursor: pointer"
                                                 :class="{ 'ml-50': $v.password.oldpassword.$error }" :icon="eyeType[0]"
                                                 @click="toggleShow(0)"></b-icon>
                                         </div>
                                         <div class="error text-danger" v-if="$v.password.oldpassword.$dirty &&
-                                            !$v.password.oldpassword.required
+                                            !$v.password.oldpassword.required 
                                             ">
                                             * Required.
                                         </div>
@@ -237,7 +237,7 @@ export default {
         },
         handleSubmitProfile: async function () {
             this.$v.$touch();
-            // console.log(this.$v)
+            console.log(this.$v)
             if (this.$v.user_name.$invalid) {
                 const errors = [{ msg: 'Requires min 4 length' }]
                 this.toast(errors);
@@ -269,7 +269,8 @@ export default {
         },
         handleSubmitPassword: async function () {
             this.$v.$touch();
-            if (this.$v.$invalid.password) {
+            
+            if (this.$v.password.$invalid) {
                 return;
             }
             // console.log(this.password);

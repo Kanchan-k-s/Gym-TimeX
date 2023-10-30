@@ -45,6 +45,7 @@ const showDate = async (req, res) => {
     const Slots = db.Models.slots
     const Relation = db.Models.relations
     try {
+        // showing slots of the date
         let result = await Slots.findAll({
             where: {
                 date: {
@@ -55,6 +56,8 @@ const showDate = async (req, res) => {
         });
         // console.log(req.userId)
         // console.log(curr_date)
+
+        //geting relation of the user
         let rel = await Relation.findAll({where:{
             user_id:req.userId,
             date:curr_date.split('T')[0]+'T00:00:00.000Z'
@@ -69,6 +72,7 @@ const showDate = async (req, res) => {
                 result.forEach(ele => {
                     ele.nop = capacity[0].capacity - ele.nop
                     // console.log(rel[0].slot_id)
+                    // logic to get the color on the booking
                     if ( ele.id === rel[0].slot_id) {
                         ele.dataValues['Active'] = true
                     }
@@ -136,10 +140,13 @@ const updateNop = async (req, res) => {
         const userId = req.userId;
         let capacity = await Gyms.findAll();
         capacity = capacity[0].capacity
-        // console.log("capacity", capacity)
+        
         const User_data = await Users.findByPk(userId);
-        // console.log(Slot_data.nop)
-        // console.log(User_data.slot_id,userId )
+        // Cases in which the booking should be done
+        // 1. user who dont have any booking
+        // 2. User who wants to unbook
+        // 3. User who has booked but want to book another slot
+        // Checking all with capacity
          if (Slot_data.nop <= 0 ||( Slot_data.nop < capacity && User_data.slot_id !== Slot_data.id)) {
             if (User_data.slot_id === -1) {
                 const user = await Users.update({ 'slot_id': Slot_data.id }, {
@@ -178,7 +185,7 @@ const updateNop = async (req, res) => {
                 });
             }
         }else if (User_data.slot_id === Slot_data.id) {
-
+            
             const result = await Slots.update({ nop: sequelize.literal('nop -1') }, { where: { id: User_data.slot_id } });
             const user = await Users.update({ 'slot_id': -1 }, {
                 where: {
