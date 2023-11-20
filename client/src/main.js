@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import Vuelidate from 'vuelidate';
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter,  createWebHistory } from "vue-router";
 import routes from "./routes";
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
@@ -28,7 +28,7 @@ app.use(BootstrapVue);
 app.use(IconsPlugin);
 
 const router = new createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes, // short for `routes: routes`
   // scrollBehavior: function (to) {
   //   if (to.hash) {

@@ -13,7 +13,7 @@ export default [
         name: "Employee Home",
     },
     {
-        path: "/sign/:id#",
+        path: "/sign/:id",
         component: Register,
         name: "Register",
     },
