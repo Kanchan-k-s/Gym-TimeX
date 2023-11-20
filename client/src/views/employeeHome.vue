@@ -41,7 +41,7 @@
         </div>
       </div>
     </nav>
-    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel" >
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
       <div id="start" class="carousel-inner">
         <!-- <div class="container" style="padding-top:7%"> -->
         <div class="carousel-item active" data-bs-interval="2000">
@@ -180,7 +180,7 @@
         </div>
       </div>
     </section>
-    
+
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -192,9 +192,7 @@
       </div>
       <div class="carousel-inner">
         <div class="carousel-item carousel2 active" data-bs-interval="2000">
-          <a href="/"><img
-            src="../assets/TimeX.png"
-            class="add_size d-block w-25" alt=""></a>
+          <a href="/"><img src="../assets/TimeX.png" class="add_size d-block w-25" alt=""></a>
         </div>
         <div class="carousel-item carousel2" v-for="sponser in sponsers" data-bs-interval="2000">
           <a :href=sponser.Product_link v-on:click="addRevenue(sponser.id)" target="_blank">
@@ -202,11 +200,11 @@
           </a>
 
         </div>
-        
+
       </div>
       <button class="spo carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
         data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" ></span>
+        <span class="carousel-control-prev-icon"></span>
         <span class="visually-hidden">Previous</span>
       </button>
       <button class="spo carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
@@ -222,7 +220,7 @@
           <div class="text-center" style="color: rgb(255, 244, 244); margin-bottom: 2%; margin-top: 7% ">
             <h1 style="color: rgba(255, 255, 255, 0.808);">Contact Us</h1>
           </div>
-          <div  class="text-center" jslog="56034; track:impression,click">
+          <div class="text-center" jslog="56034; track:impression,click">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14664.148804565486!2d72.6273969!3d23.2417333!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2bf0022b4609%3A0x4ecd09a1a9d956eb!2sArgusoft!5e0!3m2!1sen!2sin!4v1690368229709!5m2!1sen!2sin"
               width="800" height="500" id="map" style="border:0;" allowfullscreen="" loading="lazy"
@@ -252,17 +250,17 @@
         </div>
         <div class="footer-links" style="margin-left: 80%;padding-bottom:0.5%">
           <a href="mailto:info@argusoft.com"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16" >
+              fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
               <path
                 d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z" />
             </svg></a>
-          <a href="https://www.facebook.com/argusoft" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-              fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16" >
+          <a href="https://www.facebook.com/argusoft" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+              height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
               <path
                 d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
             </svg></a>
-          <a href="https://www.linkedin.com/company/argusoft" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20"
-              height="20" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16" >
+          <a href="https://www.linkedin.com/company/argusoft" target="_blank"><svg xmlns="http://www.w3.org/2000/svg"
+              width="20" height="20" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
               <path
                 d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z" />
             </svg></a>
@@ -297,7 +295,7 @@ export default {
         // console.log(res.data)
         if (res.data.success) {
           this.sponsers = res.data.result
-        }else{
+        } else {
           // this.$toast.warning("No Ads")
         }
 
@@ -310,8 +308,8 @@ export default {
       }
 
     },
-    addRevenue: async function(id) {
-      const res= await employeeApi.addRevenue(id)
+    addRevenue: async function (id) {
+      const res = await employeeApi.addRevenue(id)
     },
     start() {
       this.$router.push('/sign/up')
@@ -335,11 +333,12 @@ export default {
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
-.spo > .carousel-control-prev-icon {
- background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+
+.spo>.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
 }
 
-.spo >.carousel-control-next-icon {
+.spo>.carousel-control-next-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
 }
 
@@ -347,16 +346,19 @@ export default {
   height: 50vh;
 }
 
-.add_size{
-  width:120%;
-  height:100%;
-  margin-left:37%;
+.add_size {
+  width: 120%;
+  height: 100%;
+  margin-left: 37%;
 }
 
 #map {
-      height: 400px; /* Set an initial height for the map */
-      width: 100%; /* Set the width to occupy the full container */
-    }
+  height: 400px;
+  /* Set an initial height for the map */
+  width: 100%;
+  /* Set the width to occupy the full container */
+}
+
 .imgh {
   height: 30%;
   width: 40vh;
