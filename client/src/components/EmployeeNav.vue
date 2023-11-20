@@ -7,8 +7,9 @@
                 <video style="height:60px; width:60px;"
          src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
             </a>
-            <h1 class="text-start" style="color:white"> GYM TimeX </h1>
+            <h1 class="text-start" style="color:white"> GYM TimeX Niojsgeu</h1>
             <!-- Navbar toggle -->
+            <h1>hi</h1>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -17,6 +18,7 @@
             <div class="collapse  navbar-collapse " id="navbarCollapse">
                 <!-- Nav -->
                 <div class="navbar-nav mx-lg-auto ">
+                    <router-link class="nav-item nav-link active" to="/">Start</router-link>
                     <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
                     <a class="nav-item nav-link active" href="/employee/booking">Booking</a>
                     <a class="nav-item nav-link active" href="/employee/equipments">Equipments</a>

@@ -7,7 +7,7 @@
                 <video style="height:60px; width:60px;"
          src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
             </a>
-            <h1 class="text-start" style="color:white">GYM TimeX</h1>
+            <h1 class="text-start" style="color:white">GYM TimeXbrvge</h1>
             <!-- Navbar toggle -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">

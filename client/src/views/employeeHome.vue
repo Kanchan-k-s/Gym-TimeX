@@ -27,9 +27,10 @@
           </div>
           <!-- Action -->
           <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
-            <a v-if="!show" href="/sign/in" class="btn btn-sm btn-light w-full w-lg-auto">
+            <router-link class="btn btn-sm btn-light w-full w-lg-auto" to="/sign/in">gtft</router-link>
+            <!-- <a v-if="!show" href="/sign/in/" class="btn btn-sm btn-light w-full w-lg-auto">
               SIGN IN
-            </a>
+            </a> -->
             <a v-if="!show" href="/sign/up" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
               SIGN UP
             </a>
@@ -196,12 +197,12 @@
             src="../assets/TimeX.png"
             class="add_size d-block w-25" alt=""></a>
         </div>
-        <div class="carousel-item carousel2" v-for="sponser in sponsers" data-bs-interval="2000">
+        <!-- <div class="carousel-item carousel2" v-for="sponser in sponsers" data-bs-interval="2000">
           <a :href=sponser.Product_link v-on:click="addRevenue(sponser.id)" target="_blank">
             <img :src=sponser.Image_link class="add_size d-block w-25 " alt="">
           </a>
 
-        </div>
+        </div> -->
         
       </div>
       <button class="spo carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
