@@ -4,6 +4,7 @@
 // import AboutUs from './views/AboutUs'
 import Home from './views/employeeHome'
 import Login from './views/LoginPage.vue'
+import RegisterPage from './views/RegisterPage.vue'
 // import Booking from './views/employeeBooking.vue'
 // import Equipments from './views/Equipments'
 
@@ -15,14 +16,14 @@ export default [
     },
     {
         path: '/login',
-        component:Login,
+        component: Login,
         name: "Login Page"
-    }
-    // {
-    //     path: "/sign/:id",
-    //     component: Register,
-    //     name: "Register",
-    // },
+    },
+    {
+        path: "/sign/in",
+        component: RegisterPage,
+        name: "Register Page",
+    },
     // {
     //     path: "/admin/panel",
     //     component: AdminDashboard,
