@@ -1,3 +1,3 @@
 # Gym-TimeX
 
-This repo is being used for github pratice so dont mind
+This repo is being used for vue3 migration on vue-cli
