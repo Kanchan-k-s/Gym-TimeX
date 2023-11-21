@@ -6,7 +6,7 @@ import Home from './views/employeeHome'
 import Login from './views/LoginPage.vue'
 import RegisterPage from './views/RegisterPage.vue'
 // import Booking from './views/employeeBooking.vue'
-// import Equipments from './views/Equipments'
+import Equipments from './views/Equipments'
 
 export default [
     {
@@ -45,9 +45,9 @@ export default [
     //     component:Booking,
     //     name:'Booking'
     // },
-    // {
-    //     path: "/employee/equipments",
-    //     component: Equipments,
-    //     name: "equipments",
-    // },
+    {
+        path: "/employee/equipments",
+        component: Equipments,
+        name: "equipments",
+    },
 ]

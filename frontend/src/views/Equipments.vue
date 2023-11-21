@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div :class="isLoading ? 'white' : 'black'" style="">
     <EmployeeNav> </EmployeeNav>
@@ -22,7 +23,7 @@
             <select class="form-select w-25 float-end" @change="categorySelect()" v-model="choice"
               aria-label="Default select example">
               <option value="All" selected>All</option>
-              <option :value="cat" v-for="cat in category">{{ cat }}</option>
+              <option :value="cat" v-for="cat in category" :key="cat.id">{{ cat }} </option>
               <!-- <option value="1">One</option>
             
             <option value="3">Three</option> -->
@@ -30,7 +31,7 @@
           </div>
         </div>
         <div class="row" style="padding:3%">
-          <div class="col-sm-3" v-for="equipment in equipments" style="margin-top: 2%;">
+          <div class="col-sm-3" v-for="equipment in equipments" :key="equipment.id" style="margin-top: 2%;">
             <div class="card" style="height: 100%;">
               <!-- <p>Category:{{equipment.category}}</p> -->
               <div class="card-header">
@@ -49,9 +50,9 @@
 </template>
 
 <script>
-import { BIconThreeDotsVertical } from "bootstrap-vue"
+// import { BIconThreeDotsVertical } from "bootstrap-vue"
 import EmployeeNav from "../components/EmployeeNav.vue"
-import Employee from "../services/employee.js"
+import Employee from "../services/employee"
 export default {
   components: {
     EmployeeNav

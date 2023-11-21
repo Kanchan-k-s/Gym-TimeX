@@ -166,7 +166,8 @@
                                 <a href="/" class="text-center"
                                     style="padding: 0%; text-decoration: underline; color: rgba(0, 0, 0, 0.548); font-size: small;">
                                     <p>
-                                        Back to home page</p>
+                                        Back to home page
+                                    </p>
                                 </a>
                             </form>
 
@@ -181,11 +182,16 @@
 import User from "../services/user"
 import Cookies from "js-cookie";
 import errorToast from "@/mixins/errorToast";
-import { required, email, minLength } from "vuelidate/lib/validators";
+import { useVuelidate } from '@vuelidate/core'
+import { required, email, minLength } from '@vuelidate/validators'
+// import { required, email, minLength } from "vuelidate/lib/validators";
 
 
 export default {
     // name: "Register",
+    setup() {
+        return { v$: useVuelidate() }
+    },
     mixins: [errorToast],
     data() {
         return {
