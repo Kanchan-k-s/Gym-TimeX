@@ -1,5 +1,5 @@
 // import Register from './views/Register'
-// import AdminDashboard from './views/AdminDashboard'
+import AdminDashboard from './views/AdminDashboard'
 // import AdminSettings from './views/AdminSettings'
 // import AboutUs from './views/AboutUs'
 import Home from './views/employeeHome'
@@ -24,11 +24,11 @@ export default [
         component: RegisterPage,
         name: "Register Page",
     },
-    // {
-    //     path: "/admin/panel",
-    //     component: AdminDashboard,
-    //     name: "AdminDashboard",
-    // },
+    {
+        path: "/admin/panel",
+        component: AdminDashboard,
+        name: "AdminDashboard",
+    },
     // {
     //     path: "/settings",
     //     component: AdminSettings,

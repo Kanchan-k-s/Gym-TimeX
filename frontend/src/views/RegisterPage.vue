@@ -182,10 +182,15 @@ import User from "../services/user"
 import Cookies from "js-cookie";
 import errorToast from "@/mixins/errorToast";
 import { required, email, minLength } from "vuelidate/lib/validators";
-
+import { useVuelidate } from '@vuelidate/core'
 
 export default {
     // name: "Register",
+    setup () {
+    return {
+      v$: useVuelidate()
+    }
+  },
     mixins: [errorToast],
     data() {
         return {
@@ -223,9 +228,9 @@ export default {
             // console.log("hi")
             try {
 
-                this.$v.$touch();
-                // console.log(this.$v.Register)
-                if (this.$v.Register.$invalid) {
+                this.v$.$touch();
+                // console.log(this.v$.Register)
+                if (this.v$.Register.$invalid) {
                     return;
                 }
                 const new_user = {
@@ -263,8 +268,8 @@ export default {
         },
         login: async function () {
             try {
-                this.$v.$touch();
-                if (this.$v.Login.$invalid) {
+                this.v$.$touch();
+                if (this.v$.Login.$invalid) {
                     return;
                 }
                 const user = {
