@@ -160,7 +160,7 @@ import { required, sameAs, minLength } from "vuelidate/lib/validators";
 export default {
     setup () {
     return {
-      $v: useVuelidate()
+    //   $v: useVuelidate()
     }
   },
     components: {
@@ -171,6 +171,7 @@ export default {
 
     data() {
         return {
+            $v: useVuelidate(),
             isLoading: false,
             user_name:'',
             password: { oldpassword: "", password: "", confirmPassword: "" },
