@@ -40,7 +40,7 @@
     
 </template>
 <script>
-// import { onBeforeMount } from "vue";
+import { onBeforeMount } from "vue";
 import mixin from "../mixins/authmixin";
 export default {
     mixins: [mixin],

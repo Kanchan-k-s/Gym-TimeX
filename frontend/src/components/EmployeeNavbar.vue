@@ -1,39 +1,39 @@
 <template>
-    
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-0 py-3">
-        <div class="container-xl">
-            <!-- Logo -->
-            <a class="navbar-brand" href="/admin/panel">
-                <video style="height:60px; width:60px;"
-         src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4" autoplay="autoplay" muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
-            </a>
-            <h1 class="text-start" style="color:white"> GYM TimeX </h1>
-            <!-- Navbar toggle -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Collapse -->
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <!-- Nav -->
-                <div class="navbar-nav mx-lg-auto">
-                    <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
-                    <a class="nav-item nav-link active" href="/employee/booking/about_us">About</a>
-                    <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Contact us</a>
-                </div>
-                <!-- Action -->
-                <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
-                    <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto">
-                        SIGN IN
-                    </a>
-                    <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
-                        SIGN UP
-                    </a>
+            <div class="container-xl">
+                <!-- Logo -->
+                <a class="navbar-brand" href="/admin/panel">
+                    <video style="height:60px; width:60px;"
+                        src="https://cdnl.iconscout.com/lottie/premium/thumb/dumbbells-6911043-5673469.mp4"
+                        autoplay="autoplay" muted="muted" loop="loop" playsinline="" type="video/mp4"></video>
+                </a>
+                <h1 class="text-start" style="color:white"> GYM TimeX </h1>
+                <!-- Navbar toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Collapse -->
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <!-- Nav -->
+                    <div class="navbar-nav mx-lg-auto">
+                        <a class="nav-item nav-link active" href="/" aria-current="page">Home</a>
+                        <a class="nav-item nav-link active" href="/employee/booking/about_us">About</a>
+                        <a class="nav-item nav-link active" href="/admin/panel" aria-current="page">Contact us</a>
+                    </div>
+                    <!-- Action -->
+                    <div class="d-flex align-items-lg-center mt-3 mt-lg-0">
+                        <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto">
+                            SIGN IN
+                        </a>
+                        <a v-on:click="logout" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
+                            SIGN UP
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     </div>
 </template>
 <script>
@@ -44,15 +44,18 @@ export default {
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+
 .navbar input[type="checkbox"],
 .navbar .hamburger-lines {
     display: none;
 }
+
 .container {
     max-width: 1200px;
     width: 90%;
     margin: auto;
 }
+
 .navbar {
     box-shadow: 0px 5px 10px 0px #aaa;
     position: fixed;
@@ -62,51 +65,62 @@ export default {
     opacity: 0.85;
     z-index: 100;
 }
+
 .navbar-container {
     display: flex;
     justify-content: space-between;
     height: 64px;
     align-items: center;
 }
-.navbar-item{
+
+.navbar-item {
     font-family: 'Rubik Dirt', cursive;
 }
+
 .menu-items {
     order: 2;
     display: flex;
 }
+
 .logo {
     order: 1;
     font-size: 2.3rem;
     margin-left: 100px
 }
+
 .menu-items li {
     list-style: none;
     margin-left: 1.5rem;
     font-size: 1.3rem;
 }
+
 .navbar a {
     color: #444;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease-in-out;
 }
+
 .navbar a:hover {
     color: #117964;
 }
+
 @media (max-width: 768px) {
     .navbar {
         opacity: 0.95;
     }
+
     .navbar-container input[type="checkbox"],
     .navbar-container .hamburger-lines {
         display: block;
     }
+
     .navbar-container {
         display: block;
         position: relative;
         height: 64px;
     }
+
     .navbar-container input[type="checkbox"] {
         position: absolute;
         display: block;
@@ -118,6 +132,7 @@ export default {
         opacity: 0;
         cursor: pointer;
     }
+
     .navbar-container .hamburger-lines {
         display: block;
         height: 28px;
@@ -130,6 +145,7 @@ export default {
         flex-direction: column;
         justify-content: space-between;
     }
+
     .navbar-container .hamburger-lines .line {
         display: block;
         height: 4px;
@@ -137,17 +153,21 @@ export default {
         border-radius: 10px;
         background: #333;
     }
+
     .navbar-container .hamburger-lines .line1 {
         transform-origin: 0% 0%;
         transition: transform 0.3s ease-in-out;
     }
+
     .navbar-container .hamburger-lines .line2 {
         transition: transform 0.2s ease-in-out;
     }
+
     .navbar-container .hamburger-lines .line3 {
         transform-origin: 0% 100%;
         transition: transform 0.3s ease-in-out;
     }
+
     .navbar .menu-items {
         padding-top: 100px;
         background: #fff;
@@ -162,33 +182,39 @@ export default {
         box-shadow: 5px 0px 10px 0px #aaa;
         overflow: scroll;
     }
+
     .navbar .menu-items li {
         margin-bottom: 1.8rem;
         font-size: 1.1rem;
         font-weight: 500;
     }
+
     .logo {
         position: absolute;
         top: 10px;
         right: 15px;
         font-size: 2.5rem;
     }
+
     .navbar-container input[type="checkbox"]:checked~.menu-items {
         transform: translateX(0);
     }
+
     .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
         transform: rotate(45deg);
     }
+
     .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
         transform: scaleY(0);
     }
+
     .navbar-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
         transform: rotate(-45deg);
     }
 }
+
 @media (max-width: 500px) {
     .navbar-container input[type="checkbox"]:checked~.logo {
         display: none;
     }
-}
-</style>
+}</style>
