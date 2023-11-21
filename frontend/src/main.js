@@ -4,6 +4,7 @@ import App from './App.vue'
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
+import VuelidatePlugin  from '@vuelidate/core'
 // import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
 import ToastPlugin from 'vue-toast-notification';
@@ -24,6 +25,7 @@ const app = createApp(App)
 // whole app router-aware.
 app.use(router)
 app.use(ToastPlugin);
+app.use(VuelidatePlugin)
 
 
 // app.use(BootstrapVue);

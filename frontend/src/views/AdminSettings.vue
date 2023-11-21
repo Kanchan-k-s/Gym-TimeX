@@ -151,12 +151,18 @@
 
 <script>
 
+import useVuelidate from "@vuelidate/core";
 import AdminNavbar from "../components/AdminNavbar.vue"
 import EmployeeNav from "../components/EmployeeNav.vue";
 import userApi from "../services/user";
 import errorToast from "@/mixins/errorToast";
 import { required, sameAs, minLength } from "vuelidate/lib/validators";
 export default {
+    setup () {
+    return {
+      $v: useVuelidate()
+    }
+  },
     components: {
         AdminNavbar,
         EmployeeNav

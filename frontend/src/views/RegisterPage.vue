@@ -25,59 +25,59 @@
                                 <div class="login-form-1">
                                     <label for="newUserEmail" class="form-label">Email<span>*</span></label>
                                     <input type="email" class="form-control" id="newUserEmail" placeholder="Email"
-                                        v-model.trim="$v.Register.new_user_email.$model"
-                                        :class="{ 'is-invalid': $v.Register.new_user_email.$error }" />
-                                    <div class="error text-danger" v-if="$v.Register.new_user_email.$dirty &&
-                                        !$v.Register.new_user_email.required
+                                        v-model.trim="v$.Register.new_user_email.$model"
+                                        :class="{ 'is-invalid': v$.Register.new_user_email.$error }" />
+                                    <div class="error text-danger" v-if="v$.Register.new_user_email.$dirty &&
+                                        !v$.Register.new_user_email.required
                                         ">
                                         Cannot be empty
                                     </div>
-                                    <div class="error text-danger" v-if="$v.Register.new_user_email.$dirty && !$v.Register.new_user_email.email
+                                    <div class="error text-danger" v-if="v$.Register.new_user_email.$dirty && !v$.Register.new_user_email.email
                                         ">
                                         Invalid Email
                                     </div>
                                 </div>
                                 <div class="login-form-2"
-                                    :class="{ 'form-group--error': $v.Register.new_user_name.$error }">
+                                    :class="{ 'form-group--error': v$.Register.new_user_name.$error }">
                                     <label class="form__label">Username<span>*</span></label>
                                     <div class="d-flex align-items-center">
                                         <input class="form-control " v-model="Register.new_user_name"
-                                            v-model.trim="$v.Register.new_user_name.$model"
-                                            :class="{ 'is-invalid': $v.Register.new_user_name.$error }"
+                                            v-model.trim="v$.Register.new_user_name.$model"
+                                            :class="{ 'is-invalid': v$.Register.new_user_name.$error }"
                                             v-bind:min="Register.new_user_name" placeholder="Password" />
                                     </div>
-                                    <div class="error text-danger" v-if="$v.Register.new_user_name.$dirty && !$v.Register.new_user_name.required
+                                    <div class="error text-danger" v-if="v$.Register.new_user_name.$dirty && !v$.Register.new_user_name.required
                                         ">
                                         * Username is required.
                                     </div>
-                                    <div class="error text-danger" v-if="!$v.Register.new_user_name.minLength">
+                                    <div class="error text-danger" v-if="!v$.Register.new_user_name.minLength">
                                         * Username must have at least
-                                        {{ $v.Register.new_user_name.$params.minLength.min }} letters.
+                                        {{ v$.Register.new_user_name.$params.minLength.min }} letters.
                                     </div>
 
                                 </div>
                                 <div class="login-form-3"
-                                    :class="{ 'form-group--error': $v.Register.new_user_password.$error }">
+                                    :class="{ 'form-group--error': v$.Register.new_user_password.$error }">
                                     <label class="form__label">Password<span>*</span></label>
                                     <div class="d-flex align-items-center">
                                         <input class="form-control " v-model="Register.new_user_password"
-                                            v-model.trim="$v.Register.new_user_password.$model"
-                                            :class="{ 'is-invalid': $v.Register.new_user_password.$error }"
+                                            v-model.trim="v$.Register.new_user_password.$model"
+                                            :class="{ 'is-invalid': v$.Register.new_user_password.$error }"
                                             v-bind:min="Register.new_user_password" placeholder="Password"
                                             :type="show[1]" />
                                         <b-icon style="margin-left: -25px; cursor: pointer" :icon="eyeType[1]"
-                                            :class="{ 'ml-50': $v.Register.new_user_password.$error }"
+                                            :class="{ 'ml-50': v$.Register.new_user_password.$error }"
                                             @click="toggleShow(1)"></b-icon>
                                     </div>
-                                    <div class="error text-danger" v-if="$v.Register.new_user_password.$dirty && !$v.Register.new_user_password.required
+                                    <div class="error text-danger" v-if="v$.Register.new_user_password.$dirty && !v$.Register.new_user_password.required
                                         ">
                                         * Password is required.
                                     </div>
-                                    <div class="error text-danger" v-if="!$v.Register.new_user_password.minLength">
+                                    <div class="error text-danger" v-if="!v$.Register.new_user_password.minLength">
                                         * Password must have at least
-                                        {{ $v.Register.new_user_password.$params.minLength.min }} letters.
+                                        {{ v$.Register.new_user_password.$params.minLength.min }} letters.
                                     </div>
-                                    <div class="error text-danger" v-if="$v.Register.new_user_password.$dirty && !$v.Register.new_user_password.valid
+                                    <div class="error text-danger" v-if="v$.Register.new_user_password.$dirty && !v$.Register.new_user_password.valid
                                         ">
                                         * The password requires an uppercase, lowercase, number and
                                         special character
@@ -101,7 +101,7 @@
                                 <div class="login-form-submit-btn">
                                     <button v-on:click="reg_user()">Create an Account</button>
                                 </div>
-                                <div class="login-form-5" v-on:click="register = false; $v.Login.$reset()">
+                                <div class="login-form-5" v-on:click="register = false; v$.Login.$reset()">
                                     <p>Already have an account? <a>Sign In</a></p>
                                 </div>
                                 <a href="/" class="text-center"
@@ -118,39 +118,39 @@
                                 <div class="login-form-1">
                                     <label for="userEmail" class="form-label">Email<span>*</span></label>
                                     <input type="email" class="form-control" id="userEmail" placeholder="Email"
-                                        v-model.trim="$v.Login.user_email.$model"
-                                        :class="{ 'is-invalid': $v.Login.user_email.$error }" />
-                                    <div class="error text-danger" v-if="$v.Login.user_email.$dirty &&
-                                        !$v.Login.user_email.required
+                                        v-model.trim="v$.Login.user_email.$model"
+                                        :class="{ 'is-invalid': v$.Login.user_email.$error }" />
+                                    <div class="error text-danger" v-if="v$.Login.user_email.$dirty &&
+                                        !v$.Login.user_email.required
                                         ">
                                         Cannot be empty
                                     </div>
-                                    <div class="error text-danger" v-if="$v.Login.user_email.$dirty && !$v.Login.user_email.email
+                                    <div class="error text-danger" v-if="v$.Login.user_email.$dirty && !v$.Login.user_email.email
                                         ">
                                         Invalid Email
                                     </div>
                                 </div>
 
-                                <div class="login-form-3" :class="{ 'form-group--error': $v.Login.user_password.$error }">
+                                <div class="login-form-3" :class="{ 'form-group--error': v$.Login.user_password.$error }">
                                     <label class="form__label">Password</label>
                                     <div class="d-flex align-items-center">
                                         <input class="form-control " v-model="Login.user_password"
-                                            v-model.trim="$v.Login.user_password.$model"
-                                            :class="{ 'is-invalid': $v.Login.user_password.$error }"
+                                            v-model.trim="v$.Login.user_password.$model"
+                                            :class="{ 'is-invalid': v$.Login.user_password.$error }"
                                             v-bind:min="Login.user_password" placeholder="Password" :type="show[1]" />
                                         <b-icon style="margin-left: -25px; cursor: pointer" :icon="eyeType[1]"
-                                            :class="{ 'ml-50': $v.Login.user_password.$error }"
+                                            :class="{ 'ml-50': v$.Login.user_password.$error }"
                                             @click="toggleShow(1)"></b-icon>
                                     </div>
-                                    <div class="error text-danger" v-if="$v.Login.user_password.$dirty && !$v.Login.user_password.required
+                                    <div class="error text-danger" v-if="v$.Login.user_password.$dirty && !v$.Login.user_password.required
                                         ">
                                         * Password is required.
                                     </div>
-                                    <div class="error text-danger" v-if="!$v.Login.user_password.minLength">
+                                    <div class="error text-danger" v-if="!v$.Login.user_password.minLength">
                                         * Password must have at least
-                                        {{ $v.Login.user_password.$params.minLength.min }} letters.
+                                        {{ v$.Login.user_password.$params.minLength.min }} letters.
                                     </div>
-                                    <!-- <div class="error text-danger" v-if="$v.Login.user_password.$dirty && !$v.Login.user_password.valid
+                                    <!-- <div class="error text-danger" v-if="v$.Login.user_password.$dirty && !v$.Login.user_password.valid
                                         ">
                                         * The password requires an uppercase, lowercase, number and
                                         special character
@@ -160,7 +160,7 @@
                                 <div class="login-form-submit-btn">
                                     <button v-on:click="login()">Login</button>
                                 </div>
-                                <div class="login-form-5" v-on:click="register = true; $v.Register.$reset()">
+                                <div class="login-form-5" v-on:click="register = true; v$.Register.$reset()">
                                     <p>Want to create an account? <a>Sign Up</a></p>
                                 </div>
                                 <a href="/" class="text-center"
