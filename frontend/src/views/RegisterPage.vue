@@ -65,9 +65,12 @@
                                             :class="{ 'is-invalid': v$.Register.new_user_password.$error }"
                                             v-bind:min="Register.new_user_password" placeholder="Password"
                                             :type="show[1]" />
-                                        <b-icon style="margin-left: -25px; cursor: pointer" :icon="eyeType[1]"
+                                            <i style="margin-left: -25px; cursor: pointer"
+                                            :class="['bi bi-'+eyeType[1],{ 'ml-50': v$.Register.new_user_password.$error  }]"
+                                            @click="toggleShow(1)"></i>
+                                        <!-- <b-icon style="margin-left: -25px; cursor: pointer" :icon="eyeType[1]"
                                             :class="{ 'ml-50': v$.Register.new_user_password.$error }"
-                                            @click="toggleShow(1)"></b-icon>
+                                            @click="toggleShow(1)"></b-icon> -->
                                     </div>
                                     <div class="error text-danger" v-if="v$.Register.new_user_password.$dirty && !v$.Register.new_user_password.required
                                         ">
@@ -138,9 +141,12 @@
                                             v-model.trim="v$.Login.user_password.$model"
                                             :class="{ 'is-invalid': v$.Login.user_password.$error }"
                                             v-bind:min="Login.user_password" placeholder="Password" :type="show[1]" />
-                                        <b-icon style="margin-left: -25px; cursor: pointer" :icon="eyeType[1]"
+                                        <!-- <b-icon style="margin-left: -25px; cursor: pointer" :icon="eyeType[1]"
                                             :class="{ 'ml-50': v$.Login.user_password.$error }"
-                                            @click="toggleShow(1)"></b-icon>
+                                            @click="toggleShow(1)"></b-icon> -->
+                                            <i style="margin-left: -25px; cursor: pointer"
+                                            :class="['bi bi-'+eyeType[1],{ 'ml-50': v$.Login.user_password.$error }]"
+                                            @click="toggleShow(1)"></i>
                                     </div>
                                     <div class="error text-danger" v-if="v$.Login.user_password.$dirty && !v$.Login.user_password.required
                                         ">
