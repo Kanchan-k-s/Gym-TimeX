@@ -609,4 +609,7 @@ main section.section-login .section-main .section-login-2 .section-login-2-main 
         padding: 35px 25px;
     }
 }
+.ml-50 {
+    margin-left: -50px !important;
+}
 </style>
