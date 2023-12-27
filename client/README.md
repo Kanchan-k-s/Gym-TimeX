@@ -17,3 +17,7 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Transpile commands
+
+npx babel vanilla-wrapper.js --out-file src/components/VanillaWrapper.js

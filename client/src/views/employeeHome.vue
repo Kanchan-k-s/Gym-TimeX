@@ -30,6 +30,9 @@
             <a v-if="!show" href="/sign/in" class="btn btn-sm btn-light w-full w-lg-auto">
               SIGN IN
             </a>
+            <a v-if="!show" @click="babel" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
+              Hello Babel
+            </a>
             <a v-if="!show" href="/sign/up" class="btn btn-sm btn-light w-full w-lg-auto" style="margin-left:15px">
               SIGN UP
             </a>
@@ -278,6 +281,8 @@ import employeeApi from "../services/employee"
 import mixin from "../mixins/authmixin";
 import errorToast from "../mixins/errorToast"
 import Cookies from "js-cookie";
+import VanillaWrapper from "../components/VanillaWrapper";
+
 export default {
   mixins: [mixin, errorToast],
   data() {
@@ -291,6 +296,9 @@ export default {
 
 
   methods: {
+    babel:()=>{
+      VanillaWrapper.call('greet' , 'Kanchan')
+    },
     showAdds: async function () {
       try {
         const res = await employeeApi.showAdds();
